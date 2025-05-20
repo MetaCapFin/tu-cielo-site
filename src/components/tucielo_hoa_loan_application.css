@@ -1,0 +1,141 @@
+/* Fullscreen modal background */
+.hoa-modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Scrollable modal content */
+.hoa-modal-content {
+  background-color: #fff;
+  border-radius: 12px;
+  max-height: 90vh;
+  overflow-y: auto;
+  width: 90%;
+  max-width: 840px;
+  position: relative;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Close button */
+.hoa-close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #444;
+  z-index: 10;
+}
+
+/* Form wrapper */
+.hoa-form-wrapper {
+  padding: 24px;
+  font-family: 'Mulish', sans-serif;
+  color: #303c42;
+  box-sizing: border-box;
+}
+
+/* Section headers */
+.hoa-form-wrapper h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+.hoa-form-wrapper h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  color: #2f3a44;
+}
+
+/* Inputs */
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Mulish', sans-serif;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+/* File input */
+.input-file {
+  display: block;
+  margin-bottom: 16px;
+  font-family: 'Mulish', sans-serif;
+}
+
+/* Button */
+.hoa-submit-btn {
+  background-color: #bfd400;
+  color: #303c42;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Mulish', sans-serif;
+  width: 50%;
+  margin-top: 16px;
+}
+
+.hoa-submit-btn:hover {
+  background-color: #2ba6cb;
+  color: #ffffff;
+}
+
+.step-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.hoa-nav-btn {
+  background-color: #d1d5db;
+  color: #303c42;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  font-family: 'Mulish', sans-serif;
+}
+
+.hoa-nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.step-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.hoa-nav-btn {
+  padding: 0.6rem 1.2rem;
+}
+
+.hoa-submit-btn {
+  padding: 0.8rem 1.5rem;
+  font-weight: bold;
+}
