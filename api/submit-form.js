@@ -15,8 +15,11 @@ const COLUMN_IDS = {
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    res.status(405).json({ error: 'Method not allowed' });
-    return;
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  if (!MONDAY_API_KEY) {
+    return res.status(500).json({ error: 'Missing Monday API key' });
   }
 
   const { name = '', community = '', city = '', role = '', budget = '', phone = '', email = '' } = req.body;
@@ -58,12 +61,13 @@ export default async function handler(req, res) {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: MONDAY_API_KEY,
+          Authorization: `Bearer ${MONDAY_API_KEY}`,
         },
       }
     );
 
     if (response.data.errors) {
+      console.error('Monday API returned errors:', response.data.errors);
       return res.status(500).json({ error: response.data.errors });
     }
 
@@ -72,6 +76,7 @@ export default async function handler(req, res) {
       itemId: response.data.data.create_item.id,
     });
   } catch (error) {
+    console.error('Monday API error:', error.response?.data || error.message);
     res.status(500).json({ error: 'Error submitting form to Monday.com' });
   }
 }
