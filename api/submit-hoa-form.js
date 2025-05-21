@@ -1,4 +1,4 @@
-import formidable from "formidable";
+import { IncomingForm } from 'formidable';
 
 export const config = {
   api: {
@@ -11,9 +11,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const form = new formidable.IncomingForm({ keepExtensions: true });
+  const form = new IncomingForm({ keepExtensions: true });
 
-  form.parse(req, async (err, fields) => {
+  form.parse(req, async (err, fields, files) => {
     if (err) {
       console.error("Form parsing error:", err);
       return res.status(500).json({ error: "Form parsing failed" });
@@ -40,43 +40,35 @@ export default async function handler(req, res) {
       } = fields;
 
       const boardId = 9191966932;
-      const groupId = "group_title";
+      const groupId = "group_title"; // from your latest group lookup
       const apiKey = process.env.MONDAY_API_KEY;
 
       const columnValues = {
-        text_mkr4yxmr: communityName || "", // Community Name
-        numeric_mkr4ttda: Number(units) || 0, // Number of Units
-        numeric_mkr4jp33: Number(yearBuilt) || 0, // Year Built
-        text_mkr42072: contactName || "", // Contact Name
-        text_mkr49z65: position || "", // Position (text)
-        email_mkr4smcy: JSON.stringify({ email, text: email }), // Email
-        phone_mkr46tp1: JSON.stringify({ phone, countryShortName: "US" }), // Phone
-        text_mkr4c2tj: projectType || "", // Project Type
-        numeric_mkr4am8g: parseFloat(projectCost?.toString().replace(/[^0-9.-]+/g, "")) || 0, // Estimated Project Cost
-        numeric_mkr4mpnr: parseFloat(loanAmount?.toString().replace(/[^0-9.-]+/g, "")) || 0, // Loan Amount
-        text_mkr4t75f: loanTerm || "", // Loan Term (text)
-        numeric_mkr4st1x: parseFloat(monthlyDues?.toString().replace(/[^0-9.-]+/g, "")) || 0, // Monthly Dues
-        numeric_mkr4jrvy: parseFloat(reserveBalance?.toString().replace(/[^0-9.-]+/g, "")) || 0, // Reserve Balance
-        numeric_mkr4h9qn: parseFloat(annualBudget?.toString().replace(/[^0-9.-]+/g, "")) || 0, // Annual Budget
-        numeric_mkr4j9bt: parseFloat(delinquencyRate?.toString().replace(/[^0-9.]/g, "")) || 0, // Delinquency Rate
+        text_mkr4yxmr: communityName,
+        numeric_mkr4ttda: Number(units),
+        numeric_mkr4jp33: Number(yearBuilt),
+        text_mkr42072: contactName,
+        text_mkr49z65: position,
+        email_mkr4smcy: { email, text: email },
+        phone_mkr46tp1: { phone, countryShortName: "US" },
+        text_mkr4c2tj: projectType,
+        numeric_mkr4am8g: Number(projectCost?.replace(/[^0-9.]/g, "") || 0),
+        numeric_mkr4mpnr: Number(loanAmount?.replace(/[^0-9.]/g, "") || 0),
+        text_mkr4t75f: loanTerm,
+        numeric_mkr4st1x: Number(monthlyDues?.replace(/[^0-9.]/g, "") || 0),
+        numeric_mkr4jrvy: Number(reserveBalance?.replace(/[^0-9.]/g, "") || 0),
+        numeric_mkr4h9qn: Number(annualBudget?.replace(/[^0-9.]/g, "") || 0),
+        numeric_mkr4j9bt: parseFloat(delinquencyRate?.replace(/[^0-9.]/g, "") || 0),
       };
 
-      // Remove undefined/null values
-      Object.keys(columnValues).forEach(
-        (key) => columnValues[key] === null || columnValues[key] === undefined
-          ? delete columnValues[key]
-          : null
-      );
-
       const columnValuesStr = JSON.stringify(columnValues).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
-      const itemName = hoaName ? hoaName.replace(/"/g, '\\"') : "HOA Loan Application";
 
       const query = `
         mutation {
           create_item (
             board_id: ${boardId},
             group_id: "${groupId}",
-            item_name: "${itemName}",
+            item_name: "${hoaName}",
             column_values: "${columnValuesStr}"
           ) {
             id
@@ -94,16 +86,16 @@ export default async function handler(req, res) {
       });
 
       const data = await response.json();
-      console.log("Monday API Response:", JSON.stringify(data, null, 2));
 
       if (data.errors) {
-        return res.status(500).json({ error: "Monday.com error", details: data.errors });
+        console.error("Monday API error:", JSON.stringify(data.errors, null, 2));
+        return res.status(500).json({ error: "Monday.com API error", details: data.errors });
       }
 
-      res.status(200).json({ success: true, message: "Submitted successfully" });
+      return res.status(200).json({ success: true, message: "Submitted successfully" });
     } catch (error) {
-      console.error("Unexpected server error:", error);
-      res.status(500).json({ error: "Unexpected error", message: error.message });
+      console.error("Server error:", error);
+      return res.status(500).json({ error: "Server error" });
     }
   });
 }
