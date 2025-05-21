@@ -2,16 +2,15 @@ const formidable = require("formidable");
 const fs = require("fs");
 const path = require("path");
 
-export const config = {
+module.exports = async function handler(req, res) {
+  // ...
+};
+
+module.exports.config = {
   api: {
     bodyParser: false,
   },
 };
-
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
 
   const form = formidable({ keepExtensions: true });
 
