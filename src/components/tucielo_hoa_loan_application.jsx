@@ -129,7 +129,7 @@ export default function HOAApplicationForm({ onClose }) {
         }
       });
 
-      const response = await fetch("http://localhost:5000/submit-hoa-form", {
+      const response = await fetch("/api/submit-hoa-form", {
         method: "POST",
         body: formPayload,
       });
