@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const MONDAY_API_KEY = process.env.MONDAY_API_KEY;
 
-// Correct column mappings for the contact form board (ID: 9138987515)
 const COLUMN_IDS = {
   name: 'text_mkqxc5rw',
   community: 'text_mkqxaajc',
@@ -50,8 +49,11 @@ export default async function handler(req, res) {
     const variables = {
       boardId: 9138987515,
       itemName: name,
-      columnValues,
+      columnValues: JSON.stringify(columnValues), // stringify this!
     };
+
+    console.log('Using API Key:', MONDAY_API_KEY ? 'Yes' : 'No');
+    console.log('Submitting to Monday.com with:', variables);
 
     const response = await axios.post(
       'https://api.monday.com/v2',
@@ -64,15 +66,16 @@ export default async function handler(req, res) {
       }
     );
 
+    console.log('Monday API response:', response.data);
+
     if (response.data.errors) {
-      console.error('❌ Monday API error:', response.data.errors);
+      console.error('Monday API error:', response.data.errors);
       return res.status(500).json({ error: 'Failed to create item on Monday.com.' });
     }
 
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error('❌ API call failed:', error.response?.data || error.message);
+    console.error('Error submitting to Monday:', error.response?.data || error.message);
     return res.status(500).json({ error: 'Server error submitting form.' });
   }
 }
-
