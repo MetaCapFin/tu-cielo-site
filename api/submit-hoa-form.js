@@ -70,18 +70,35 @@ module.exports = async function handler(req, res) {
       .replace(/\\/g, "\\\\")
       .replace(/"/g, '\\"');
 
-    const query = `
-      mutation {
-        create_item(
-          board_id: ${boardId},
-          group_id: "${groupId}",
-          item_name: "${hoaName} Loan App",
-          column_values: "${columnValuesString}"
-        ) {
-          id
-        }
-      }
-    `;
+   const query = `
+  mutation CreateItem($boardId: Int!, $groupId: String!, $itemName: String!, $columnValues: JSON!) {
+    create_item(
+      board_id: $boardId,
+      group_id: $groupId,
+      item_name: $itemName,
+      column_values: $columnValues
+    ) {
+      id
+    }
+  }
+`;
+
+const variables = {
+  boardId,
+  groupId,
+  itemName: `${hoaName} Loan App`,
+  columnValues,
+};
+
+const response = await fetch("https://api.monday.com/v2", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: apiKey,
+  },
+  body: JSON.stringify({ query, variables }),
+});
+
 
     try {
       const response = await fetch("https://api.monday.com/v2", {
