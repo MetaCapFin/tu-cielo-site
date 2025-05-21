@@ -5,14 +5,14 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const form = formidable({ keepExtensions: true });
+  const form = new formidable.IncomingForm({ keepExtensions: true });
 
   form.parse(req, async (err, fields, files) => {
     if (err) {
       console.error("Form parsing error:", err);
       return res.status(500).json({ error: "Form parsing failed" });
     }
-
+    
     // Normalize field values
     const {
       hoaName,
