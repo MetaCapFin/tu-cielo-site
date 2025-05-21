@@ -1,15 +1,14 @@
 import formidable from "formidable";
 import fs from "fs";
-import path from "path";
 import axios from "axios";
+import FormData from "form-data";
 
 export const config = {
   api: {
-    bodyParser: false, // Required for formidable to handle file uploads
+    bodyParser: false,
   },
 };
 
-// Initialize Monday.com API instance
 const mondayApi = axios.create({
   baseURL: "https://api.monday.com/v2",
   headers: {
@@ -37,7 +36,7 @@ export default async function handler(req, res) {
       const getFloat = (val) => parseFloat(val?.toString().replace(/[^\d.]/g, "")) || null;
 
       const column_values = {
-        text_mkr42072: fields.hoaName, // HOA Legal Name and Contact Name
+        text_mkr42072: fields.hoaName,
         text_mkr4yxmr: fields.communityName,
         numeric_mkr4ttda: getInt(fields.units),
         numeric_mkr4jp33: getInt(fields.yearBuilt),
@@ -66,49 +65,36 @@ export default async function handler(req, res) {
       const itemId = itemResponse.data.data.id;
 
       const uploadFile = async (columnId, file) => {
-        const fileData = fs.readFileSync(file.filepath);
-        const base64File = fileData.toString("base64");
+        const formData = new FormData();
 
-        return mondayApi.post(
-          "https://api.monday.com/v2/file",
-          {
-            query: `
-              mutation ($file: File!, $itemId: Int!, $columnId: String!) {
-                add_file_to_column (file: $file, item_id: $itemId, column_id: $columnId) {
-                  id
-                }
-              }`,
-            variables: {
-              file: null, // multipart field will be handled separately
-              itemId,
-              columnId,
-            },
+        const operations = {
+          query: `
+            mutation ($file: Upload!, $itemId: Int!, $columnId: String!) {
+              add_file_to_column(file: $file, item_id: $itemId, column_id: $columnId) {
+                id
+              }
+            }
+          `,
+          variables: {
+            file: null,
+            itemId,
+            columnId,
           },
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-            maxContentLength: Infinity,
-            maxBodyLength: Infinity,
-            data: {
-              operations: JSON.stringify({
-                query: `
-                  mutation ($file: File!, $itemId: Int!, $columnId: String!) {
-                    add_file_to_column (file: $file, item_id: $itemId, column_id: $columnId) {
-                      id
-                    }
-                  }`,
-                variables: {
-                  file: null,
-                  itemId,
-                  columnId,
-                },
-              }),
-              map: JSON.stringify({ "0": ["variables.file"] }),
-              0: fileData,
-            },
-          }
-        );
+        };
+
+        const map = { "0": ["variables.file"] };
+
+        formData.append("operations", JSON.stringify(operations));
+        formData.append("map", JSON.stringify(map));
+        formData.append("0", fs.createReadStream(file.filepath), file.originalFilename || "upload.file");
+
+        const res = await mondayApi.post("/", formData, {
+          headers: formData.getHeaders(),
+          maxContentLength: Infinity,
+          maxBodyLength: Infinity,
+        });
+
+        return res.data;
       };
 
       if (files.reserveStudy) {
@@ -119,10 +105,10 @@ export default async function handler(req, res) {
         await uploadFile("file_mkr45fq2", files.annualBudgetFile);
       }
 
-      res.status(200).json({ success: true, itemId });
+      return res.status(200).json({ success: true, itemId });
     } catch (error) {
       console.error("Submission error:", error.response?.data || error.message);
-      res.status(500).json({ success: false, message: "Submission failed." });
+      return res.status(500).json({ success: false, message: "Submission failed." });
     }
   });
 }
