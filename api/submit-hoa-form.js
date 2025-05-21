@@ -44,7 +44,7 @@ export default async function handler(req, res) {
     );
 
     const boardId = 9191966932;
-    const groupId = "topics";
+    const groupId = "group_title";
     const apiKey = process.env.MONDAY_API_KEY;
 
     const columnValues = {
