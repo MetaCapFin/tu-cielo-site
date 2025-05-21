@@ -18,14 +18,14 @@ export default async function handler(req, res) {
   const apiKey = process.env.MONDAY_API_KEY;
 
   const columnValues = {
-    text_mkqxc5rw: name,
-    text_mkqxaajc: community,
-    text_mkqy7dse: city,
-    text_mkqyp01b: role,
-    numeric_mkqxegkv: budget,
-    email_mkqxn7zz: email,
-    phone_mkqxprbj: phone,
-  };
+  text_mkqxc5rw: name,
+  text_mkqxaajc: community,
+  text_mkqy7dse: city,
+  text_mkqyp01b: role,
+  numeric_mkqxegkv: Number(budget) || 0,
+  email_mkqxn7zz: JSON.stringify({ email: email, text: email }),
+  phone_mkqxprbj: JSON.stringify({ phone: phone, countryShortName: "US" }),
+};
 
   const query = `
     mutation {
