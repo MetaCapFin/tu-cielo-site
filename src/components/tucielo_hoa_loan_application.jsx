@@ -58,7 +58,7 @@ export default function HOAApplicationForm({ onClose }) {
 
     const number = parseFloat(cleaned);
     if (isNaN(number)) return '';
-    return ${number}%;
+    return `${number}%`;
   };
 
   const handleChange = (e) => {
@@ -129,7 +129,7 @@ export default function HOAApplicationForm({ onClose }) {
         }
       });
 
-      const response = await fetch("/api/submit-hoa-form", {
+      const response = await fetch("http://localhost:5000/submit-hoa-form", {
         method: "POST",
         body: formPayload,
       });
@@ -280,4 +280,3 @@ export default function HOAApplicationForm({ onClose }) {
     </div>
   );
 }
-
