@@ -1,10 +1,10 @@
 import formidable from "formidable";
 import fs from "fs";
-import FormData from "form-data";
+import path from "path";
 
 export const config = {
   api: {
-    bodyParser: false, // Important for formidable
+    bodyParser: false,
   },
 };
 
@@ -17,123 +17,89 @@ export default async function handler(req, res) {
 
   form.parse(req, async (err, fields, files) => {
     if (err) {
-      console.error("Form parse error:", err);
-      return res.status(500).json({ error: "Failed to parse form data." });
+      console.error("Form parsing error:", err);
+      return res.status(500).json({ error: "Form parsing failed" });
     }
 
-    try {
-      const boardId = 9191966932;
-      const groupId = "group_title"; // Replace with your actual group ID if needed
+    const {
+      hoaName,
+      communityName,
+      units,
+      yearBuilt,
+      contactName,
+      position,
+      email,
+      phone,
+      projectType,
+      projectCost,
+      loanAmount,
+      loanTerm,
+      monthlyDues,
+      reserveBalance,
+      annualBudget,
+      delinquencyRate,
+    } = fields;
 
-      // Helper functions to parse numbers safely
-      const getInt = (val) => parseInt(val?.toString().replace(/\D/g, "")) || null;
-      const getFloat = (val) => parseFloat(val?.toString().replace(/[^\d.]/g, "")) || null;
+    const boardId = 9191966932; // Update with your board ID
+    const groupId = "topics"; // Update as needed
+    const apiKey = process.env.MONDAY_API_KEY;
 
-      // Prepare column values object
-      const column_values = {
-        text_mkr42072: fields.hoaName,
-        text_mkr4yxmr: fields.communityName,
-        numeric_mkr4ttda: getInt(fields.units),
-        numeric_mkr4jp33: getInt(fields.yearBuilt),
-        text_mkr49z65: fields.position,
-        email_mkr4smcy: { email: fields.email, text: fields.email },
-        phone_mkr46tp1: fields.phone,
-        text_mkr4c2tj: fields.projectType,
-        numeric_mkr4am8g: getInt(fields.projectCost),
-        numeric_mkr4mpnr: getInt(fields.loanAmount),
-        text_mkr4t75f: fields.loanTerm,
-        numeric_mkr4st1x: getInt(fields.monthlyDues),
-        numeric_mkr4jrvy: getInt(fields.reserveBalance),
-        numeric_mkr4h9qn: getInt(fields.annualBudget),
-        numeric_mkr4j9bt: getFloat(fields.delinquencyRate),
-      };
+    const columnValues = {
+      text0: hoaName,
+      text1: communityName,
+      numbers: Number(units),
+      numbers8: Number(yearBuilt),
+      text9: contactName,
+      dropdown: { labels: [position] },
+      email: { email: email, text: email },
+      phone: { phone: phone, countryShortName: "US" },
+      text1__1: projectType,
+      numbers5: Number(projectCost?.replace(/[^0-9.-]+/g, "")) || 0,
+      numbers6: Number(loanAmount?.replace(/[^0-9.-]+/g, "")) || 0,
+      dropdown4: { labels: [loanTerm] },
+      numbers1: Number(monthlyDues?.replace(/[^0-9.-]+/g, "")) || 0,
+      numbers2: Number(reserveBalance?.replace(/[^0-9.-]+/g, "")) || 0,
+      numbers3: Number(annualBudget?.replace(/[^0-9.-]+/g, "")) || 0,
+      numbers4: parseFloat(delinquencyRate?.replace(/[^0-9.]/g, "")) || 0,
+    };
 
-      const itemName = `HOA App: ${fields.communityName || "New Submission"}`;
+    const columnValuesStr = JSON.stringify(columnValues).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 
-      // GraphQL mutation for creating item
-      const createItemMutation = `
-        mutation ($boardId: Int!, $groupId: String!, $itemName: String!, $columnValues: JSON!) {
-          create_item(board_id: $boardId, group_id: $groupId, item_name: $itemName, column_values: $columnValues) {
-            id
-          }
+    const query = `
+      mutation {
+        create_item (
+          board_id: ${boardId},
+          group_id: "${groupId}",
+          item_name: "${hoaName} Loan App",
+          column_values: "${columnValuesStr}"
+        ) {
+          id
         }
-      `;
+      }
+    `;
 
-      // Create item in Monday.com
-      const createItemResponse = await fetch("https://api.monday.com/v2", {
+    try {
+      const response = await fetch("https://api.monday.com/v2", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: process.env.MONDAY_API_KEY,
+          Authorization: apiKey,
         },
-        body: JSON.stringify({
-          query: createItemMutation,
-          variables: {
-            boardId,
-            groupId,
-            itemName,
-            columnValues: column_values,
-          },
-        }),
+        body: JSON.stringify({ query }),
       });
 
-      const createItemData = await createItemResponse.json();
+      const data = await response.json();
 
-      if (createItemData.errors) {
-        console.error("Monday API item creation errors:", createItemData.errors);
-        return res.status(500).json({ error: "Failed to create item in Monday.com" });
+      if (data.errors) {
+        console.error("Monday API error:", data.errors);
+        return res.status(500).json({ error: "Monday.com error" });
       }
 
-      const itemId = createItemData.data.create_item.id;
-
-      // Helper to upload file to Monday.com column
-      const uploadFile = async (columnId, file) => {
-        const formData = new FormData();
-
-        const operations = JSON.stringify({
-          query: `
-            mutation ($file: File!, $itemId: Int!, $columnId: String!) {
-              add_file_to_column(file: $file, item_id: $itemId, column_id: $columnId) {
-                id
-              }
-            }
-          `,
-          variables: { file: null, itemId, columnId },
-        });
-
-        const map = JSON.stringify({ "0": ["variables.file"] });
-
-        formData.append("operations", operations);
-        formData.append("map", map);
-        formData.append("0", fs.createReadStream(file.filepath));
-
-        const uploadRes = await fetch("https://api.monday.com/v2", {
-          method: "POST",
-          headers: {
-            Authorization: process.env.MONDAY_API_KEY,
-          },
-          body: formData,
-        });
-
-        const uploadData = await uploadRes.json();
-
-        if (uploadData.errors) {
-          throw new Error(`File upload error: ${JSON.stringify(uploadData.errors)}`);
-        }
-      };
-
-      // Upload files if they exist
-      if (files.reserveStudy) {
-        await uploadFile("file_mkr4m54b", files.reserveStudy);
-      }
-      if (files.annualBudgetFile) {
-        await uploadFile("file_mkr45fq2", files.annualBudgetFile);
-      }
-
-      return res.status(200).json({ success: true, itemId });
-    } catch (error) {
-      console.error("Submission error:", error);
-      return res.status(500).json({ error: "Submission failed." });
+      res.status(200).json({ success: true, message: "Submitted successfully" });
+    } catch (err) {
+      console.error("Fetch error:", err);
+      res.status(500).json({ error: "Server error during submission" });
     }
   });
 }
+
