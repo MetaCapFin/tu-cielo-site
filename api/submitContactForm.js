@@ -20,7 +20,7 @@ export default async function handler(req, res) {
   // Build column values as an object
   const columnValues = {
     text_mkqxc5rw: name,
-    text_mkqxaajc: community,
+    text_mkr0n693: community,
     text_mkqy7dse: city,
     text_mkqyp01b: role,
     numeric_mkqxegkv: Number(budget) || 0,
