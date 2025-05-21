@@ -1,5 +1,4 @@
 const formidable = require("formidable");
-const fetch = require("node-fetch"); // if your Node.js version <18, install node-fetch
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
@@ -14,7 +13,7 @@ module.exports = async function handler(req, res) {
       return res.status(500).json({ error: "Form parsing failed" });
     }
 
-    // Normalize fields: if any field comes as array, take first element
+    // Normalize field values
     const {
       hoaName,
       communityName,
@@ -33,16 +32,14 @@ module.exports = async function handler(req, res) {
       annualBudget,
       delinquencyRate,
     } = Object.fromEntries(
-      Object.entries(fields).map(([key, value]) =>
-        Array.isArray(value) ? [key, value[0]] : [key, value]
-      )
+      Object.entries(fields).map(([key, value]) => [key, Array.isArray(value) ? value[0] : value])
     );
 
     const boardId = 9191966932;
     const groupId = "group_title";
     const apiKey = process.env.MONDAY_API_KEY;
 
-    // Prepare Monday.com column values according to your column IDs and formatting needs
+    // Prepare Monday.com column values object
     const columnValues = {
       text_mkqxaajc: communityName,
       text_mkqxc5rw: hoaName,
@@ -50,8 +47,8 @@ module.exports = async function handler(req, res) {
       phone_mkqxprbj: { phone: phone, countryShortName: "US" },
       email_mkqxn7zz: { email: email, text: email },
       text_mkqyp01b: position,
-      text_mkqy7dse: Number(units),
-      numbers8: Number(yearBuilt),
+      text_mkqy7dse: Number(units) || 0,
+      numbers8: Number(yearBuilt) || 0,
       text9: contactName,
       text1__1: projectType,
       numbers6: Number(loanAmount?.replace(/[^0-9.-]+/g, "")) || 0,
@@ -62,26 +59,23 @@ module.exports = async function handler(req, res) {
       numbers4: parseFloat(delinquencyRate?.replace(/[^0-9.]/g, "")) || 0,
     };
 
-    // Monday.com GraphQL mutation with variables (recommended)
+    // Stringify and escape column values
+    const columnValuesString = JSON.stringify(columnValues)
+      .replace(/\\/g, "\\\\")
+      .replace(/"/g, '\\"');
+
     const query = `
-      mutation CreateItem($boardId: Int!, $groupId: String!, $itemName: String!, $columnValues: JSON!) {
-        create_item(
-          board_id: $boardId,
-          group_id: $groupId,
-          item_name: $itemName,
-          column_values: $columnValues
+      mutation {
+        create_item (
+          board_id: ${boardId},
+          group_id: "${groupId}",
+          item_name: "${hoaName} Loan App",
+          column_values: "${columnValuesString}"
         ) {
           id
         }
       }
     `;
-
-    const variables = {
-      boardId,
-      groupId,
-      itemName: `${hoaName} Loan App`,
-      columnValues,
-    };
 
     try {
       const response = await fetch("https://api.monday.com/v2", {
@@ -90,7 +84,7 @@ module.exports = async function handler(req, res) {
           "Content-Type": "application/json",
           Authorization: apiKey,
         },
-        body: JSON.stringify({ query, variables }),
+        body: JSON.stringify({ query }),
       });
 
       const data = await response.json();
@@ -108,10 +102,10 @@ module.exports = async function handler(req, res) {
   });
 };
 
-// Disable body parsing by Next.js (required for formidable)
 module.exports.config = {
   api: {
     bodyParser: false,
   },
 };
+
 
