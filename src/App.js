@@ -487,14 +487,14 @@ function Homepage() {
                 <input
                   type="text"
                   name="role"
-                  placeholder="Role"
+                  placeholder="Title"
                   value={contactFormData.role}
                   onChange={handleContactFormChange}
                 />
                 <input
                   type="number"
                   name="budget"
-                  placeholder="Budget"
+                  placeholder="Amount requested"
                   value={contactFormData.budget}
                   onChange={handleContactFormChange}
                   min="0"
