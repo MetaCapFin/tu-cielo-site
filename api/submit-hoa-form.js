@@ -3,6 +3,12 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Confirm the body is parsed as JSON
+  if (!req.body) {
+    return res.status(400).json({ error: 'Request body is missing or not parsed' });
+  }
+
+  // Destructure fields safely
   const {
     hoaName,
     communityName,
@@ -26,11 +32,15 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'hoaName is required' });
   }
 
+  // Monday.com details
   const boardId = 9191966932;
-  const groupId = 'group_title'; // replace with your actual group id
+  const groupId = 'group_title'; // Replace with your real group ID
   const apiKey = process.env.MONDAY_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ error: 'Missing Monday API key in environment variables' });
+  }
 
-  // Map fields to Monday.com columns
+  // Prepare column values according to Monday.com specs
   const columnValues = {
     text_mkqxaajc: communityName || '',
     text_mkqxc5rw: hoaName || '',
@@ -50,15 +60,20 @@ export default async function handler(req, res) {
     numbers4: parseFloat((delinquencyRate || '').replace(/[^0-9.]/g, '')) || 0,
   };
 
-  // Stringify and escape column values for GraphQL mutation
-  const columnValuesString = JSON.stringify(columnValues).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  // Stringify and escape properly for GraphQL
+  const columnValuesString = JSON.stringify(columnValues)
+    .replace(/\\/g, '\\\\')
+    .replace(/"/g, '\\"');
+
+  // Escape hoaName double quotes to avoid breaking GraphQL query
+  const escapedHoaName = hoaName.replace(/"/g, '\\"');
 
   const query = `
     mutation {
       create_item (
         board_id: ${boardId},
         group_id: "${groupId}",
-        item_name: "${hoaName.replace(/"/g, '\\"')}",
+        item_name: "${escapedHoaName}",
         column_values: "${columnValuesString}"
       ) {
         id
@@ -67,6 +82,7 @@ export default async function handler(req, res) {
   `;
 
   try {
+    // Use global fetch (make sure your environment supports it, or import 'node-fetch')
     const response = await fetch('https://api.monday.com/v2', {
       method: 'POST',
       headers: {
@@ -83,9 +99,9 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Monday.com error', details: data.errors });
     }
 
-    res.status(200).json({ success: true, itemId: data.data.create_item.id });
+    return res.status(200).json({ success: true, itemId: data.data.create_item.id });
   } catch (error) {
     console.error('Fetch error:', error);
-    res.status(500).json({ error: 'Server error during submission' });
+    return res.status(500).json({ error: 'Server error during submission' });
   }
 }
