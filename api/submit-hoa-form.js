@@ -9,7 +9,7 @@ export const config = {
 const MONDAY_API = "https://api.monday.com/v2";
 const API_KEY = process.env.MONDAY_API_KEY;
 const BOARD_ID = "9191966932";
-const GROUP_ID = "topics"; // replace with your actual group ID or omit for default
+const GROUP_ID = "group_title"; // replace with your actual group ID or omit for default
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
