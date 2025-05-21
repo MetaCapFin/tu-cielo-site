@@ -5,15 +5,34 @@ import './tucielo_hoa_loan_application.css';
 
 export default function HOAApplicationForm({ onClose }) {
   const [formData, setFormData] = useState({});
+  const [files, setFiles] = useState({});
   const [step, setStep] = useState(0);
 
   const steps = [
-    { title: "Association Information", fields: ["hoaName", "communityName", "units", "yearBuilt"] },
-    { title: "Applicant Contact", fields: ["contactName", "position", "email", "phone"] },
-    { title: "Project Information", fields: ["projectType", "projectCost"] },
-    { title: "Financing Request", fields: ["loanAmount", "loanTerm"] },
-    { title: "Financial Overview", fields: ["monthlyDues", "reserveBalance", "annualBudget", "delinquencyRate"] },
-    { title: "Upload Documents", fields: ["reserveStudy", "annualBudgetFile"] }
+    {
+      title: "Association Information",
+      fields: ["hoaName", "communityName", "units", "yearBuilt"]
+    },
+    {
+      title: "Applicant Contact",
+      fields: ["contactName", "position", "email", "phone"]
+    },
+    {
+      title: "Project Information",
+      fields: ["projectType", "projectCost"]
+    },
+    {
+      title: "Financing Request",
+      fields: ["loanAmount", "loanTerm"]
+    },
+    {
+      title: "Financial Overview",
+      fields: ["monthlyDues", "reserveBalance", "annualBudget", "delinquencyRate"]
+    },
+    {
+      title: "Upload Documents",
+      fields: ["reserveStudy", "annualBudgetFile"]
+    }
   ];
 
   const currencyFields = ["projectCost", "loanAmount", "monthlyDues", "reserveBalance", "annualBudget"];
@@ -36,13 +55,15 @@ export default function HOAApplicationForm({ onClose }) {
     if (parts.length > 2) return formData.delinquencyRate || '';
     if (cleaned === '') return '';
     if (cleaned.endsWith('.')) return cleaned;
+
     const number = parseFloat(cleaned);
     if (isNaN(number)) return '';
-    return `${number}%`;
+    return ${number}%;
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     if (currencyFields.includes(name)) {
       const rawDigits = value.replace(/[^\d]/g, "");
       const formattedValue = formatCurrency(rawDigits);
@@ -58,12 +79,16 @@ export default function HOAApplicationForm({ onClose }) {
     }
   };
 
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    setFiles(prev => ({ ...prev, [name]: files[0] }));
+  };
+
   const isStepValid = () => {
     const requiredFields = steps[step].fields;
     return requiredFields.every(field => {
-      // Ignore file fields for now
       if (field === "reserveStudy" || field === "annualBudgetFile") {
-        return true;
+        return files[field];
       }
       return formData[field] && formData[field].toString().trim() !== "";
     });
@@ -71,22 +96,37 @@ export default function HOAApplicationForm({ onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submitted:", formData, files);
+
     const input = document.querySelector(".hoa-form-wrapper");
 
     try {
       const canvas = await html2canvas(input, { scale: 2 });
       const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF({ orientation: "portrait", unit: "px", format: [canvas.width, canvas.height] });
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "px",
+        format: [canvas.width, canvas.height]
+      });
       pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
       pdf.save("TuCielo_HOA_Application.pdf");
     } catch (error) {
       console.error("PDF generation failed:", error);
     }
-
+    // Send data to backend after PDF generation
     try {
       const formPayload = new FormData();
+
+      // Append form fields
       Object.entries(formData).forEach(([key, value]) => {
         formPayload.append(key, value);
+      });
+
+      // Append files
+      Object.entries(files).forEach(([key, file]) => {
+        if (file) {
+          formPayload.append(key, file);
+        }
       });
 
       const response = await fetch("/api/submit-hoa-form", {
@@ -95,13 +135,19 @@ export default function HOAApplicationForm({ onClose }) {
       });
 
       const result = await response.json();
-      alert(result.success ? "Application submitted successfully!" : "Submission failed. Please try again.");
+
+      if (result.success) {
+        alert("Application submitted successfully!");
+      } else {
+        alert("Submission failed. Please try again.");
+      }
     } catch (err) {
       console.error("Submission error:", err);
       alert("There was an error submitting the form.");
     }
-  };
+};
 
+  
   return (
     <div className="hoa-modal">
       <div className="hoa-modal-content">
@@ -109,7 +155,6 @@ export default function HOAApplicationForm({ onClose }) {
         <div className="hoa-form-wrapper">
           <h2>First, some preliminary information</h2>
           <form onSubmit={handleSubmit}>
-            {/* Steps */}
             {step === 0 && (
               <div>
                 <h3>Association Information</h3>
@@ -124,15 +169,21 @@ export default function HOAApplicationForm({ onClose }) {
               <div>
                 <h3>Applicant Contact</h3>
                 <input type="text" name="contactName" placeholder="Name" onChange={handleChange} value={formData.contactName || ""} className="input" />
-                <select name="position" onChange={handleChange} value={formData.position || ""} className="input">
-                  <option value="">Select a Title</option>
-                  <option>Board Member</option>
-                  <option>Property Manager</option>
-                  <option>HOA President</option>
-                  <option>Treasurer</option>
-                  <option>Secretary</option>
-                  <option>Other</option>
-                </select>
+                <select
+  name="position"
+  onChange={handleChange}
+  value={formData.position || ""}
+  className="input"
+>
+  <option value="">Select a Title</option>
+  <option value="Board Member">Board Member</option>
+  <option value="Property Manager">Property Manager</option>
+  <option value="HOA President">HOA President</option>
+  <option value="Treasurer">Treasurer</option>
+  <option value="Secretary">Secretary</option>
+  <option value="Other">Other</option>
+</select>
+
                 <input type="email" name="email" placeholder="Email" onChange={handleChange} value={formData.email || ""} className="input" />
                 <input type="tel" name="phone" placeholder="Phone" onChange={handleChange} value={formData.phone || ""} className="input" />
               </div>
@@ -181,32 +232,48 @@ export default function HOAApplicationForm({ onClose }) {
             {step === 5 && (
               <div>
                 <h3>Upload Documents</h3>
-                <label>Reserve Study (Optional)</label>
-                <input type="file" name="reserveStudy" className="input-file" disabled />
-                <label>Annual Budget (Optional)</label>
-                <input type="file" name="annualBudgetFile" className="input-file" disabled />
-                <p style={{ fontSize: "0.9rem", color: "gray" }}>(Uploads are currently disabled)</p>
+                <label>Reserve Study</label>
+                <input type="file" name="reserveStudy" onChange={handleFileChange} className="input-file" />
+                <label>Annual Budget</label>
+                <input type="file" name="annualBudgetFile" onChange={handleFileChange} className="input-file" />
               </div>
             )}
 
             <div className="step-controls">
-              {step === steps.length - 1 && (
-                <button type="submit" className="hoa-submit-btn" disabled={!isStepValid()} style={{ marginBottom: '1rem' }}>
-                  Submit Application
-                </button>
-              )}
+  {step === steps.length - 1 && (
+    <button
+      type="submit"
+      className="hoa-submit-btn"
+      disabled={!isStepValid()}
+      style={{ marginBottom: '1rem' }}
+    >
+      Submit Application
+    </button>
+  )}
+  
+  <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
+    {step > 0 && (
+      <button
+        type="button"
+        className="hoa-nav-btn"
+        onClick={() => setStep(step - 1)}
+      >
+        Back
+      </button>
+    )}
+    {step < steps.length - 1 && (
+      <button
+        type="button"
+        className="hoa-nav-btn"
+        onClick={() => isStepValid() && setStep(step + 1)}
+        disabled={!isStepValid()}
+      >
+        Next
+      </button>
+    )}
+  </div>
+</div>
 
-              <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
-                {step > 0 && (
-                  <button type="button" className="hoa-nav-btn" onClick={() => setStep(step - 1)}>Back</button>
-                )}
-                {step < steps.length - 1 && (
-                  <button type="button" className="hoa-nav-btn" onClick={() => isStepValid() && setStep(step + 1)} disabled={!isStepValid()}>
-                    Next
-                  </button>
-                )}
-              </div>
-            </div>
           </form>
         </div>
       </div>
