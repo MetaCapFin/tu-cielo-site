@@ -1,16 +1,16 @@
 import axios from 'axios';
 
 const MONDAY_API_KEY = process.env.MONDAY_API_KEY;
-const MONDAY_BOARD_ID = '9138987515';
 
+// Correct column mappings for the contact form board (ID: 9138987515)
 const COLUMN_IDS = {
   name: 'text_mkqxc5rw',
-  community: 'text_mkr0n693',
+  community: 'text_mkqxaajc',
   city: 'text_mkqy7dse',
   role: 'text_mkqyp01b',
   budget: 'numeric_mkqxegkv',
-  phone: 'phone_mkqxprbj',
   email: 'email_mkqxn7zz',
+  phone: 'phone_mkqxprbj',
 };
 
 export default async function handler(req, res) {
@@ -18,43 +18,41 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  if (!MONDAY_API_KEY) {
-    return res.status(500).json({ error: 'Missing Monday API key' });
+  const { name, community, city, role, budget, email, phone } = req.body;
+
+  if (!name || !email) {
+    return res.status(400).json({ error: 'Name and email are required.' });
   }
 
-  const { name = '', community = '', city = '', role = '', budget = '', phone = '', email = '' } = req.body;
-
-  const budgetNumber = Number(budget) || 0;
-
-  const columnValues = {
-    [COLUMN_IDS.name]: name,
-    [COLUMN_IDS.community]: community,
-    [COLUMN_IDS.city]: city,
-    [COLUMN_IDS.role]: role,
-    [COLUMN_IDS.budget]: budgetNumber,
-    [COLUMN_IDS.phone]: { phone, countryShortName: 'US' },
-    [COLUMN_IDS.email]: { email, text: email },
-  };
-
-  const query = `
-    mutation CreateItem($boardId: ID!, $itemName: String!, $columnValues: JSON!) {
-      create_item(
-        board_id: $boardId,
-        item_name: $itemName,
-        column_values: $columnValues
-      ) {
-        id
-      }
-    }
-  `;
-
-  const variables = {
-    boardId: MONDAY_BOARD_ID,
-    itemName: name || 'New Contact',
-    columnValues: JSON.stringify(columnValues),
-  };
-
   try {
+    const columnValues = {
+      [COLUMN_IDS.name]: name,
+      [COLUMN_IDS.community]: community || '',
+      [COLUMN_IDS.city]: city || '',
+      [COLUMN_IDS.role]: role || '',
+      [COLUMN_IDS.budget]: Number(budget) || 0,
+      [COLUMN_IDS.email]: { email, text: email },
+      [COLUMN_IDS.phone]: { phone: phone || '', countryShortName: 'US' },
+    };
+
+    const query = `
+      mutation CreateItem($boardId: ID!, $itemName: String!, $columnValues: JSON!) {
+        create_item(
+          board_id: $boardId,
+          item_name: $itemName,
+          column_values: $columnValues
+        ) {
+          id
+        }
+      }
+    `;
+
+    const variables = {
+      boardId: 9138987515,
+      itemName: name,
+      columnValues,
+    };
+
     const response = await axios.post(
       'https://api.monday.com/v2',
       { query, variables },
@@ -67,16 +65,14 @@ export default async function handler(req, res) {
     );
 
     if (response.data.errors) {
-      console.error('Monday API returned errors:', response.data.errors);
-      return res.status(500).json({ error: response.data.errors });
+      console.error('❌ Monday API error:', response.data.errors);
+      return res.status(500).json({ error: 'Failed to create item on Monday.com.' });
     }
 
-    res.status(200).json({
-      success: true,
-      itemId: response.data.data.create_item.id,
-    });
+    return res.status(200).json({ success: true });
   } catch (error) {
-    console.error('Monday API error:', error.response?.data || error.message);
-    res.status(500).json({ error: 'Error submitting form to Monday.com' });
+    console.error('❌ API call failed:', error.response?.data || error.message);
+    return res.status(500).json({ error: 'Server error submitting form.' });
   }
 }
+
