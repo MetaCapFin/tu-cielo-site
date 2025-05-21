@@ -1,5 +1,4 @@
 const formidable = require("formidable");
-const fetch = require("node-fetch");
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
