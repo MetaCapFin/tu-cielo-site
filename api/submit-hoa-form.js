@@ -1,12 +1,6 @@
 const formidable = require("formidable");
 
-module.exports.config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
-module.exports = async (req, res) => {
+module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -45,7 +39,7 @@ module.exports = async (req, res) => {
       delinquencyRate,
     } = normalizedFields;
 
-    const boardId = 9191966932;
+    const boardId = "9191966932"; // Must be a string
     const groupId = "group_title";
     const apiKey = process.env.MONDAY_API_KEY;
 
@@ -56,7 +50,7 @@ module.exports = async (req, res) => {
       phone_mkqxprbj: { phone: phone, countryShortName: "US" },
       email_mkqxn7zz: { email: email, text: email },
       text_mkqyp01b: position,
-      text_mkqy7dse: units,
+      text_mkqy7dse: Number(units),
       numbers8: Number(yearBuilt),
       text9: contactName,
       text1__1: projectType,
@@ -69,7 +63,12 @@ module.exports = async (req, res) => {
     };
 
     const query = `
-      mutation CreateItem($boardId: Int!, $groupId: String!, $itemName: String!, $columnValues: JSON!) {
+      mutation CreateItem(
+        $boardId: ID!,
+        $groupId: String!,
+        $itemName: String!,
+        $columnValues: JSON!
+      ) {
         create_item(
           board_id: $boardId,
           group_id: $groupId,
@@ -99,15 +98,23 @@ module.exports = async (req, res) => {
       });
 
       const data = await response.json();
+
       if (data.errors) {
         console.error("Monday API error:", data.errors);
-        return res.status(500).json({ error: "Monday API error", details: data.errors });
+        return res.status(500).json({ error: "Monday.com error", details: data.errors });
       }
 
-      res.status(200).json({ success: true, message: "Submitted successfully", itemId: data.data.create_item.id });
-    } catch (fetchError) {
-      console.error("Fetch error:", fetchError);
-      res.status(500).json({ error: "Fetch failed" });
+      res.status(200).json({ success: true, message: "Form submitted successfully" });
+    } catch (err) {
+      console.error("Fetch error:", err);
+      res.status(500).json({ error: "Server error during submission" });
     }
   });
 };
+
+module.exports.config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
