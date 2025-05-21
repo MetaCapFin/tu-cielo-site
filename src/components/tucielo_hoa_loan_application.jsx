@@ -137,7 +137,8 @@ export default function HOAApplicationForm({ onClose }) {
       const result = await response.json();
 
       if (result.success) {
-        alert("Application submitted successfully!");
+        alert("Thank you for your submission! We will be in contact with you as soon as possible.");
+        onClose();  // Close the modal here
       } else {
         alert("Submission failed. Please try again.");
       }
@@ -145,9 +146,8 @@ export default function HOAApplicationForm({ onClose }) {
       console.error("Submission error:", err);
       alert("There was an error submitting the form.");
     }
-};
+  };
 
-  
   return (
     <div className="hoa-modal">
       <div className="hoa-modal-content">
@@ -170,19 +170,19 @@ export default function HOAApplicationForm({ onClose }) {
                 <h3>Applicant Contact</h3>
                 <input type="text" name="contactName" placeholder="Name" onChange={handleChange} value={formData.contactName || ""} className="input" />
                 <select
-  name="position"
-  onChange={handleChange}
-  value={formData.position || ""}
-  className="input"
->
-  <option value="">Select a Title</option>
-  <option value="Board Member">Board Member</option>
-  <option value="Property Manager">Property Manager</option>
-  <option value="HOA President">HOA President</option>
-  <option value="Treasurer">Treasurer</option>
-  <option value="Secretary">Secretary</option>
-  <option value="Other">Other</option>
-</select>
+                  name="position"
+                  onChange={handleChange}
+                  value={formData.position || ""}
+                  className="input"
+                >
+                  <option value="">Select a Title</option>
+                  <option value="Board Member">Board Member</option>
+                  <option value="Property Manager">Property Manager</option>
+                  <option value="HOA President">HOA President</option>
+                  <option value="Treasurer">Treasurer</option>
+                  <option value="Secretary">Secretary</option>
+                  <option value="Other">Other</option>
+                </select>
 
                 <input type="email" name="email" placeholder="Email" onChange={handleChange} value={formData.email || ""} className="input" />
                 <input type="tel" name="phone" placeholder="Phone" onChange={handleChange} value={formData.phone || ""} className="input" />
@@ -240,39 +240,39 @@ export default function HOAApplicationForm({ onClose }) {
             )}
 
             <div className="step-controls">
-  {step === steps.length - 1 && (
-    <button
-      type="submit"
-      className="hoa-submit-btn"
-      disabled={!isStepValid()}
-      style={{ marginBottom: '1rem' }}
-    >
-      Submit Application
-    </button>
-  )}
-  
-  <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
-    {step > 0 && (
-      <button
-        type="button"
-        className="hoa-nav-btn"
-        onClick={() => setStep(step - 1)}
-      >
-        Back
-      </button>
-    )}
-    {step < steps.length - 1 && (
-      <button
-        type="button"
-        className="hoa-nav-btn"
-        onClick={() => isStepValid() && setStep(step + 1)}
-        disabled={!isStepValid()}
-      >
-        Next
-      </button>
-    )}
-  </div>
-</div>
+              {step === steps.length - 1 && (
+                <button
+                  type="submit"
+                  className="hoa-submit-btn"
+                  disabled={!isStepValid()}
+                  style={{ marginBottom: '1rem' }}
+                >
+                  Submit Application
+                </button>
+              )}
+
+              <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
+                {step > 0 && (
+                  <button
+                    type="button"
+                    className="hoa-nav-btn"
+                    onClick={() => setStep(step - 1)}
+                  >
+                    Back
+                  </button>
+                )}
+                {step < steps.length - 1 && (
+                  <button
+                    type="button"
+                    className="hoa-nav-btn"
+                    onClick={() => isStepValid() && setStep(step + 1)}
+                    disabled={!isStepValid()}
+                  >
+                    Next
+                  </button>
+                )}
+              </div>
+            </div>
 
           </form>
         </div>
