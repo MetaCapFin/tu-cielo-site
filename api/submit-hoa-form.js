@@ -44,22 +44,22 @@ export default async function handler(req, res) {
       const apiKey = process.env.MONDAY_API_KEY;
 
       const columnValues = {
-        text_mkr4yxmr: communityName,
-        numeric_mkr4ttda: Number(units),
-        numeric_mkr4jp33: Number(yearBuilt),
-        text_mkr42072: contactName,
-        text_mkr49z65: position,
-        email_mkr4smcy: { email, text: email },
-        phone_mkr46tp1: { phone, countryShortName: "US" },
-        text_mkr4c2tj: projectType,
-        numeric_mkr4am8g: Number(projectCost?.replace(/[^0-9.]/g, "") || 0),
-        numeric_mkr4mpnr: Number(loanAmount?.replace(/[^0-9.]/g, "") || 0),
-        text_mkr4t75f: loanTerm,
-        numeric_mkr4st1x: Number(monthlyDues?.replace(/[^0-9.]/g, "") || 0),
-        numeric_mkr4jrvy: Number(reserveBalance?.replace(/[^0-9.]/g, "") || 0),
-        numeric_mkr4h9qn: Number(annualBudget?.replace(/[^0-9.]/g, "") || 0),
-        numeric_mkr4j9bt: parseFloat(delinquencyRate?.replace(/[^0-9.]/g, "") || 0),
-      };
+  text_mkr4yxmr: communityName,
+  numeric_mkr4ttda: Number(units?.toString().replace(/[^0-9.]/g, "") || 0),
+  numeric_mkr4jp33: Number(yearBuilt?.toString().replace(/[^0-9.]/g, "") || 0),
+  text_mkr42072: contactName,
+  text_mkr49z65: position,
+  email_mkr4smcy: { email, text: email },
+  phone_mkr46tp1: { phone, countryShortName: "US" },
+  text_mkr4c2tj: projectType,
+  numeric_mkr4am8g: Number(projectCost?.toString().replace(/[^0-9.]/g, "") || 0),
+  numeric_mkr4mpnr: Number(loanAmount?.toString().replace(/[^0-9.]/g, "") || 0),
+  text_mkr4t75f: loanTerm,
+  numeric_mkr4st1x: Number(monthlyDues?.toString().replace(/[^0-9.]/g, "") || 0),
+  numeric_mkr4jrvy: Number(reserveBalance?.toString().replace(/[^0-9.]/g, "") || 0),
+  numeric_mkr4h9qn: Number(annualBudget?.toString().replace(/[^0-9.]/g, "") || 0),
+  numeric_mkr4j9bt: parseFloat(delinquencyRate?.toString().replace(/[^0-9.]/g, "") || 0),
+};
 
       const columnValuesStr = JSON.stringify(columnValues).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 
