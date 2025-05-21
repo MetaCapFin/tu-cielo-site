@@ -1,19 +1,10 @@
-const formidable = require("formidable");
-
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const form = new formidable.IncomingForm({ keepExtensions: true });
-
-  form.parse(req, async (err, fields, files) => {
-    if (err) {
-      console.error("Form parsing error:", err);
-      return res.status(500).json({ error: "Form parsing failed" });
-    }
-    
-    // Normalize field values
+  try {
+    // Parse JSON body directly (make sure frontend sends application/json)
     const {
       hoaName,
       communityName,
@@ -31,12 +22,10 @@ module.exports = async function handler(req, res) {
       reserveBalance,
       annualBudget,
       delinquencyRate,
-    } = Object.fromEntries(
-      Object.entries(fields).map(([key, value]) => [key, Array.isArray(value) ? value[0] : value])
-    );
+    } = req.body;
 
     const boardId = 9191966932;
-    const groupId = "group_title";
+    const groupId = "group_title"; // adjust as needed
     const apiKey = process.env.MONDAY_API_KEY;
 
     // Prepare Monday.com column values object
@@ -59,7 +48,7 @@ module.exports = async function handler(req, res) {
       numbers4: parseFloat(delinquencyRate?.replace(/[^0-9.]/g, "")) || 0,
     };
 
-    // Stringify and escape column values
+    // Stringify and escape column values for GraphQL mutation
     const columnValuesString = JSON.stringify(columnValues)
       .replace(/\\/g, "\\\\")
       .replace(/"/g, '\\"');
@@ -77,33 +66,31 @@ module.exports = async function handler(req, res) {
       }
     `;
 
-    try {
-      const response = await fetch("https://api.monday.com/v2", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: apiKey,
-        },
-        body: JSON.stringify({ query }),
-      });
+    const response = await fetch("https://api.monday.com/v2", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: apiKey,
+      },
+      body: JSON.stringify({ query }),
+    });
 
-      const data = await response.json();
+    const data = await response.json();
 
-      if (data.errors) {
-        console.error("Monday API error:", data.errors);
-        return res.status(500).json({ error: "Monday.com error", details: data.errors });
-      }
-
-      res.status(200).json({ success: true, message: "Submitted successfully" });
-    } catch (err) {
-      console.error("Fetch error:", err);
-      res.status(500).json({ error: "Server error during submission" });
+    if (data.errors) {
+      console.error("Monday API error:", data.errors);
+      return res.status(500).json({ error: "Monday.com error", details: data.errors });
     }
-  });
+
+    res.status(200).json({ success: true, message: "Submitted successfully", itemId: data.data.create_item.id });
+  } catch (err) {
+    console.error("Server error:", err);
+    res.status(500).json({ error: "Server error during submission" });
+  }
 };
 
 module.exports.config = {
   api: {
-    bodyParser: false,
+    bodyParser: true, // enable default Next.js JSON body parsing
   },
 };
