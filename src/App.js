@@ -163,6 +163,7 @@ function Homepage() {
         <button className="header-button">Find Us At</button>
         <button className="header-button">Blog</button>
         <button className="header-button">Apply</button>
+        <button className="header-button">Contractor Proposal Tool (Coming soon)</button>    
       </div>
       {showPrivacyModal && (
           <div className="modal-overlay" onClick={() => setShowPrivacyModal(false)}>
