@@ -36,30 +36,28 @@ module.exports = async function handler(req, res) {
     );
 
     const boardId = 9191966932;
-    const groupId = "group_title";
+    const groupId = "group_title";  // Make sure this is your actual group ID
     const apiKey = process.env.MONDAY_API_KEY;
 
-    // Prepare Monday.com column values object
+    // Prepare Monday.com column values object WITHOUT hoaName (used as item_name)
     const columnValues = {
-      text_mkqxaajc: communityName,
-      text_mkqxc5rw: hoaName,
-      numeric_mkqxegkv: Number(projectCost?.replace(/[^0-9.-]+/g, "")) || 0,
-      phone_mkqxprbj: { phone: phone, countryShortName: "US" },
-      email_mkqxn7zz: { email: email, text: email },
-      text_mkqyp01b: position,
-      text_mkqy7dse: Number(units) || 0,
-      numbers8: Number(yearBuilt) || 0,
-      text9: contactName,
-      text1__1: projectType,
-      numbers6: Number(loanAmount?.replace(/[^0-9.-]+/g, "")) || 0,
-      dropdown4: { labels: [loanTerm] },
-      numbers1: Number(monthlyDues?.replace(/[^0-9.-]+/g, "")) || 0,
-      numbers2: Number(reserveBalance?.replace(/[^0-9.-]+/g, "")) || 0,
-      numbers3: Number(annualBudget?.replace(/[^0-9.-]+/g, "")) || 0,
-      numbers4: parseFloat(delinquencyRate?.replace(/[^0-9.]/g, "")) || 0,
+      text_mkr4yxmr: communityName,     // Community Name
+      numeric_mkr4ttda: Number(units) || 0,
+      numeric_mkr4jp33: Number(yearBuilt) || 0,
+      text_mkr42072: contactName,       // Contact Name
+      text_mkr49z65: position,
+      email_mkr4smcy: { email: email, text: email },
+      phone_mkr46tp1: { phone: phone, countryShortName: "US" },
+      text_mkr4c2tj: projectType,
+      numeric_mkr4am8g: Number(projectCost?.replace(/[^0-9.-]+/g, "")) || 0,
+      numeric_mkr4mpnr: Number(loanAmount?.replace(/[^0-9.-]+/g, "")) || 0,
+      text_mkr4t75f: loanTerm,
+      numeric_mkr4st1x: Number(monthlyDues?.replace(/[^0-9.-]+/g, "")) || 0,
+      numeric_mkr4jrvy: Number(reserveBalance?.replace(/[^0-9.-]+/g, "")) || 0,
+      numeric_mkr4h9qn: Number(annualBudget?.replace(/[^0-9.-]+/g, "")) || 0,
+      numeric_mkr4j9bt: parseFloat(delinquencyRate?.replace(/[^0-9.]/g, "")) || 0,
     };
 
-    // Stringify and escape column values
     const columnValuesString = JSON.stringify(columnValues)
       .replace(/\\/g, "\\\\")
       .replace(/"/g, '\\"');
@@ -69,7 +67,7 @@ module.exports = async function handler(req, res) {
         create_item (
           board_id: ${boardId},
           group_id: "${groupId}",
-          item_name: "${hoaName} Loan App",
+          item_name: "${hoaName}",
           column_values: "${columnValuesString}"
         ) {
           id
