@@ -13,19 +13,19 @@ export default async function handler(req, res) {
     phone,
   } = req.body;
 
-  const boardId = 9138987515; // Replace with your board ID
-  const groupId = "group_title"; // optional: change if you want a specific group
+  const boardId = 9138987515;
+  const groupId = "group_title";
   const apiKey = process.env.MONDAY_API_KEY;
 
   const columnValues = {
-  text_mkqxc5rw: name,
-  text_mkqxaajc: community,
-  text_mkqy7dse: city,
-  text_mkqyp01b: role,
-  numeric_mkqxegkv: Number(budget) || 0,
-  email_mkqxn7zz: JSON.stringify({ email: email, text: email }),
-  phone_mkqxprbj: JSON.stringify({ phone: phone, countryShortName: "US" }),
-};
+    text_mkqxc5rw: name,
+    text_mkqxaajc: community,
+    text_mkqy7dse: city,
+    text_mkqyp01b: role,
+    numeric_mkqxegkv: Number(budget) || 0,
+    email_mkqxn7zz: JSON.stringify({ email: email, text: email }),
+    phone_mkqxprbj: JSON.stringify({ phone: phone, countryShortName: "US" }),
+  };
 
   const query = `
     mutation {
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: apiKey,
+        Authorization: `Bearer ${apiKey}`,  // <-- Fix is here
       },
       body: JSON.stringify({ query }),
     });
