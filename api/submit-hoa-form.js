@@ -1,90 +1,59 @@
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+const express = require("express");
+const next = require("next");
+const formidable = require("formidable");
+const fs = require("fs");
+const cors = require("cors");
+const { createItem } = require("./mondayService");
 
-  const {
-    hoaName,
-    communityName,
-    units,
-    yearBuilt,
-    contactName,
-    position,
-    email,
-    phone,
-    projectType,
-    projectCost,
-    loanAmount,
-    loanTerm,
-    monthlyDues,
-    reserveBalance,
-    annualBudget,
-    delinquencyRate,
-  } = req.body;
+const dev = process.env.NODE_ENV !== "production";
+const app = next({ dev });
+const handle = app.getRequestHandler();
 
-  if (!hoaName) {
-    return res.status(400).json({ error: 'hoaName is required' });
-  }
+require("dotenv").config();
 
-  const boardId = 9191966932;
-  const groupId = 'group_title';
-  const apiKey = process.env.MONDAY_API_KEY;
+app.prepare().then(() => {
+  const server = express();
+  server.use(cors());
 
-  const columnValues = {
-    text_mkqxaajc: communityName || '',
-    text_mkqxc5rw: hoaName || '',
-    numeric_mkqxegkv: Number((projectCost || '').replace(/[^0-9.-]+/g, '')) || 0,
-    phone_mkqxprbj: { phone: phone || '', countryShortName: 'US' },
-    email_mkqxn7zz: { email: email || '', text: email || '' },
-    text_mkqyp01b: position || '',
-    text_mkqy7dse: Number(units) || 0,
-    numbers8: Number(yearBuilt) || 0,
-    text9: contactName || '',
-    text1__1: projectType || '',
-    numbers6: Number((loanAmount || '').replace(/[^0-9.-]+/g, '')) || 0,
-    dropdown4: { labels: [loanTerm] },
-    numbers1: Number((monthlyDues || '').replace(/[^0-9.-]+/g, '')) || 0,
-    numbers2: Number((reserveBalance || '').replace(/[^0-9.-]+/g, '')) || 0,
-    numbers3: Number((annualBudget || '').replace(/[^0-9.-]+/g, '')) || 0,
-    numbers4: parseFloat((delinquencyRate || '').replace(/[^0-9.]/g, '')) || 0,
-  };
-
-  const columnValuesString = JSON.stringify(columnValues).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-
-  const query = `
-    mutation {
-      create_item (
-        board_id: ${boardId},
-        group_id: "${groupId}",
-        item_name: "${hoaName.replace(/"/g, '\\"')}",
-        column_values: "${columnValuesString}"
-      ) {
-        id
+  server.post("/api/submit-hoa-form", (req, res) => {
+    const form = formidable({ multiples: true });
+    form.parse(req, async (err, fields, files) => {
+      if (err) {
+        console.error("Formidable error:", err);
+        return res.status(500).json({ success: false, error: "Form parse error" });
       }
-    }
-  `;
 
-  try {
-    const response = await fetch('https://api.monday.com/v2', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: apiKey,
-      },
-      body: JSON.stringify({ query }),
+      try {
+        const columnValues = {
+          text9: fields.hoaName,
+          text8: fields.communityName,
+          numbers2: fields.units,
+          numbers: fields.yearBuilt,
+          text4: fields.contactName,
+          dropdown: { labels: [fields.position] },
+          email: { email: fields.email, text: fields.email },
+          phone: { phone: fields.phone, countryShortName: "us" },
+          text7: fields.projectType,
+          numbers4: fields.projectCost,
+          numbers3: fields.loanAmount,
+          dropdown4: { labels: [fields.loanTerm] },
+          numbers6: fields.monthlyDues,
+          numbers5: fields.reserveBalance,
+          numbers8: fields.annualBudget,
+          numbers7: fields.delinquencyRate?.replace("%", "")
+        };
+
+        await createItem(process.env.HOA_BOARD_ID, fields.hoaName, columnValues);
+        res.status(200).json({ success: true });
+      } catch (err) {
+        console.error("Submission failed:", err);
+        res.status(500).json({ success: false, error: "Submission error" });
+      }
     });
+  });
 
-    const data = await response.json();
-
-    if (data.errors) {
-      console.error('Monday API error:', data.errors);
-      return res.status(500).json({ error: 'Monday.com error', details: data.errors });
-    }
-
-    res.status(200).json({ success: true, itemId: data.data.create_item.id });
-  } catch (error) {
-    console.error('Fetch error:', error);
-    res.status(500).json({ error: 'Server error during submission' });
-  }
-}
+  server.all("*", (req, res) => handle(req, res));
+  const port = parseInt(process.env.PORT, 10) || 3000;
+  server.listen(port, () => console.log(`> Ready on http://localhost:${port}`));
+});
 
