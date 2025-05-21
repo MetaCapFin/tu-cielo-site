@@ -33,7 +33,7 @@ export default async function handler(req, res) {
         board_id: ${boardId},
         group_id: "${groupId}",
         item_name: "${name} Contact",
-        column_values: ${JSON.stringify(JSON.stringify(columnValues))}
+        column_values: "${JSON.stringify(columnValues).replace(/"/g, '\\"')}"
       ) {
         id
       }
