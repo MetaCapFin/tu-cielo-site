@@ -15,12 +15,11 @@ module.exports = async function handler(req, res) {
 
     console.log("Fields:", fields); // DEBUG
 
-    // Normalize fields safely
+    // Normalize all fields to use first value (formidable returns arrays)
     const normalizedFields = {};
-    for (const key in fields) {
-      const val = fields[key];
-      normalizedFields[key] = Array.isArray(val) ? val[0] : val;
-    }
+    Object.entries(fields).forEach(([key, value]) => {
+      normalizedFields[key] = Array.isArray(value) ? value[0] : value;
+    });
 
     const {
       hoaName,
@@ -47,12 +46,12 @@ module.exports = async function handler(req, res) {
 
     const columnValues = {
       text_mkqxaajc: communityName,
-      text_mkxc5rw: hoaName,
+      text_mkqxc5rw: hoaName, // ✅ fixed typo
       numeric_mkqxegkv: Number(projectCost?.replace(/[^0-9.-]+/g, "")) || 0,
-      phone_mkqxprbj: { phone: phone, countryShortName: "US" },
-      email_mkqxn7zz: { email: email, text: email },
+      phone_mkqxprbj: { phone, countryShortName: "US" },
+      email_mkqxn7zz: { email, text: email },
       text_mkqyp01b: position,
-      text_mkqy7dse: Number(units),
+      text_mkqy7dse: units,
       numbers8: Number(yearBuilt),
       text9: contactName,
       text1__1: projectType,
@@ -64,7 +63,9 @@ module.exports = async function handler(req, res) {
       numbers4: parseFloat(delinquencyRate?.replace(/[^0-9.]/g, "")) || 0,
     };
 
-    // Escape quotes for Monday.com mutation string
+    // DEBUG: log final columnValues to verify before sending
+    console.log("columnValues being sent:", columnValues);
+
     const columnValuesString = JSON.stringify(columnValues)
       .replace(/\\/g, "\\\\")
       .replace(/"/g, '\\"');
@@ -112,3 +113,4 @@ module.exports.config = {
     bodyParser: false,
   },
 };
+
