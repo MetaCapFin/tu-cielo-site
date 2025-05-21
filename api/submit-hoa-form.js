@@ -1,4 +1,4 @@
-import formidable from "formidable";
+import { IncomingForm } from "formidable";
 import fs from "fs";
 import path from "path";
 
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const form = new formidable.IncomingForm({ keepExtensions: true });
+  const form = new IncomingForm({ keepExtensions: true });
 
   form.parse(req, async (err, fields, files) => {
     if (err) {
@@ -40,8 +40,8 @@ export default async function handler(req, res) {
       delinquencyRate,
     } = fields;
 
-    const boardId = 9191966932; // Update with your board ID
-    const groupId = "topics"; // Update as needed
+    const boardId = 9191966932;
+    const groupId = "topics";
     const apiKey = process.env.MONDAY_API_KEY;
 
     const columnValues = {
@@ -63,7 +63,9 @@ export default async function handler(req, res) {
       numbers4: parseFloat(delinquencyRate?.replace(/[^0-9.]/g, "")) || 0,
     };
 
-    const columnValuesStr = JSON.stringify(columnValues).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+    const columnValuesStr = JSON.stringify(columnValues)
+      .replace(/\\/g, "\\\\")
+      .replace(/"/g, '\\"');
 
     const query = `
       mutation {
@@ -102,4 +104,5 @@ export default async function handler(req, res) {
     }
   });
 }
+
 
