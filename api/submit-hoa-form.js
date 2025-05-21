@@ -8,41 +8,38 @@ module.exports = async function handler(req, res) {
   const form = new formidable.IncomingForm({ keepExtensions: true });
 
   form.parse(req, async (err, fields, files) => {
-  if (err) {
-    console.error("Form parsing error:", err);
-    return res.status(500).json({ error: "Form parsing failed" });
-  }
+    if (err) {
+      console.error("Form parsing error:", err);
+      return res.status(500).json({ error: "Form parsing failed" });
+    }
 
-  console.log("Fields:", fields); // DEBUG
+    console.log("Fields:", fields); // DEBUG
 
-  // Normalize fields safely:
-  const normalizedFields = {};
-  for (const key in fields) {
-    const val = fields[key];
-    normalizedFields[key] = Array.isArray(val) ? val[0] : val;
-  }
+    // Normalize fields safely
+    const normalizedFields = {};
+    for (const key in fields) {
+      const val = fields[key];
+      normalizedFields[key] = Array.isArray(val) ? val[0] : val;
+    }
 
-  const {
-    hoaName,
-    communityName,
-    units,
-    yearBuilt,
-    contactName,
-    position,
-    email,
-    phone,
-    projectType,
-    projectCost,
-    loanAmount,
-    loanTerm,
-    monthlyDues,
-    reserveBalance,
-    annualBudget,
-    delinquencyRate,
-  } = normalizedFields;
-
-  // ...rest of your code
-});
+    const {
+      hoaName,
+      communityName,
+      units,
+      yearBuilt,
+      contactName,
+      position,
+      email,
+      phone,
+      projectType,
+      projectCost,
+      loanAmount,
+      loanTerm,
+      monthlyDues,
+      reserveBalance,
+      annualBudget,
+      delinquencyRate,
+    } = normalizedFields;
 
     const boardId = 9191966932;
     const groupId = "group_title";
@@ -50,7 +47,7 @@ module.exports = async function handler(req, res) {
 
     const columnValues = {
       text_mkqxaajc: communityName,
-      text_mkqxc5rw: hoaName,
+      text_mkxc5rw: hoaName,
       numeric_mkqxegkv: Number(projectCost?.replace(/[^0-9.-]+/g, "")) || 0,
       phone_mkqxprbj: { phone: phone, countryShortName: "US" },
       email_mkqxn7zz: { email: email, text: email },
@@ -67,7 +64,7 @@ module.exports = async function handler(req, res) {
       numbers4: parseFloat(delinquencyRate?.replace(/[^0-9.]/g, "")) || 0,
     };
 
-    // IMPORTANT: stringify AND escape quotes inside string for Monday.com
+    // Escape quotes for Monday.com mutation string
     const columnValuesString = JSON.stringify(columnValues)
       .replace(/\\/g, "\\\\")
       .replace(/"/g, '\\"');
