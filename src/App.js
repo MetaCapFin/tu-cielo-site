@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import TuCieloHOALoanApplication from './components/tucielo_hoa_loan_application';
 import LoanCalculator from './components/LoanCalculator'; // Adjust path if needed
+import { Helmet } from 'react-helmet';
 
 function Homepage() {
   const [activeIndex, setActiveIndex] = useState(null);
