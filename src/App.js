@@ -228,7 +228,7 @@ function Homepage() {
             <div className="header">
               <h2><strong>HOA Improvements Without Special Assessments? Yes, It’s Possible.</strong></h2>
               <h3>Flexible, long-term financing for Florida communities — without the red tape of traditional banks.</h3>
-              <img src="poolrenov.png" alt="HOA financing illustration placeholder" />
+              <img src="before-after-building.jpg" alt="HOA financing illustration placeholder" />
               <p>Before your board makes any major funding decision, you need the facts. <strong>Download now</strong> and walk into your next board meeting informed, empowered, and prepared to lead.</p>
 
               {/* ORIGINAL MODAL */}
