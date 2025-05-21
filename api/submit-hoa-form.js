@@ -1,6 +1,6 @@
-import formidable from "formidable";
-import fs from "fs";
-import path from "path";
+const formidable = require("formidable");
+const fs = require("fs");
+const path = require("path");
 
 export const config = {
   api: {
