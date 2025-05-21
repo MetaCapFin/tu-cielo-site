@@ -1,6 +1,12 @@
 const formidable = require("formidable");
 
-module.exports = async function handler(req, res) {
+module.exports.config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+module.exports = async (req, res) => {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -13,13 +19,12 @@ module.exports = async function handler(req, res) {
       return res.status(500).json({ error: "Form parsing failed" });
     }
 
-    console.log("Fields:", fields); // DEBUG
-
-    // Normalize all fields to use first value (formidable returns arrays)
+    // Normalize fields
     const normalizedFields = {};
-    Object.entries(fields).forEach(([key, value]) => {
-      normalizedFields[key] = Array.isArray(value) ? value[0] : value;
-    });
+    for (const key in fields) {
+      const val = fields[key];
+      normalizedFields[key] = Array.isArray(val) ? val[0] : val;
+    }
 
     const {
       hoaName,
@@ -46,10 +51,10 @@ module.exports = async function handler(req, res) {
 
     const columnValues = {
       text_mkqxaajc: communityName,
-      text_mkqxc5rw: hoaName, // ✅ fixed typo
+      text_mkqxc5rw: hoaName,
       numeric_mkqxegkv: Number(projectCost?.replace(/[^0-9.-]+/g, "")) || 0,
-      phone_mkqxprbj: { phone, countryShortName: "US" },
-      email_mkqxn7zz: { email, text: email },
+      phone_mkqxprbj: { phone: phone, countryShortName: "US" },
+      email_mkqxn7zz: { email: email, text: email },
       text_mkqyp01b: position,
       text_mkqy7dse: units,
       numbers8: Number(yearBuilt),
@@ -63,42 +68,25 @@ module.exports = async function handler(req, res) {
       numbers4: parseFloat(delinquencyRate?.replace(/[^0-9.]/g, "")) || 0,
     };
 
-    // DEBUG: log final columnValues to verify before sending
-    console.log("columnValues being sent:", columnValues);
+    const query = `
+      mutation CreateItem($boardId: Int!, $groupId: String!, $itemName: String!, $columnValues: JSON!) {
+        create_item(
+          board_id: $boardId,
+          group_id: $groupId,
+          item_name: $itemName,
+          column_values: $columnValues
+        ) {
+          id
+        }
+      }
+    `;
 
-    const columnValuesString = JSON.stringify(columnValues)
-      .replace(/\\/g, "\\\\")
-      .replace(/"/g, '\\"');
-
-   const query = `
-  mutation CreateItem($boardId: Int!, $groupId: String!, $itemName: String!, $columnValues: JSON!) {
-    create_item(
-      board_id: $boardId,
-      group_id: $groupId,
-      item_name: $itemName,
-      column_values: $columnValues
-    ) {
-      id
-    }
-  }
-`;
-
-const variables = {
-  boardId,
-  groupId,
-  itemName: `${hoaName} Loan App`,
-  columnValues,
-};
-
-const response = await fetch("https://api.monday.com/v2", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: apiKey,
-  },
-  body: JSON.stringify({ query, variables }),
-});
-
+    const variables = {
+      boardId,
+      groupId,
+      itemName: `${hoaName} Loan App`,
+      columnValues,
+    };
 
     try {
       const response = await fetch("https://api.monday.com/v2", {
@@ -107,27 +95,19 @@ const response = await fetch("https://api.monday.com/v2", {
           "Content-Type": "application/json",
           Authorization: apiKey,
         },
-        body: JSON.stringify({ query }),
+        body: JSON.stringify({ query, variables }),
       });
 
       const data = await response.json();
-
       if (data.errors) {
         console.error("Monday API error:", data.errors);
-        return res.status(500).json({ error: "Monday.com error", details: data.errors });
+        return res.status(500).json({ error: "Monday API error", details: data.errors });
       }
 
-      res.status(200).json({ success: true, message: "Submitted successfully" });
-    } catch (err) {
-      console.error("Fetch error:", err);
-      res.status(500).json({ error: "Server error during submission" });
+      res.status(200).json({ success: true, message: "Submitted successfully", itemId: data.data.create_item.id });
+    } catch (fetchError) {
+      console.error("Fetch error:", fetchError);
+      res.status(500).json({ error: "Fetch failed" });
     }
   });
 };
-
-module.exports.config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
