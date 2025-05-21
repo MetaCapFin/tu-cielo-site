@@ -84,8 +84,9 @@ module.exports = async function handler(req, res) {
       boardId,
       groupId,
       itemName: `${hoaName} Loan App`,
-      columnValues,
+      columnValues: JSON.stringify(columnValues), // ✅ REQUIRED FIX
     };
+
 
     try {
       const response = await fetch("https://api.monday.com/v2", {
