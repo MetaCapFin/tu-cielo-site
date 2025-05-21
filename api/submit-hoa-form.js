@@ -8,33 +8,41 @@ module.exports = async function handler(req, res) {
   const form = new formidable.IncomingForm({ keepExtensions: true });
 
   form.parse(req, async (err, fields, files) => {
-    if (err) {
-      console.error("Form parsing error:", err);
-      return res.status(500).json({ error: "Form parsing failed" });
-    }
+  if (err) {
+    console.error("Form parsing error:", err);
+    return res.status(500).json({ error: "Form parsing failed" });
+  }
 
-    const {
-      hoaName,
-      communityName,
-      units,
-      yearBuilt,
-      contactName,
-      position,
-      email,
-      phone,
-      projectType,
-      projectCost,
-      loanAmount,
-      loanTerm,
-      monthlyDues,
-      reserveBalance,
-      annualBudget,
-      delinquencyRate,
-    } = Object.fromEntries(
-      Object.entries(fields).map(([key, value]) =>
-        Array.isArray(value) ? value[0] : value
-      )
-    );
+  console.log("Fields:", fields); // DEBUG
+
+  // Normalize fields safely:
+  const normalizedFields = {};
+  for (const key in fields) {
+    const val = fields[key];
+    normalizedFields[key] = Array.isArray(val) ? val[0] : val;
+  }
+
+  const {
+    hoaName,
+    communityName,
+    units,
+    yearBuilt,
+    contactName,
+    position,
+    email,
+    phone,
+    projectType,
+    projectCost,
+    loanAmount,
+    loanTerm,
+    monthlyDues,
+    reserveBalance,
+    annualBudget,
+    delinquencyRate,
+  } = normalizedFields;
+
+  // ...rest of your code
+});
 
     const boardId = 9191966932;
     const groupId = "group_title";
