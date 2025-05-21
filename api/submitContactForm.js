@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   } = req.body;
 
   const boardId = 9138987515; // Replace with your board ID
-  const groupId = "topics"; // optional: change if you want a specific group
+  const groupId = "Leads"; // optional: change if you want a specific group
   const apiKey = process.env.MONDAY_API_KEY;
 
   const columnValues = {
