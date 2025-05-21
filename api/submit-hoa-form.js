@@ -69,39 +69,44 @@ export default async function handler(req, res) {
     const columnValuesStr = JSON.stringify(columnValues).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 
     const query = `
-      mutation {
-        create_item (
-          board_id: ${boardId},
-          group_id: "${groupId}",
-          item_name: "${hoaName} Loan App",
-          column_values: "${columnValuesStr}"
-        ) {
-          id
-        }
-      }
-    `;
-
-    try {
-      const response = await fetch("https://api.monday.com/v2", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: apiKey,
-        },
-        body: JSON.stringify({ query }),
-      });
-
-      const data = await response.json();
-
-      if (data.errors) {
-        console.error("Monday API error:", data.errors);
-        return res.status(500).json({ error: "Monday.com error" });
-      }
-
-      res.status(200).json({ success: true, message: "Submitted successfully" });
-    } catch (err) {
-      console.error("Fetch error:", err);
-      res.status(500).json({ error: "Server error during submission" });
+  mutation CreateItem($boardId: Int!, $groupId: String!, $itemName: String!, $columnValues: JSON!) {
+    create_item(
+      board_id: $boardId,
+      group_id: $groupId,
+      item_name: $itemName,
+      column_values: $columnValues
+    ) {
+      id
     }
+  }
+`;
+
+const variables = {
+  boardId,
+  groupId,
+  itemName: `${hoaName} Loan App`,
+  columnValues
+};
+
+try {
+  const response = await fetch("https://api.monday.com/v2", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: apiKey,
+    },
+    body: JSON.stringify({ query, variables }),
   });
+
+  const data = await response.json();
+
+  if (data.errors) {
+    console.error("Monday API error:", data.errors);
+    return res.status(500).json({ error: "Monday.com error", details: data.errors });
+  }
+
+  res.status(200).json({ success: true, message: "Submitted successfully" });
+} catch (err) {
+  console.error("Fetch error:", err);
+  res.status(500).json({ error: "Server error during submission" });
 }
