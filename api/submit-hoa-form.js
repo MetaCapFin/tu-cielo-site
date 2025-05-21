@@ -12,8 +12,7 @@ module.exports = async function handler(req, res) {
       console.error("Form parsing error:", err);
       return res.status(500).json({ error: "Form parsing failed" });
     }
-    
-    // Normalize field values
+
     const {
       hoaName,
       communityName,
@@ -32,14 +31,15 @@ module.exports = async function handler(req, res) {
       annualBudget,
       delinquencyRate,
     } = Object.fromEntries(
-      Object.entries(fields).map(([key, value]) => [key, Array.isArray(value) ? value[0] : value])
+      Object.entries(fields).map(([key, value]) =>
+        Array.isArray(value) ? value[0] : value
+      )
     );
 
     const boardId = 9191966932;
     const groupId = "group_title";
     const apiKey = process.env.MONDAY_API_KEY;
 
-    // Prepare Monday.com column values object
     const columnValues = {
       text_mkqxaajc: communityName,
       text_mkqxc5rw: hoaName,
@@ -47,8 +47,8 @@ module.exports = async function handler(req, res) {
       phone_mkqxprbj: { phone: phone, countryShortName: "US" },
       email_mkqxn7zz: { email: email, text: email },
       text_mkqyp01b: position,
-      text_mkqy7dse: Number(units) || 0,
-      numbers8: Number(yearBuilt) || 0,
+      text_mkqy7dse: Number(units),
+      numbers8: Number(yearBuilt),
       text9: contactName,
       text1__1: projectType,
       numbers6: Number(loanAmount?.replace(/[^0-9.-]+/g, "")) || 0,
@@ -59,14 +59,14 @@ module.exports = async function handler(req, res) {
       numbers4: parseFloat(delinquencyRate?.replace(/[^0-9.]/g, "")) || 0,
     };
 
-    // Stringify and escape column values
+    // IMPORTANT: stringify AND escape quotes inside string for Monday.com
     const columnValuesString = JSON.stringify(columnValues)
       .replace(/\\/g, "\\\\")
       .replace(/"/g, '\\"');
 
     const query = `
       mutation {
-        create_item (
+        create_item(
           board_id: ${boardId},
           group_id: "${groupId}",
           item_name: "${hoaName} Loan App",
@@ -107,5 +107,3 @@ module.exports.config = {
     bodyParser: false,
   },
 };
-
-
