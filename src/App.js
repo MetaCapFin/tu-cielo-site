@@ -139,6 +139,29 @@ function Homepage() {
   ];
 
   return (
+    
+     <>
+      <Helmet>
+        <title>TuCielo HOA Loans | Fast Community Project Funding</title>
+        <meta name="description" content="Get low-interest HOA financing with TuCielo. Fast approvals, expert support, and no hidden fees." />
+
+        {/* Open Graph (Facebook) */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.tucielofinancing.com/" />
+        <meta property="og:title" content="TuCielo HOA Lending" />
+        <meta property="og:description" content="Flexible funding for your HOA or community project. Apply online now." />
+        <meta property="og:image" content="https://www.tucielofinancing.com/share-preview.jpg" />
+
+        {/* Twitter Cards */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://www.tucielofinancing.com/" />
+        <meta name="twitter:title" content="TuCielo HOA Lending" />
+        <meta name="twitter:description" content="Flexible funding for your HOA or community project. Apply online now." />
+        <meta name="twitter:image" content="https://www.tucielofinancing.com/share-preview.jpg" />
+
+        <link rel="canonical" href="https://www.tucielofinancing.com/" />
+      </Helmet>
+
   <div className="page-container">
       {/* HEADER */}
       <header className="site-header">
@@ -572,6 +595,7 @@ function Homepage() {
       </footer>
 
     </div>
+  </>
   );
 }
 
