@@ -13,27 +13,32 @@ export default async function handler(req, res) {
     phone,
   } = req.body;
 
-  const boardId = 9138987515;
-  const groupId = "group_title";
+  const boardId = 9138987515; // Your board ID
+  const groupId = "group_title"; // Your group ID
   const apiKey = process.env.MONDAY_API_KEY;
 
+  // Build column values as an object
   const columnValues = {
     text_mkqxc5rw: name,
     text_mkqxaajc: community,
     text_mkqy7dse: city,
     text_mkqyp01b: role,
     numeric_mkqxegkv: Number(budget) || 0,
-    email_mkqxn7zz: JSON.stringify({ email: email, text: email }),
-    phone_mkqxprbj: JSON.stringify({ phone: phone, countryShortName: "US" }),
+    email_mkqxn7zz: { email: email, text: email },
+    phone_mkqxprbj: { phone: phone, countryShortName: "US" },
   };
 
+  // Convert columnValues to a string and escape the result
+  const columnValuesString = JSON.stringify(columnValues).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+
+  // Construct the GraphQL mutation
   const query = `
     mutation {
       create_item (
         board_id: ${boardId},
         group_id: "${groupId}",
         item_name: "${name} Contact",
-        column_values: "${JSON.stringify(columnValues).replace(/"/g, '\\"')}"
+        column_values: "${columnValuesString}"
       ) {
         id
       }
@@ -45,7 +50,7 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,  // <-- Fix is here
+        Authorization: apiKey,
       },
       body: JSON.stringify({ query }),
     });
@@ -53,7 +58,7 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (data.errors) {
-      console.error(data.errors);
+      console.error('Monday API error:', data.errors);
       return res.status(500).json({ error: 'Failed to create item in Monday.com' });
     }
 
