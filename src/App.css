@@ -15,17 +15,45 @@
   font-family: 'Mulish', sans-serif;
 }
 
-/* Header */
+/* Site Header */
 .site-header {
-  background-color: #bfd400;
+  background-color: white;
   color: #303c42;
-  padding: 20px;
-  text-align: center;
   font-family: 'Mulish', sans-serif;
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* ensures full width without scrollbar issues */
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Top section of the header (logo + title etc.) */
+.header-top {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 15px; /* spacing between logo and title */
+  gap: 10px;
+  border-bottom: 1px solid #eef2f7;
+  width: 100%; /* fixed from 100vw to avoid overflow */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Bottom nav/buttons section */
+.header-bottom {
+  display: flex;
+  gap: 15px;
+  padding: 10px 20px;
+}
+
+/* Main content wrapper - prevents header from overlapping content */
+main,
+.main-content {
+  padding-top: 120px; /* adjust if your header height is more/less */
 }
 
 /* Logo inside header */
@@ -607,37 +635,6 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-/* Updated Site Header Layout */
-.site-header {
-  background-color: white;
-  color: #303c42;
-  font-family: 'Mulish', sans-serif;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 0;
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.header-top {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-bottom: 1px solid #eef2f7;
-  width: 100vw; /* Full viewport width */
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.header-bottom {
-  display: flex;
-  gap: 15px;
-  padding: 10px 20px;
 }
 
 .logo-title {
