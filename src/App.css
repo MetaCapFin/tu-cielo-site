@@ -15,8 +15,13 @@
   font-family: 'Mulish', sans-serif;
 }
 
-/* Site Header */
+/* Fixes sticky header that doesn't scroll with the page */
 .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;               /* Full page width */
+  z-index: 1000;
   background-color: white;
   color: #303c42;
   font-family: 'Mulish', sans-serif;
@@ -24,36 +29,28 @@
   flex-direction: column;
   gap: 10px;
   padding: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%; /* ensures full width without scrollbar issues */
-  z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* Top section of the header (logo + title etc.) */
-.header-top {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-bottom: 1px solid #eef2f7;
-  width: 100%; /* fixed from 100vw to avoid overflow */
-  padding: 20px;
   box-sizing: border-box;
 }
 
-/* Bottom nav/buttons section */
+/* Inner layout */
+.header-top,
 .header-bottom {
-  display: flex;
-  gap: 15px;
-  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
 }
 
-/* Main content wrapper - prevents header from overlapping content */
+.header-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Fix for main content getting hidden under header */
 main,
 .main-content {
-  padding-top: 120px; /* adjust if your header height is more/less */
+  padding-top: 160px; /* Increase if needed */
 }
 
 /* Logo inside header */
