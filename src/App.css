@@ -405,7 +405,7 @@
 .step-line-horizontal {
   width: 120px;
   height: 2px;
-  background-color: #303c42;
+  background-color: white;
   position: absolute;
   top: 30px; /* vertically center with the circle */
   left: 78%;
