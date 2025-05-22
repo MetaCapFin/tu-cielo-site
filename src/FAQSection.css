@@ -31,13 +31,13 @@
 
 .faq-answer-wrapper {
   overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
   max-height: 0;
   opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 
 .faq-item.active .faq-answer-wrapper {
-  max-height: 300px; /* adjust if your answers are longer */
+  max-height: 200px; /* Increase if answer is long */
   opacity: 1;
 }
 
