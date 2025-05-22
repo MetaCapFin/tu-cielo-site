@@ -43,7 +43,9 @@ const FAQSection = () => {
           onClick={() => toggleFAQ(index)}
         >
           <div className="faq-question">{item.question}</div>
-          {activeIndex === index && <div className="faq-answer">{item.answer}</div>}
+          <div className="faq-answer-wrapper">
+            <div className="faq-answer">{item.answer}</div>
+          </div>
         </div>
       ))}
       <button className="back-home-button" onClick={() => navigate('/')}>
@@ -54,3 +56,4 @@ const FAQSection = () => {
 };
 
 export default FAQSection;
+
