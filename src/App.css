@@ -18,7 +18,7 @@
 
 /* Site Header */
 .site-header {
-  background-color: linear-gradient(to bottom left, #2184BD, #1C7FB8);
+  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
   color: #303c42;
   font-family: 'Mulish', sans-serif;
   display: flex;
