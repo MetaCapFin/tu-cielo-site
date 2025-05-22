@@ -609,16 +609,5 @@ function Homepage() {
   );
 }
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path>
-        {/* Other routes */}
-      </Routes>
-    </Router>
-  );
-}
-
 export default App; 
 
