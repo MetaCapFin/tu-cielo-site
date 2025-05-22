@@ -213,23 +213,25 @@
 /* Back to Main Page Button */
 .loan-calculator button.back-to-main {
   display: block;
-  margin: 30px auto 0 auto; /* centers horizontally, with top margin */
-  background-color: #bfd400;
-  color: #303c42;
+  margin: 30px auto 0 auto;
+  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
+  color: white;
   padding: 12px 24px;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
   font-family: 'Mulish', sans-serif;
   text-align: center;
 }
 
+/* Invert colors on hover */
 .loan-calculator button.back-to-main:hover {
-  background-color: #2ba6cb;
-  color: white;
+  background: white;
+  color: #1C7FB8;
 }
+
 
 /* If you want the other buttons to share some common styling */
 .loan-calculator button {
