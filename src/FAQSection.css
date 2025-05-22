@@ -1,75 +1,74 @@
-/* FAQ Section Container */
+/* FAQ Section */
 .faq-section {
-  background-color: #ffffff;
+  background: #fff;
   color: #303c42;
   font-family: 'Mulish', sans-serif;
-  padding: 30px 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   max-width: 900px;
   margin: 40px auto;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
-/* FAQ Heading */
+/* Section Title */
 .faq-section h2 {
-  font-size: 1.8rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   text-align: center;
 }
 
-/* Each FAQ Item */
+/* Individual FAQ Item */
 .faq-item {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   padding-bottom: 15px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #eee;
 }
 
-/* Question style */
+/* Question */
 .faq-question {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: #2ba6cb;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
-/* Answer style - always visible */
+/* Answer */
 .faq-answer {
   font-size: 1rem;
-  line-height: 1.5;
-  color: #303c42;
-  padding-left: 5px;
-  display: block;
+  line-height: 1.6;
+  color: #444;
 }
 
-/* Back to Main Page Button */
+/* Button */
 .back-to-main {
   display: block;
   margin: 30px auto 0 auto;
-  background: linear-gradient(to bottom left, #2184bd, #1c7fb8);
-  color: white;
   padding: 12px 24px;
+  background: linear-gradient(to bottom left, #2184bd, #1c7fb8);
+  color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
   font-family: 'Mulish', sans-serif;
-  text-align: center;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
 .back-to-main:hover,
 .back-to-main:focus {
-  background: white;
+  background: #fff;
   color: #1c7fb8;
+  border: 1px solid #1c7fb8;
   outline: none;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+/* Mobile Tweaks */
+@media (max-width: 600px) {
   .faq-section {
-    padding: 20px 15px;
-    margin: 30px auto;
+    padding: 15px;
+    margin: 20px auto;
   }
 
   .faq-section h2 {
@@ -77,7 +76,7 @@
   }
 
   .faq-question {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .faq-answer {
@@ -85,21 +84,3 @@
   }
 }
 
-@media (max-width: 480px) {
-  .faq-section {
-    padding: 15px 10px;
-    margin: 20px auto;
-  }
-
-  .faq-section h2 {
-    font-size: 1.25rem;
-  }
-
-  .faq-question {
-    font-size: 1rem;
-  }
-
-  .faq-answer {
-    font-size: 0.9rem;
-  }
-}
