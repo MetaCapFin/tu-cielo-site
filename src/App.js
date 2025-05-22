@@ -194,7 +194,7 @@ function Homepage() {
         <button className="header-button"onClick={() => {document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });}}>
           Apply
         </button>
-        <Link to="/contractor-tool">
+        <Link to="/src/ContractorProposalTool.jsx">
           <button className="header-button">Contractor Proposal Tool (Coming soon)</button>
         </Link>
       </div>
