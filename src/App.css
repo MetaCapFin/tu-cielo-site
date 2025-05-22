@@ -15,13 +15,21 @@
   font-family: 'Mulish', sans-serif;
 }
 
-/* Fixes sticky header that doesn't scroll with the page */
+/* Header */
 .site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;               /* Full page width */
-  z-index: 1000;
+  background-color: #bfd400;
+  color: #303c42;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Mulish', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; /* spacing between logo and title */
+}
+
+/* Updated Site Header Layout */
+.site-header {
   background-color: white;
   color: #303c42;
   font-family: 'Mulish', sans-serif;
@@ -29,30 +37,27 @@
   flex-direction: column;
   gap: 10px;
   padding: 0;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  box-sizing: border-box;
 }
 
-/* Inner layout */
-.header-top,
-.header-bottom {
-  width: 100%;
-  box-sizing: border-box;
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #eef2f7;
+  width: 100vw; /* Full viewport width */
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .header-bottom {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
+  padding: 10px 20px;
 }
-
-/* Fix for main content getting hidden under header */
-main,
-.main-content {
-  padding-top: 160px; /* Increase if needed */
-}
-
 /* Logo inside header */
 .logo-placeholder img {
   height: 50px; /* adjust height to fit header nicely */
