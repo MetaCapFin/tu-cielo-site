@@ -1,0 +1,78 @@
+.loan-calculator {
+  padding: 20px;
+  font-family: 'Mulish', Arial, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+}
+
+.loan-calculator label {
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: 600;
+  color: #333;
+}
+
+.loan-calculator input[type="number"],
+.loan-calculator select,
+.loan-calculator input[type="range"] {
+  width: 100%;
+  max-width: 320px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.loan-calculator button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.loan-calculator button:hover {
+  background-color: #357ABD;
+}
+
+.loan-calculator p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #222;
+}
+
+.loan-calculator .text-xl {
+  font-size: 1.25rem;
+  margin-top: 10px;
+}
+
+.loan-calculator table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.loan-calculator th,
+.loan-calculator td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: right;
+}
+
+.loan-calculator th {
+  background-color: #f7f7f7;
+  font-weight: 700;
+  text-align: center;
+}
+
+.loan-calculator .overflow-auto {
+  overflow-y: auto;
+}
