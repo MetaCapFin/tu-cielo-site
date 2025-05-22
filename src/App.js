@@ -318,7 +318,7 @@ function Homepage() {
                     <td>
                       <div className="checkmark-circle">
                         <svg viewBox="0 0 24 24" className="checkmark-icon">
-                          <path fill="#333" d="M9 16.2l-3.5-3.5 1.4-1.4L9 13.4l7.1-7.1 1.4 1.4z" />
+                          <path fill="white" d="M9 16.2l-3.5-3.5 1.4-1.4L9 13.4l7.1-7.1 1.4 1.4z" />
                         </svg>
                       </div>
                     </td>
