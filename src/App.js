@@ -606,6 +606,16 @@ function Homepage() {
 
     </div>
   </>
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/loan-calculator" element={<LoanCalculator />} />
+        <Route path="/hoa-application" element={<TuCieloHOALoanApplication />} />
+      </Routes>
+    </Router>
   );
 }
 
