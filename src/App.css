@@ -721,6 +721,20 @@
   margin-top: 20px;
 }
 
+ /* ADD THESE RULES TO FIX HEADER BUTTONS ON MOBILE */
+  .header-bottom {
+    flex-wrap: wrap;            /* allow buttons to wrap */
+    justify-content: center;    /* center buttons */
+    gap: 10px;                  /* spacing between buttons */
+  }
+
+  .header-button {
+    flex: 1 1 45%;              /* buttons take ~45% width */
+    max-width: 200px;           /* optional max width */
+    box-sizing: border-box;     /* ensure padding/border included in width */
+  }
+}
+
 /* Modal Overlay Popup */
 .modal-overlay {
   position: fixed;
