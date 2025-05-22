@@ -5,23 +5,19 @@ import './FAQSection.css';
 const faqData = [
   {
     question: 'Q1. What types of projects are eligible?',
-    answer:
-      'We finance a wide range of capital improvements including roofing, paving, elevators, HVAC systems, and more.',
+    answer: 'We finance roofing, paving, HVAC systems, and more.',
   },
   {
     question: 'Q2. Can we finance reserve shortfalls?',
-    answer:
-      'Yes. Our financing can help cover reserve shortfalls identified in your reserve study or upcoming capital needs.',
+    answer: 'Yes, we help cover reserve shortfalls in your reserve study.',
   },
   {
     question: 'Q3. How long does the process take?',
-    answer:
-      'Most communities receive funding within 30 to 60 days from initial consultation to closing.',
+    answer: 'Most communities receive funding within 30 to 60 days.',
   },
   {
     question: 'Q4. Is personal homeowner credit required?',
-    answer:
-      'No. We do not require individual homeowner credit checks or personal guarantees.',
+    answer: 'No, we do not require individual credit checks or guarantees.',
   },
 ];
 
@@ -56,4 +52,5 @@ const FAQSection = () => {
 };
 
 export default FAQSection;
+
 
