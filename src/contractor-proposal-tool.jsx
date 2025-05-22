@@ -161,9 +161,27 @@ function TuCieloCalculator() {
           <li>13. Annual Budget PDF (500MB max)</li>
         </ul>
       </section>
+
+      <button
+        onClick={() => window.location.href = '/'}
+        style={{
+          marginTop: 30,
+          padding: '10px 20px',
+          backgroundColor: '#2ba6cb',
+          color: '#fff',
+          border: 'none',
+          borderRadius: 6,
+          cursor: 'pointer',
+          fontSize: '1rem',
+          fontFamily: "'Mulish', sans-serif"
+        }}
+      >
+        Back to Main Page
+      </button>
     </div>
   );
 }
+
 
 
 
