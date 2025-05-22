@@ -5,6 +5,8 @@ import TuCieloHOALoanApplication from './components/tucielo_hoa_loan_application
 import LoanCalculator from './components/LoanCalculator'; // Adjust path if needed
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import ContractorProposalTool from './ContractorProposalTool';
+
 
 function Homepage() {
   const [activeIndex, setActiveIndex] = useState(null);
