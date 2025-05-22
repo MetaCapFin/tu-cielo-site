@@ -1,6 +1,5 @@
 import React from 'react';
 
-export default function FAQ() {
   return (
     <div className="faq-section">
       <h2>Frequently Asked Questions</h2>
@@ -41,4 +40,3 @@ export default function FAQ() {
       </button>
     </div>
   );
-}
