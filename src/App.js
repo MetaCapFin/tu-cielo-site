@@ -178,8 +178,8 @@ function Homepage() {
         </div>
       </div>
       <div className="header-bottom">
-        <button className="header-button"onClick={() => {document.getElementByclassName=("contact-form")?.scrollIntoView({ behavior: "smooth" });}}>
-          Contact us
+        <button className="header-button"onClick={() => {document.getElementById=("contact-section")?.scrollIntoView({ behavior: "smooth" });}}>
+          Contact Us
         </button>
         <button className="header-button"onClick={() => setShowPrivacyModal(true)}> Privacy Policy</button>
         <button className="header-button">Find Us At</button>
@@ -480,7 +480,7 @@ function Homepage() {
 
 
           {/* CONTACT FORM */}
-          <section className="contact-form">
+          <section id="contact-section" section className="contact-form">
             <h2>Let's Talk About Your Community's Needs</h2>
             <div className="form-container">
               <div className="form-image">
