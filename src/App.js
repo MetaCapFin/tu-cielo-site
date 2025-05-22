@@ -6,7 +6,7 @@ import LoanCalculator from './components/LoanCalculator'; // Adjust path if need
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import ContractorProposalTool from './contractor-proposal-tool';
-
+import FAQ from './faq'; // from src/faq.js
 
 function Homepage() {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -190,7 +190,9 @@ function Homepage() {
           Contact Us
         </button>
         <button className="header-button"onClick={() => setShowPrivacyModal(true)}> Privacy Policy</button>
-        <button className="header-button">Find Us At</button>
+        <Link to="/faq">
+          <button className="header-button">FAQ</button>
+        </Link>
         <button className="header-button">Blog</button>
         <button className="header-button"onClick={() => {document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });}}>
           Apply
@@ -617,6 +619,7 @@ function App() {
         <Route path="/loan-calculator" element={<LoanCalculator />} />
         <Route path="/hoa-application" element={<TuCieloHOALoanApplication />} />
         <Route path="/contractor-proposal-tool" element={<ContractorProposalTool />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
     </Router>
   );
