@@ -186,7 +186,12 @@ function Homepage() {
         </button>
         <button className="header-button">Find Us At</button>
         <button className="header-button">Blog</button>
-        <button className="header-button">Apply</button>
+        <button className="header-button"onClick={() => {document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });
+      }}
+      >
+        Apply
+      </button>
+
         <button className="header-button">Contractor Proposal Tool (Coming soon)</button>    
       </div>
       {showPrivacyModal && (
@@ -431,7 +436,7 @@ function Homepage() {
           </section>
 
           {/* ESTIMATE SECTION */}
-          <section>
+          <section id="application-section">
           <div className="payment-estimate-section">
             <h2>Click Below to Submit Your Application</h2>
             <div className="payment-breakdown-wrapper">
