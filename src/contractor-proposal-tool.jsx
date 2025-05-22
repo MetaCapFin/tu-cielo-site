@@ -144,6 +144,24 @@ function TuCieloCalculator() {
         </div>
       )}
     </div>
+    <div className="tooltip-text">
+      Before starting please gather the following information:
+      <ul>
+        <li>1. HOA legal entity name</li>
+        <li>2. Number of units</li>
+        <li>3. Year built of condominium</li>
+        <li>4. Contact Info</li>
+        <li>5. Type of project</li>
+        <li>6. Cost of improvement/Reserves</li>
+        <li>7. Loan amount needed</li>
+        <li>8. Average monthly dues per Unit</li>
+        <li>9. Current reserve fund balance</li>
+        <li>10. Annual Operating Budget</li>
+        <li>11. Delinquency Rate Percentage</li>
+        <li>12. Reserves studies PDF (500MB max)</li>
+        <li>13. Annual Budget PDF (500MB max)</li>
+      </ul>
+    </div>
   );
 }
 
