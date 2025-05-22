@@ -163,21 +163,12 @@ function TuCieloCalculator() {
       </section>
 
       <button
+        className="back-to-main"
         onClick={() => window.location.href = '/'}
-        style={{
-          marginTop: 30,
-          padding: '10px 20px',
-          backgroundColor: '#2ba6cb',
-          color: '#fff',
-          border: 'none',
-          borderRadius: 6,
-          cursor: 'pointer',
-          fontSize: '1rem',
-          fontFamily: "'Mulish', sans-serif"
-        }}
       >
         Back to Main Page
       </button>
+
     </div>
   );
 }
