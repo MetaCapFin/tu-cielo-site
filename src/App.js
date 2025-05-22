@@ -603,9 +603,10 @@ function Homepage() {
           - Monthly estimated payments are based on total financed amounts. Please consult a Tu Cielo representative for personalized estimates.
         </p>
       </footer>
-
     </div>
   </>
+  );
+}
 
 function App() {
   return (
