@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './LoanCalculator.css';
+import './LoanCalculator.css'; // You can rename or duplicate this if needed
 
-export default function TuCieloCalculator() {
+export default function ContractorProposalTool() {
   const [units, setUnits] = useState(50);
   const [cost, setCost] = useState(1000000);
   const [term, setTerm] = useState(25);
@@ -47,8 +47,8 @@ export default function TuCieloCalculator() {
   const amortizationTable = generateAmortization();
 
   return (
-    <div className="loan-calculator">
-      <h2>TuCielo HOA Loan Proposal Calculator</h2>
+    <div className="loan-calculator-page">
+      <h1>TuCielo HOA Loan Proposal Calculator</h1>
 
       <label>Number of Units</label>
       <input
@@ -131,8 +131,26 @@ export default function TuCieloCalculator() {
           </table>
         </div>
       )}
+
+      {/* 🟨 Tooltip info block */}
+      <div className="tooltip-text">
+        <h2>Before starting please gather the following information:</h2>
+        <ul>
+          <li>1. HOA legal entity name</li>
+          <li>2. Number of units</li>
+          <li>3. Year built of condominium</li>
+          <li>4. Contact Info</li>
+          <li>5. Type of project</li>
+          <li>6. Cost of improvement/Reserves</li>
+          <li>7. Loan amount needed</li>
+          <li>8. Average monthly dues per Unit</li>
+          <li>9. Current reserve fund balance</li>
+          <li>10. Annual Operating Budget</li>
+          <li>11. Delinquency Rate Percentage</li>
+          <li>12. Reserves studies PDF (500MB max)</li>
+          <li>13. Annual Budget PDF (500MB max)</li>
+        </ul>
+      </div>
     </div>
   );
 }
-
-/*Tool tip for required documents*/ 
