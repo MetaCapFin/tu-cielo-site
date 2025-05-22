@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './FAQSection.css'; // You'll create this for styles
+import { useNavigate } from 'react-router-dom';
+import './FAQSection.css';
 
 const faqData = [
   {
@@ -26,6 +27,7 @@ const faqData = [
 
 const FAQSection = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const navigate = useNavigate();
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -44,9 +46,11 @@ const FAQSection = () => {
           {activeIndex === index && <div className="faq-answer">{item.answer}</div>}
         </div>
       ))}
+      <button className="back-home-button" onClick={() => navigate('/')}>
+        Back to Main Page
+      </button>
     </section>
   );
 };
 
 export default FAQSection;
-
