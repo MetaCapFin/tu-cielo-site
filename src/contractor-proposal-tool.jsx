@@ -6,7 +6,6 @@ export default function ContractorProposalTool() {
   return (
     <div style={{ padding: '2rem', maxWidth: 900, margin: '0 auto' }}>
       <h1>Contractor Proposal Tool</h1>
-      <p>This feature is coming soon! Meanwhile, check out this calculator:</p>
       <TuCieloCalculator />
     </div>
   );
