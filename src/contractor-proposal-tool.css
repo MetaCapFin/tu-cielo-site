@@ -210,4 +210,36 @@
   }
 }
 
+/* Back to Main Page Button */
+.loan-calculator button.back-to-main {
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #2ba6cb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Mulish', sans-serif;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+.loan-calculator button.back-to-main:hover {
+  background-color: #1e7ba3;
+}
+
+/* If you want the other buttons to share some common styling */
+.loan-calculator button {
+  font-family: 'Mulish', sans-serif;
+}
+
+/* Optional: Ensure spacing around sections */
+.loan-calculator section.info-section {
+  margin-top: 40px;
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
 
