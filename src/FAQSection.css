@@ -1,56 +1,89 @@
+/* Container */
 .faq-section {
-  max-width: 800px;
+  max-width: 700px;
   margin: 40px auto;
-  font-family: 'Mulish', sans-serif;
   padding: 20px;
+  font-family: 'Mulish', sans-serif;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: #f9fbfc;
 }
 
+/* Header */
 .faq-section h2 {
   text-align: center;
-  font-size: 2rem;
-  color: #1C7FB8;
   margin-bottom: 30px;
+  color: #1C7FB8;
 }
 
+/* FAQ Item */
 .faq-item {
-  border-bottom: 1px solid #ccc;
-  padding: 15px 10px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: background-color 0.3s ease;
 }
 
+/* Question */
 .faq-question {
-  font-weight: bold;
-  font-size: 1.1rem;
-  cursor: pointer;
-  padding: 10px 0;
+  background-color: #e8f1f7;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 18px;
+  user-select: none;
+  border-radius: 6px;
   color: #2184BD;
 }
 
+/* Hover effect on question */
+.faq-item:hover .faq-question {
+  background-color: #d0e5f2;
+}
+
+/* Answer wrapper controls sliding */
 .faq-answer-wrapper {
+  max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+  background-color: #f0f8ff;
+  border-radius: 0 0 6px 6px;
+  padding: 0 20px;
 }
 
+/* Show answer when active */
+.faq-item.active .faq-answer-wrapper {
+  max-height: 300px; /* Enough height for answer content */
+  padding: 15px 20px;
+}
+
+/* Answer text */
 .faq-answer {
-  padding: 10px 0;
-  color: #333;
-  font-size: 1rem;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #303c42;
 }
 
-.back-home-button {
-  display: block;
-  margin: 40px auto 0;
-  padding: 12px 24px;
-  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
+/* Back button */
+.back-button {
+  margin-top: 40px;
+  width: 100%;
+  padding: 14px 0;
+  font-size: 18px;
+  font-weight: 700;
   color: white;
+  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
   border: none;
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-family: 'Mulish', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.back-home-button:hover {
-  background: white;
-  color: #1C7FB8;
-  border: 1px solid #1C7FB8;
+/* Back button hover */
+.back-button:hover {
+  background: linear-gradient(to bottom left, #1C7FB8, #2184BD);
+  color: #303c42;
 }
+
