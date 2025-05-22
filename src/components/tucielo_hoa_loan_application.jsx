@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
 import './tucielo_hoa_loan_application.css';
 
 export default function HOAApplicationForm({ onClose }) {
@@ -98,21 +96,6 @@ export default function HOAApplicationForm({ onClose }) {
     e.preventDefault();
     console.log("Submitted:", formData, files);
 
-    const input = document.querySelector(".hoa-form-wrapper");
-
-    try {
-      const canvas = await html2canvas(input, { scale: 2 });
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF({
-        orientation: "portrait",
-        unit: "px",
-        format: [canvas.width, canvas.height]
-      });
-      pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
-      pdf.save("TuCielo_HOA_Application.pdf");
-    } catch (error) {
-      console.error("PDF generation failed:", error);
-    }
     // Send data to backend after PDF generation
     try {
       const formPayload = new FormData();
