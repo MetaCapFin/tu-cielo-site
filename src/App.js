@@ -5,6 +5,7 @@ import TuCieloHOALoanApplication from './components/tucielo_hoa_loan_application
 import LoanCalculator from './components/LoanCalculator'; // Adjust path if needed
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import ContractorProposalTool from './contractor-proposal-tool';
 
 
 function Homepage() {
@@ -194,7 +195,7 @@ function Homepage() {
         <button className="header-button"onClick={() => {document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });}}>
           Apply
         </button>
-        <Link to="/src/ContractorProposalTool.jsx">
+        <Link to="contractor-proposal-tool">
           <button className="header-button">Contractor Proposal Tool (Coming soon)</button>
         </Link>
       </div>
@@ -615,6 +616,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/loan-calculator" element={<LoanCalculator />} />
         <Route path="/hoa-application" element={<TuCieloHOALoanApplication />} />
+        <Route path="/contractor-proposal-tool" element={<ContractorProposalTool />} />
       </Routes>
     </Router>
   );
