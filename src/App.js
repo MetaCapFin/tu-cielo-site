@@ -178,20 +178,15 @@ function Homepage() {
         </div>
       </div>
       <div className="header-bottom">
-        <button className="header-button">Contact Us</button>
-        <button
-          className="header-button"
-          onClick={() => setShowPrivacyModal(true)}
-        > Privacy Policy
+        <button className="header-button"onClick={() => {document.getElementByclassName=("contact-form")?.scrollIntoView({ behavior: "smooth" });}}>
+          Contact us
         </button>
+        <button className="header-button"onClick={() => setShowPrivacyModal(true)}> Privacy Policy</button>
         <button className="header-button">Find Us At</button>
         <button className="header-button">Blog</button>
-        <button className="header-button"onClick={() => {document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });
-      }}
-      >
-        Apply
-      </button>
-
+        <button className="header-button"onClick={() => {document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });}}>
+          Apply
+        </button>
         <button className="header-button">Contractor Proposal Tool (Coming soon)</button>    
       </div>
       {showPrivacyModal && (
