@@ -1,6 +1,6 @@
 // src/contractor-proposal-tool.jsx
 import React, { useState } from 'react';
-import './contractor-proposal-tool.css'; // keep your styles separate as needed
+import './contractor-proposal-tool.css'; // ensure styles are defined if needed
 
 export default function ContractorProposalTool() {
   return (
@@ -12,7 +12,6 @@ export default function ContractorProposalTool() {
   );
 }
 
-// Calculator component is nested inside to keep things modular and separate
 function TuCieloCalculator() {
   const [units, setUnits] = useState(50);
   const [cost, setCost] = useState(1000000);
@@ -42,8 +41,8 @@ function TuCieloCalculator() {
       schedule.push({
         month: i,
         payment: monthlyPayment,
-        principal: principal,
-        interest: interest,
+        principal,
+        interest,
         balance: balance > 0 ? balance : 0
       });
     }
@@ -144,8 +143,9 @@ function TuCieloCalculator() {
         </div>
       )}
 
-      <div className="tooltip-text" style={{ marginTop: 40 }}>
-        <p>Before starting please gather the following information:</p>
+      <section className="info-section" style={{ marginTop: 40, background: '#f9f9f9', padding: '1rem', borderRadius: '8px' }}>
+        <h3>Before You Begin</h3>
+        <p>Please gather the following information:</p>
         <ul>
           <li>1. HOA legal entity name</li>
           <li>2. Number of units</li>
@@ -161,10 +161,11 @@ function TuCieloCalculator() {
           <li>12. Reserves studies PDF (500MB max)</li>
           <li>13. Annual Budget PDF (500MB max)</li>
         </ul>
-      </div>
+      </section>
     </div>
   );
 }
+
 
 
 
