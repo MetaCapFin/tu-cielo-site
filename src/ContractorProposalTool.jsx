@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './LoanCalculator.css'; // You can rename or duplicate this if needed
 
 export default function ContractorProposalTool() {
   const [units, setUnits] = useState(50);
