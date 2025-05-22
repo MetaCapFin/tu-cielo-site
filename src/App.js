@@ -196,7 +196,7 @@ function Homepage() {
           Apply
         </button>
         <Link to="contractor-proposal-tool">
-          <button className="header-button">Contractor Proposal Tool (Coming soon)</button>
+          <button className="header-button">Contractor Proposal Tools</button>
         </Link>
       </div>
       {showPrivacyModal && (
