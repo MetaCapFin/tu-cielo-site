@@ -26,20 +26,29 @@
 .faq-question {
   font-weight: bold;
   font-size: 1.1rem;
+  position: relative;
+}
+
+.faq-answer-wrapper {
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  max-height: 0;
+  opacity: 0;
+}
+
+.faq-item.active .faq-answer-wrapper {
+  max-height: 300px; /* adjust if your answers are longer */
+  opacity: 1;
 }
 
 .faq-answer {
   margin-top: 10px;
   color: #333;
   font-size: 1rem;
-  animation: fadeIn 0.3s ease-in;
+  padding-right: 5px;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
+/* Back button */
 .back-home-button {
   display: block;
   margin: 40px auto 0 auto;
@@ -58,4 +67,5 @@
   color: #1C7FB8;
   border: 1px solid #1C7FB8;
 }
+
 
