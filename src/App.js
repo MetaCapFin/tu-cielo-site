@@ -4,6 +4,8 @@ import './App.css';
 import TuCieloHOALoanApplication from './components/tucielo_hoa_loan_application';
 import LoanCalculator from './components/LoanCalculator'; // Adjust path if needed
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
+
 
 function Homepage() {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -192,7 +194,9 @@ function Homepage() {
         <button className="header-button"onClick={() => {document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });}}>
           Apply
         </button>
-        <button className="header-button">Contractor Proposal Tool (Coming soon)</button>    
+        <Link to="/contractor-tool">
+          <button className="header-button">Contractor Proposal Tool (Coming soon)</button>
+        </Link>
       </div>
       {showPrivacyModal && (
           <div className="modal-overlay" onClick={() => setShowPrivacyModal(false)}>
