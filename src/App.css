@@ -392,7 +392,7 @@
   width: 60px;
   height: 60px;
   background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
-  color: white;
+  color: white !important;
   border-radius: 50%;
   display: flex;
   align-items: center;
