@@ -19,13 +19,20 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Missing Monday API key' });
     }
 
-    // Create item mutation
+    // Escape any backslashes and quotes in name and email for safe insertion into GraphQL query
+    const safeName = name.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+    const safeEmail = email.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+
+    // Properly escape column values as JSON string
+    const columnValues = JSON.stringify({ [EMAIL_COLUMN_ID]: safeEmail });
+
+    // Construct the GraphQL mutation query with escaped strings
     const createItemQuery = `
       mutation {
         create_item (
           board_id: ${BOARD_ID},
-          item_name: "${name.replace(/"/g, '\\"')}",
-          column_values: "{\"${EMAIL_COLUMN_ID}\": \"${email}\"}"
+          item_name: "${safeName}",
+          column_values: "${columnValues.replace(/"/g, '\\"')}"
         ) {
           id
         }
@@ -53,3 +60,4 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
+
