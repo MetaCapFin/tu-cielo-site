@@ -31,10 +31,13 @@ export default function FAQ() {
           <p>No. We do not require individual homeowner credit checks or personal guarantees.</p>
         </div>
       </section>
-        <div>
-          <button className="cta-button" onClick={handleGoHome}>
-            Back to Home
-          </button>
-        </div>
+
+      <div>
+        <button className="cta-button" onClick={handleGoHome}>
+          Back to Home
+        </button>
+      </div>
+    </div>
   );
 }
+
