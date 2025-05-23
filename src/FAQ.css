@@ -46,11 +46,41 @@
   transition: background 0.3s ease, color 0.3s ease;
   font-family: 'Mulish', sans-serif;
   text-align: center;
+  width: auto;
+  max-width: 100%;
 }
 
+/* Hover State */
 .cta-button:hover {
   background: white;
   color: #1C7FB8;
 }
+
+/* ✅ Mobile Responsive Styling */
+@media (max-width: 768px) {
+  .faq-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .faq-questions h2 {
+    font-size: 1.5rem;
+  }
+
+  .faq-item h3 {
+    font-size: 1.1rem;
+  }
+
+  .faq-item p {
+    font-size: 0.95rem;
+  }
+
+  .cta-button {
+    font-size: 0.95rem;
+    padding: 10px 20px;
+    width: auto;
+  }
+}
+
+
 
 
