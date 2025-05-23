@@ -21,20 +21,24 @@ export default async function handler(req, res) {
     const safeName = name.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
 
     const columnValues = {
-      [EMAIL_COLUMN_ID]: { email, text: name },
+      [EMAIL_COLUMN_ID]: {
+        email: email,
+        text: name,
+      },
     };
-
+    
     const query = `
       mutation {
         create_item (
           board_id: ${BOARD_ID},
           item_name: "${safeName}",
-          column_values: ${JSON.stringify(JSON.stringify(columnValues))}
+          column_values: "${JSON.stringify(columnValues).replace(/"/g, '\\"')}"
         ) {
           id
         }
       }
     `;
+
 
     const response = await fetch(MONDAY_API_URL, {
       method: 'POST',
