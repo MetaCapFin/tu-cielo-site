@@ -23,7 +23,6 @@ export default async function handler(req, res) {
     }
 
     const safeName = name.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-
     const columnValues = {
       [EMAIL_COLUMN_ID]: email,
     };
@@ -33,7 +32,7 @@ export default async function handler(req, res) {
         create_item (
           board_id: ${BOARD_ID},
           item_name: "${safeName}",
-          column_values: """${JSON.stringify(columnValues)}"""
+          column_values: ${JSON.stringify(JSON.stringify(columnValues))}
         ) {
           id
         }
@@ -61,12 +60,18 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: data.errors.map(e => e.message).join(', ') });
     }
 
+    if (!data?.data?.create_item?.id) {
+      console.log('Unexpected Monday response format:', data);
+      return res.status(500).json({ error: 'Invalid response from Monday API' });
+    }
+
     return res.status(200).json({ success: true, itemId: data.data.create_item.id });
   } catch (error) {
     console.error('Error creating Monday item:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
+
 
 
 
