@@ -17,28 +17,29 @@ export default async function handler(req, res) {
 
   try {
     const apiKey = process.env.MONDAY_API_KEY;
+    console.log('Using API key:', apiKey ? '✓ Present' : '✗ Missing');
     if (!apiKey) {
-      console.log('Missing Monday API key');
       return res.status(500).json({ error: 'Missing Monday API key' });
     }
 
     const safeName = name.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-    const safeEmail = email.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
 
-    const columnValues = JSON.stringify({ [EMAIL_COLUMN_ID]: safeEmail });
-    console.log('Column values:', columnValues);
+    const columnValues = {
+      [EMAIL_COLUMN_ID]: email,
+    };
 
     const createItemQuery = `
       mutation {
         create_item (
           board_id: ${BOARD_ID},
           item_name: "${safeName}",
-          column_values: "${columnValues.replace(/"/g, '\\"')}"
+          column_values: """${JSON.stringify(columnValues)}"""
         ) {
           id
         }
       }
     `;
+
     console.log('GraphQL query:', createItemQuery);
 
     const response = await fetch(MONDAY_API_URL, {
@@ -50,12 +51,14 @@ export default async function handler(req, res) {
       body: JSON.stringify({ query: createItemQuery }),
     });
 
-    const data = await response.json();
-    console.log('Monday response:', data);
+    const raw = await response.text();
+    console.log('Raw Monday response:', raw);
+
+    const data = JSON.parse(raw);
 
     if (data.errors) {
-      console.log('Monday API returned errors:', data.errors);
-      return res.status(500).json({ error: data.errors[0].message || 'Monday API error' });
+      console.log('Monday API returned errors:', JSON.stringify(data.errors, null, 2));
+      return res.status(500).json({ error: data.errors.map(e => e.message).join(', ') });
     }
 
     return res.status(200).json({ success: true, itemId: data.data.create_item.id });
@@ -64,6 +67,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
+
 
 
 
