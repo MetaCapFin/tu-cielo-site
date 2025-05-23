@@ -18,8 +18,10 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Missing Monday API key' });
     }
 
+    // Escape quotes in name for item_name
     const safeName = name.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
 
+    // Prepare column values object
     const columnValues = {
       [EMAIL_COLUMN_ID]: {
         email: email,
@@ -27,20 +29,26 @@ export default async function handler(req, res) {
       },
     };
 
+    // Convert to JSON string
     const columnValuesString = JSON.stringify(columnValues);
 
+    // Escape the quotes inside JSON string for GraphQL
+    const escapedColumnValues = columnValuesString.replace(/"/g, '\\"');
+
+    // Build the GraphQL query string
     const query = `
       mutation {
-        create_item (
+        create_item(
           board_id: ${BOARD_ID},
           item_name: "${safeName}",
-          column_values: '${columnValuesString}'
+          column_values: "${escapedColumnValues}"
         ) {
           id
         }
       }
     `;
 
+    // Make the API call
     const response = await fetch(MONDAY_API_URL, {
       method: 'POST',
       headers: {
@@ -63,11 +71,3 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
-
-
-
-
-
-
-
-
