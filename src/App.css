@@ -469,6 +469,8 @@
   max-width: 1000px;
   margin: 0 auto;
   flex-wrap: nowrap;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .form-image {
