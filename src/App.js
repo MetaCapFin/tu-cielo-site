@@ -118,6 +118,41 @@ function Homepage() {
     }
   };
 
+  const handleInsightsSubmit = async () => {
+  if (!formValid) {
+    alert('Please enter both name and email.');
+    return;
+  }
+
+  try {
+    const response = await fetch('/api/submit-form', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: formData.name, email: formData.email }),
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.success) {
+      // Trigger PDF download after successful Monday.com submission
+      const link = document.createElement('a');
+      link.href = '/TuCielo_HOA_Lending_Guide.pdf'; 
+      link.download = 'TuCielo_HOA_Lending_Guide.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      setShowModal(false);
+      setFormData({ name: '', email: '' });
+      alert('Thanks! Your insights will be sent shortly.');
+    } else {
+      alert('Error submitting your info: ' + (result.error || 'Unknown error'));
+    }
+  } catch (error) {
+    alert('Network error: ' + error.message);
+  }
+};
+
    return (
     
      <>
@@ -256,7 +291,7 @@ function Homepage() {
                     <h3>Get Your 10 Insights</h3>
                     <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleInputChange} />
                     <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleInputChange} />
-                    <button className="cta-button" onClick={handleDownload}>Get Insights</button>
+                    <button className="cta-button" onClick={handleInsightsSubmit}>Get Insights</button>
                   </div>
                 </div>
               )}
