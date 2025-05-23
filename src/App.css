@@ -466,7 +466,7 @@
   gap: 40px;
   max-width: 1000px;
   margin: 0 auto;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .form-image {
@@ -861,6 +861,21 @@
     padding: 14px 0;
   }
 }
+
+@media (max-width: 768px) {
+  .form-container {
+    flex-wrap: wrap; /* stack image + form vertically on smaller screens */
+  }
+  .form-image, 
+  .contact-form form {
+    flex: 1 1 100%;   /* full width each */
+    max-width: 100%;
+  }
+  .form-image {
+    margin-bottom: 20px; /* spacing below image */
+  }
+}
+
 
 
 
