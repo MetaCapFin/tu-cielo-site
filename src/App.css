@@ -752,9 +752,12 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
   position: relative;
   text-align: center;
-
   max-height: 80vh;    /* added for vertical scrolling */
   overflow-y: auto;    /* added for vertical scrolling */
+}
+
+.modal-body {
+  color: white;
 }
 
 .modal-content h3 {
