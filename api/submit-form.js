@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 const MONDAY_API_URL = 'https://api.monday.com/v2';
 const BOARD_ID = 9221044692;
 const EMAIL_COLUMN_ID = 'email_mkr7vb0c';
