@@ -505,11 +505,11 @@ function Homepage() {
           {/* CONTACT FORM */}
           <section id="contact-section" className="contact-form">
             <h2>Let's Talk About Your Community's Needs</h2>
+            <div className="form-image">
+               <img src="hoa1.jpg" alt="Community" />
+            </div>
             <div className="form-container">
-              <div className="form-image">
-                <img src="hoa1.jpg" alt="Community" />
-              </div>
-              <form onSubmit={handleContactFormSubmit}>
+               <form onSubmit={handleContactFormSubmit}>
                 <input
                   type="text"
                   name="name"
