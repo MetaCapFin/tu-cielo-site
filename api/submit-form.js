@@ -25,7 +25,7 @@ export default async function handler(req, res) {
     const columnValues = {
       [EMAIL_COLUMN_ID]: {
         email: email,
-        text: name,
+        text: email,
       },
     };
 
