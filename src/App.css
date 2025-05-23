@@ -470,8 +470,8 @@
 }
 
 .form-image {
-  flex: 0 0 auto;
-  max-width: 1000px;
+  flex: 0 0 300px; /* fixed width for image container */
+  max-width: 300px; /* constrain image container max width */
 }
 
 .form-image img {
@@ -482,11 +482,7 @@
 }
 
 .contact-form form {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  min-width: 250px;
+  flex: 1 1 500px; /* allow form to grow/shrink but max width 500 */
   max-width: 500px;
 }
 
