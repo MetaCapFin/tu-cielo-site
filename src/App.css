@@ -781,6 +781,89 @@
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 80px; /* less top padding on smaller screens */
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  /* Make header-features stack vertically and full width */
+  .header-features {
+    flex-direction: column;
+  }
+  .header-features .header,
+  .header-features .features {
+    max-width: 100%;
+    padding: 20px 0;
+  }
+
+  /* Pain points list full width */
+  .pain-points-list {
+    max-width: 100%;
+    padding-left: 15px;
+  }
+
+  /* Payment breakdown area full width with padding */
+  .payment-breakdown {
+    max-width: 100%;
+    padding: 20px 15px;
+  }
+
+  /* How it works steps stack vertically */
+  .steps-visual {
+    flex-direction: column;
+    gap: 30px;
+    margin: 30px 0 20px;
+  }
+  .step-group {
+    align-items: flex-start;
+  }
+  .step-line-horizontal {
+    display: none;
+  }
+
+  /* Form container stacks vertically and centers */
+  .form-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    max-width: 100%;
+  }
+  .contact-form form {
+    max-width: 100%;
+    width: 100%;
+  }
+  .form-image {
+    max-width: 100%;
+  }
+
+  /* Features table scroll horizontally */
+  .features table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* FAQ section full width and text adjustments */
+  .faq-section {
+    padding: 30px 15px;
+    max-width: 100%;
+  }
+  .faq-section h2 {
+    font-size: 1.6rem;
+  }
+
+  /* Adjust CTA buttons to full width */
+  .cta-button {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 14px 0;
+  }
+}
+
+
 
 
 
