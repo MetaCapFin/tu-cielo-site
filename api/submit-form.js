@@ -1,4 +1,5 @@
 const MONDAY_API_URL = 'https://api.monday.com/v2';
+const MONDAY_API_URL = 'https://api.monday.com/v2';
 const BOARD_ID = 9221044692;
 const EMAIL_COLUMN_ID = 'email_mkr7vb0c';
 
@@ -22,11 +23,18 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Missing Monday API key' });
     }
 
+    // Escape quotes and backslashes in the item name
     const safeName = name.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+
+    // Proper email column value format for Monday.com email column
     const columnValues = {
-      [EMAIL_COLUMN_ID]: email,
+      [EMAIL_COLUMN_ID]: {
+        email,
+        text: name,
+      },
     };
 
+    // Double stringify columnValues so it is a valid GraphQL string literal
     const createItemQuery = `
       mutation {
         create_item (
@@ -71,6 +79,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
+
 
 
 
