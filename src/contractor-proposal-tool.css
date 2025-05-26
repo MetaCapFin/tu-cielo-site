@@ -44,7 +44,7 @@
 .loan-calculator input[type="range"] {
   width: 100%;
   margin-top: 10px;
-  accent-color: #bfd400;
+  accent-color: #2184bd
   height: 36px; /* taller slider for easier touch */
 }
 
