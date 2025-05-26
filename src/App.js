@@ -572,7 +572,7 @@ function Homepage() {
 
       {/* FOOTER */}
       <footer className="site-footer">
-        <p>© 2023 Tu Cielo. All rights reserved.</p>
+        <p>© 2025 Tu Cielo. All rights reserved.</p>
         <br></br>
         <p>
           Disclaimer: TuCielo and any affiliated entities do not provide installation services and are not government agencies. All terms, conditions,
