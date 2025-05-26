@@ -185,7 +185,7 @@ function Homepage() {
           <div className="logo-placeholder">
             <img src="/cloud_logo.jpg" alt="Logo" />
           </div>
-          <h1>Tu Cielo</h1>
+          <h1>TuCielo</h1>
         </div>
         <div className="beta-label">
           <strong>Beta Program</strong>
