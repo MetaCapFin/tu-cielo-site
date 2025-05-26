@@ -209,7 +209,7 @@ function Homepage() {
           Apply
         </button>
         <Link to="contractor-proposal-tool">
-          <button className="header-button">Contractor Proposal Tools</button>
+          <button className="header-button">TuCielo Calculator</button>
         </Link>
       </div>
       {showPrivacyModal && (
