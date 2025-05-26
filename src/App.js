@@ -572,32 +572,12 @@ function Homepage() {
 
       {/* FOOTER */}
       <footer className="site-footer">
-        <p>© 2023 Tu Cielo. All rights reserved.</p>
-
         <p>
-          Tu Cielo’s financing programs are not government-sponsored, and no government assistance is available to pay any associated assessments.
-          All improvements financed through Tu Cielo must be installed by your chosen contractor. Tu Cielo and any affiliated entities do not
-          provide installation services and are not government agencies.
-        </p>
-        <p>
-          Financing is offered by Tu Cielo and its affiliated partners. Tu Cielo is not a licensed lender or broker. Licensing and regulatory
-          compliance may vary by state or region.
-        </p>
-        <p>
-          *The timing of your first payment depends on the time of funding; interest begins accruing once funds are disbursed.*
-        </p>
-        <p>
-          <strong>Tu Cielo secures financing through a recorded lien on the HOA.</strong>
-        </p>
-        <p>
-          All terms, conditions, and results are project-specific and may vary.
-          <br />
-          - Financing terms may vary and will depend on Tu Cielo’s underwriting criteria without prior notice.
-          <br />
-          - Payment estimates are for budgeting purposes only. Tu Cielo financing is repaid through your HOA. Payment amounts may depend on term,
-          rates, fees, number of units, and any other covenants agreed upon between the HOA and the lender.
-          <br />
-          - Monthly estimated payments are based on total financed amounts. Please consult a Tu Cielo representative for personalized estimates.
+          Disclaimer: TuCielo and any affiliated entities do not provide installation services and are not government agencies. All terms, conditions,
+          and results are project-specific and may vary. Financing terms may change and are subject to TuCielo’s underwriting criteria without prior
+          notice. Payment estimates are for budgeting purposes only and are based on total financed amounts. TuCielo financing is repaid through your
+          HOA, and monthly payments may vary based on loan term, interest rate, fees, number of units, and other covenants agreed upon between the HOA
+          and the lender. This website does not constitute an offer to lend. Please consult a TuCielo representative for personalized estimates.
         </p>
       </footer>
     </div>
