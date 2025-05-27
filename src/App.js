@@ -205,8 +205,8 @@ function Homepage() {
         <Link to="/faq">
           <button className="header-button">FAQ</button>
         </Link>
-        <link to="blogposts">
-              <button className="header-button">Blog</button>
+        <link to="/blogposts">
+          <button className="header-button">Blog</button>
         </link>
         <button className="header-button"onClick={() => {document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });}}>
           Apply
