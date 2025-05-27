@@ -879,37 +879,3 @@
     padding: 14px 0;
   }
 }
-
-@media (min-width: 769px) {
-  .form-container {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
-    max-width: 1000px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .form-image {
-    flex: 0 0 60% !important;
-    max-width: 60% !important;
-  }
-
-  .contact-form {
-    flex: 0 0 40% !important;
-    max-width: 40% !important;
-  }
-}
-
-
-
-
-
-
-
-
-
-
