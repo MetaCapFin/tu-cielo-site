@@ -224,7 +224,7 @@
 }
 
 .back-to-main-button {
-  display: block;
+  display: inline-block;
   margin: 30px auto 0 auto;
   background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
   color: white;
@@ -236,14 +236,14 @@
   transition: background 0.3s ease, color 0.3s ease;
   font-family: 'Mulish', sans-serif;
   text-align: center;
-  width: auto;
-  max-width: 100%;
+  text-decoration: none; /* <--- this removes the underline */
 }
 
 .back-to-main-button:hover {
   background: white;
   color: #1C7FB8;
 }
+
 
 
 
