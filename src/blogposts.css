@@ -96,7 +96,7 @@
 }
 
 .cta-button {
- display: inline-block;
+  display: inline-block;
   margin: 30px auto 0 auto;
   background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
   color: white;
@@ -112,7 +112,7 @@
 }
 
 .cta-button:hover {
- background: white;
+  background: white;
   color: #1C7FB8;
 }
 
@@ -127,7 +127,7 @@
 }
 
 .pagination-controls button {
-display: inline-block;
+  display: inline-block;
   margin: 30px auto 0 auto;
   background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
   color: white;
@@ -294,9 +294,13 @@ display: inline-block;
     height: 40px;
   }
 
+  /* UPDATED: Make header buttons same size, center aligned */
   .header-button {
-    width: 100%;
-    text-align: left;
+    width: 200px;          /* fixed width */
+    margin: 0 auto;        /* center horizontally */
+    text-align: center;    /* center text */
+    padding: 12px 0;       /* consistent vertical padding */
+    display: block;        /* allow margin auto to work */
   }
 
   .cta-button,
@@ -342,7 +346,6 @@ display: inline-block;
     font-size: 1.2rem;
   }
 }
-
 
 
 
