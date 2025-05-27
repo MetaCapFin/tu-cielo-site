@@ -286,7 +286,7 @@
   .header-top,
   .header-bottom {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
   }
 
@@ -294,13 +294,30 @@
     height: 40px;
   }
 
-  /* UPDATED: Make header buttons same size, center aligned */
+  /* Fixed mobile button styles */
   .header-button {
-    width: 200px;          /* fixed width */
-    margin: 0 auto;        /* center horizontally */
-    text-align: center;    /* center text */
-    padding: 12px 0;       /* consistent vertical padding */
-    display: block;        /* allow margin auto to work */
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 12px 0;
+    display: block;
+  }
+
+  .header-bottom > a,
+  .header-bottom > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .header-bottom > a > .header-button,
+  .header-bottom > button.header-button {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .cta-button,
@@ -324,34 +341,7 @@
     font-size: 0.85rem;
     padding: 20px 10px;
   }
-  
-.header-bottom {
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .header-button {
-    width: 200px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 12px 0;
-    display: block;
-  }
-
-  .header-bottom > a,
-  .header-bottom > button {
-    display: flex;
-    width: 100%;
-  }
-
-  .header-bottom > a > .header-button,
-  .header-bottom > button.header-button {
-    width: 100%;
-    text-align: center;
-  }
 }
-
 
 @media (max-width: 480px) {
   .blog-title {
