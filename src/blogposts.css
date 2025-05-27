@@ -224,7 +224,7 @@
 }
 
 .back-to-main-button {
-  background-color: #0047AB; /* TuCielo brand blue */
+  background-color: #2184BD; /* TuCielo brand blue */
   color: white;
   border: none;
   padding: 10px 24px;
@@ -235,7 +235,7 @@
 }
 
 .back-to-main-button:hover {
-  background-color: #002F6C;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 
