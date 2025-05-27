@@ -41,7 +41,7 @@ const BlogPosts = () => {
     </h2>
     <article className="blog-article">
       <p>
-        <em>As the founder of TuCielo, I've spent months analyzing the unprecedented challenges facing Florida's condominium communities. What I've discovered reveals a fundamental breakdown in how traditional lenders approach HOA financing in our post-Surfside reality.</em>
+        <em> I have spent months analyzing the unprecedented challenges facing Florida's condominium communities. What I've discovered reveals a fundamental breakdown in how traditional lenders approach HOA financing in our post-Surfside reality.</em>
       </p>
 
       <h3>The Numbers Tell a Devastating Story</h3>
