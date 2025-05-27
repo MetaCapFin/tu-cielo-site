@@ -512,6 +512,15 @@
   box-sizing: border-box;
 }
 
+.section-wrapper {
+  max-width: 1000px; /* or match your other sections */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
 .form-container {
   display: flex;
   flex-direction: row;
