@@ -256,6 +256,95 @@ display: inline-block;
   color: #1C7FB8;
 }
 
+@media (max-width: 768px) {
+  .blog-content-wrapper {
+    padding: 30px 15px;
+  }
+
+  .blog-title {
+    font-size: 1.6rem;
+  }
+
+  .blog-date {
+    font-size: 0.8rem;
+  }
+
+  .blog-body {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .site-header h1 {
+    font-size: 1.4rem;
+    margin-left: 20px;
+  }
+
+  .beta-label {
+    font-size: 1.2rem;
+  }
+
+  .header-top,
+  .header-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .logo-placeholder img {
+    height: 40px;
+  }
+
+  .header-button {
+    width: 100%;
+    text-align: left;
+  }
+
+  .cta-button,
+  .pagination-controls button,
+  .back-to-main-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .comments-section textarea {
+    font-size: 1rem;
+  }
+
+  .pagination-controls {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .site-footer {
+    font-size: 0.85rem;
+    padding: 20px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-title {
+    font-size: 1.4rem;
+  }
+
+  .site-header h1 {
+    font-size: 1.2rem;
+    margin-left: 10px;
+  }
+
+  .cta-button,
+  .pagination-controls button,
+  .back-to-main-button {
+    font-size: 0.95rem;
+  }
+
+  .comments-section h3 {
+    font-size: 1.2rem;
+  }
+}
+
+
+
 
 
 
