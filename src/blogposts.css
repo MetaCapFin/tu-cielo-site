@@ -324,6 +324,24 @@
     font-size: 0.85rem;
     padding: 20px 10px;
   }
+  
+.header-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .header-bottom > a,
+  .header-bottom > button {
+    display: flex;
+    width: 100%;
+  }
+
+  .header-bottom > a > .header-button,
+  .header-bottom > button.header-button {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
