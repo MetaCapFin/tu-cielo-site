@@ -114,6 +114,55 @@
   background-color: #607D8B;
 }
 
+/* HERO SECTION */
+.hero-section {
+  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
+  color: white;
+  padding: 60px 20px 40px;
+  text-align: center;
+  font-family: 'Mulish', sans-serif;
+}
+
+.hero-content h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.hero-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.hero-benefits li {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .hero-benefits li {
+    font-size: 1rem;
+  }
+}
+
+
 /* Header + Features Side-by-Side */
 .header-features {
   display: flex;
