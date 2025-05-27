@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import ContractorProposalTool from './contractor-proposal-tool';
 import FAQ from './faq'; // from src/faq.js
+import Blog from './blogposts';
 
 function Homepage() {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -204,7 +205,9 @@ function Homepage() {
         <Link to="/faq">
           <button className="header-button">FAQ</button>
         </Link>
-        <button className="header-button">Blog</button>
+        <link to="blogposts">
+              <button className="header-button">Blog</button>
+        </link>
         <button className="header-button"onClick={() => {document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });}}>
           Apply
         </button>
@@ -596,6 +599,7 @@ function App() {
         <Route path="/hoa-application" element={<TuCieloHOALoanApplication />} />
         <Route path="/contractor-proposal-tool" element={<ContractorProposalTool />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/blogposts" element={<Blog />} />
       </Routes>
     </Router>
   );
