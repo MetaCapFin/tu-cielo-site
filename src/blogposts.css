@@ -224,18 +224,25 @@
 }
 
 .back-to-main-button {
-  background-color: #2184BD; /* TuCielo brand blue */
+  display: block;
+  margin: 30px auto 0 auto;
+  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
   color: white;
+  padding: 12px 24px;
   border: none;
-  padding: 10px 24px;
-  font-size: 1rem;
   border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-family: 'Mulish', sans-serif;
+  text-align: center;
+  width: auto;
+  max-width: 100%;
 }
 
 .back-to-main-button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background: white;
+  color: #1C7FB8;
 }
 
 
