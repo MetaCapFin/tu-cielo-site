@@ -870,19 +870,30 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 769px) {
   .form-container {
-    flex-wrap: wrap; /* stack image + form vertically on smaller screens */
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
   }
-  .form-image, 
-  .contact-form form {
-    flex: 1 1 100%;   /* full width each */
-    max-width: 100%;
-  }
+
   .form-image {
-    margin-bottom: 20px; /* spacing below image */
+    flex: 0 0 60% !important;
+    max-width: 60% !important;
+  }
+
+  .contact-form {
+    flex: 0 0 40% !important;
+    max-width: 40% !important;
   }
 }
+
 
 
 
