@@ -38,6 +38,42 @@
   margin-bottom: 2rem;
 }
 
+/* Blog article content styles */
+.blog-article h2,
+.blog-article h3,
+.blog-article h4 {
+  color: #2184BD;
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+}
+
+.blog-article p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.blog-article strong {
+  font-weight: 600;
+}
+
+.blog-article em {
+  font-style: italic;
+  color: #555;
+}
+
+.blog-article ul {
+  margin-left: 1.2rem;
+  margin-bottom: 1rem;
+  list-style-type: disc;
+  color: #444;
+}
+
+.blog-article ul li {
+  margin-bottom: 0.4rem;
+}
+
 /* Comments section */
 .comments-section {
   margin-top: 40px;
