@@ -1,141 +1,137 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './blogposts.css';
-
-const BlogPosts = () => {
-  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const posts = [
-    {
-      id: 1,
-      title: 'How to Fund Your HOA Repairs Without Raising Dues',
-      date: 'May 1, 2025',
-      content: 'Learn how HOAs can finance major repairs without increasing assessments for residents...',
-      image: 'https://via.placeholder.com/800x400',
-    },
-    {
-      id: 2,
-      title: 'Top 5 Mistakes HOAs Make When Budgeting for Repairs',
-      date: 'April 24, 2025',
-      content: 'Avoid these common financial pitfalls and keep your community’s finances on track...',
-      image: 'https://via.placeholder.com/800x400',
-    },
-    {
-      id: 3,
-      title: 'Understanding HOA Reserve Studies',
-      date: 'April 10, 2025',
-      content: 'A simple guide to help your HOA board understand and use reserve studies effectively...',
-      image: 'https://via.placeholder.com/800x400',
-    },
-  ];
-
-  const currentPost = posts[currentIndex];
-
-  const handlePrev = () => {
-    if (currentIndex > 0) setCurrentIndex(currentIndex - 1);
-  };
-
-  const handleNext = () => {
-    if (currentIndex < posts.length - 1) setCurrentIndex(currentIndex + 1);
-  };
-
-  return (
-    <div className="blog-page">
-      {/* HEADER */}
-      <header className="site-header">
-        <div className="header-top">
-          <div className="logo-title">
-            <div className="logo-placeholder">
-              <img src="/cloud_logo.jpg" alt="Logo" />
-            </div>
-            <h1>TuCielo</h1>
-          </div>
-          <div className="beta-label"><strong>Beta Program</strong></div>
-        </div>
-        <div className="header-bottom">
-          <button className="header-button" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
-          <Link to="/faq"><button className="header-button">FAQ</button></Link>
-          <Link to="/blogposts"><button className="header-button">Blog</button></Link>
-          <Link to="/contractor-proposal-tool"><button className="header-button">TuCielo Calculator</button></Link>
-        </div>
-      </header>
-
-      <main className="main-content">
-        <div className="blog-content-wrapper">
-          <h2 className="blog-title">{currentPost.title}</h2>
-          <p className="blog-date">{currentPost.date}</p>
-          <img src={currentPost.image} alt={currentPost.title} className="blog-main-image" />
-          <article className="blog-article">
-      <p><em>TuCielo, has spent months analyzing the unprecedented challenges facing Florida's condominium communities...</em></p>
-
-      <h3>The Numbers Tell a Devastating Story</h3>
-      <ul>
-        <li><strong>Skyrocketing Costs:</strong> HOA fees rose from $232 to $390/month in 3 years; Miami at $835/month.</li>
-        <li><strong>Assessment Shock:</strong> $500–$400,000 per unit; repairs cost $15K–$75K per unit.</li>
-        <li><strong>Market Displacement:</strong> 22% value drop for 30+ year-old buildings; 1,400+ blacklisted by Fannie Mae.</li>
-      </ul>
-
-      <h3>The Post-Surfside Regulatory Reality</h3>
-      <p>Milestone inspections, reserve studies, and full reserve funding have triggered an immediate financial reckoning...</p>
-
-      <h3>Why Traditional Banks Are Retreating</h3>
-      <ul>
-        <li><strong>Risk Model Mismatch:</strong> Banks demand personal guarantees and short terms.</li>
-        <li><strong>Compliance Cost Confusion:</strong> Banks misclassify regulations as risk.</li>
-        <li><strong>Operational Inflexibility:</strong> Long approval timelines, inflexible processes.</li>
-      </ul>
-
-      <h3>The Hidden Cost of Inaction</h3>
-      <p>Special assessments are forcing displacement and property value destruction...</p>
-
-      <h3>A Different Approach: Assessment Lien Financing</h3>
-      <ul>
-        <li><strong>Security That Makes Sense:</strong> No personal guarantees; secured by assessment liens.</li>
-        <li><strong>Crisis-Ready Underwriting:</strong> Evaluates true community viability.</li>
-        <li><strong>Realistic Terms:</strong> Turns $20K assessments into ~$208/month payments.</li>
-      </ul>
-
-      <h3>What This Means for Industry Professionals</h3>
-      <p><strong>Property Managers:</strong> Provide solutions, not just problems.<br />
-        <strong>HOA Attorneys:</strong> Advise clients with confidence.<br />
-        <strong>Board Members:</strong> Fulfill fiduciary duty without harming neighbors.
+<main className="main-content">
+  <div className="content-wrapper blog-section">
+    <h2 className="blog-title">
+      The Florida HOA Financing Crisis: Why Traditional Banks Are Failing Communities When They Need Capital Most
+    </h2>
+    <article className="blog-article">
+      <p>
+        <em>As the founder of TuCielo, I've spent months analyzing the unprecedented challenges facing Florida's condominium communities. What I've discovered reveals a fundamental breakdown in how traditional lenders approach HOA financing in our post-Surfside reality.</em>
       </p>
 
+      <h3>The Numbers Tell a Devastating Story</h3>
+      <p>The financial pressure on Florida HOAs has reached crisis levels, and the data is staggering:</p>
+      <p><strong>Skyrocketing Costs:</strong></p>
+      <ul>
+        <li>Median monthly HOA fees surged 68% in just three years—from $232 in 2022 to $390 in April 2025</li>
+        <li>Tampa leads with a 17.2% year-over-year increase, followed by Orlando at 16.7%</li>
+        <li>Miami commands the highest fees at $835 monthly, though growth has slowed due to already-elevated baseline costs</li>
+      </ul>
+
+      <p><strong>Assessment Shock:</strong></p>
+      <ul>
+        <li>Special assessments now range from $500 to over $400,000 per unit</li>
+        <li>Individual owners report assessment bills exceeding $10,000 in a single year</li>
+        <li>Structural repairs alone can cost $15,000 to $75,000 per unit</li>
+      </ul>
+
+      <p><strong>Market Displacement:</strong></p>
+      <ul>
+        <li>Buildings over 30 years old have lost 22% of their value in just two years</li>
+        <li>Over 1,400 Florida condo associations are blacklisted from Fannie Mae financing</li>
+        <li>Condo inventory has reached 9.7 months of supply, compared to 5.3 months for single-family homes</li>
+      </ul>
+
+      <p>These aren't just statistics—they represent families being displaced from their homes and communities being torn apart by financial impossibility.</p>
+
+      <h3>The Post-Surfside Regulatory Reality</h3>
+      <p>
+        The tragic Champlain Towers South collapse exposed decades of deferred maintenance and inadequate financial planning. Florida's response was swift and comprehensive:
+      </p>
+
+      <p><strong>New Mandates Include:</strong></p>
+      <ul>
+        <li>Milestone structural inspections for buildings 25-30+ years old</li>
+        <li>Structural Integrity Reserve Studies (SIRS) every 10 years</li>
+        <li>Full reserve funding with no more waivers</li>
+        <li>Compliance deadlines that initially seemed impossible to meet</li>
+      </ul>
+
+      <p>
+        While these regulations are absolutely necessary for public safety, they've created an immediate financial reckoning. Associations that deferred maintenance for decades now face compressed timelines to fund millions in repairs—exactly when traditional financing has become unavailable.
+      </p>
+
+      <h3>Why Traditional Banks Are Retreating</h3>
+      <p>In my conversations with property managers across South Florida, I hear the same frustration repeatedly: "I'm tired of delivering bad news with no solutions."</p>
+
+      <p>Here's why traditional banks are failing HOA communities:</p>
+
+      <h4>Risk Model Mismatch</h4>
+      <ul>
+        <li><strong>Personal guarantees required:</strong> Banks want board members to personally guarantee million-dollar loans—an impossible ask for volunteer directors</li>
+        <li><strong>Perfect metrics demanded:</strong> Many banks cap approvals at 7% delinquency, ignoring the reality that post-crisis communities often face temporary payment challenges</li>
+        <li><strong>Short-term thinking:</strong> Banks offer 2-5 year terms, creating refinancing risk precisely when communities need stability</li>
+      </ul>
+
+      <h4>Compliance Cost Confusion</h4>
+      <p>Banks see post-Surfside compliance requirements as additional risk factors rather than necessary investments in long-term viability. They're retreating from older buildings exactly when these communities need capital most.</p>
+
+      <h4>Operational Inflexibility</h4>
+      <p>Traditional banks require extensive banking relationships, perfect documentation, and 90-120 day approval timelines. Communities facing compliance deadlines can't wait four months for a "maybe."</p>
+
+      <h3>The Hidden Cost of Inaction</h3>
+      <p>When banks retreat, communities face devastating alternatives:</p>
+
+      <p><strong>Special Assessment Shock:</strong></p>
+      <p>A $2 million repair project in a 100-unit building means $20,000 per unit immediately. For many residents—particularly seniors on fixed incomes—this represents an impossible financial demand.</p>
+
+      <p><strong>Community Displacement:</strong></p>
+      <p>Unable to pay massive assessments, long-term residents are forced to sell, often at depressed prices due to known repair issues. This destroys the social fabric that makes communities valuable.</p>
+
+      <p><strong>Property Value Destruction:</strong></p>
+      <p>Buildings with identified structural issues and pending massive assessments become unsaleable, creating a downward spiral that hurts everyone.</p>
+
+      <h3>A Different Approach: Assessment Lien Financing</h3>
+      <p>At TuCielo, we recognized that HOA financing requires a fundamentally different model. Here's what we've built:</p>
+
+      <h4>Security That Makes Sense</h4>
+      <p>Instead of personal guarantees, we secure loans with assessment lien rights—the association's legal ability to levy payments on unit owners. This creates predictable cash flow without personal risk to board members.</p>
+
+      <h4>Crisis-Ready Underwriting</h4>
+      <p>We evaluate factors that actually matter for HOA success:</p>
+      <ul>
+        <li>Community stability and engagement</li>
+        <li>Long-term viability of the property</li>
+        <li>Compliance readiness and planning</li>
+        <li>Professional management quality</li>
+      </ul>
+
+      <h4>Realistic Terms</h4>
+      <p>Our 25-year amortization schedules turn crushing special assessments into manageable monthly payments. A $20,000 per unit assessment becomes approximately $208 per month—the difference between displacement and stability.</p>
+
+      <h3>What This Means for Industry Professionals</h3>
+
+      <p><strong>Property Managers:</strong> You no longer have to choose between delivering bad news and losing management contracts. Assessment lien financing allows you to present solutions alongside problems, positioning yourself as the crisis-capable professional your communities need.</p>
+
+      <p><strong>HOA Attorneys:</strong> Your clients facing compliance deadlines now have financing options that work within Florida's legal framework. You can advise on compliance strategies knowing that capital solutions exist.</p>
+
+      <p><strong>Board Members:</strong> You can fulfill your fiduciary duty to maintain the property without personally guaranteeing loans or devastating your neighbors with impossible assessments.</p>
+
       <h3>The Path Forward</h3>
-      <p>TuCielo is creating the financing infrastructure Florida communities need. Because no senior should be displaced by a $47,000 bill.</p>
+      <p>
+        Florida's HOA financing crisis will only deepen as compliance deadlines approach and traditional banks continue their retreat. Communities need lenders who understand that post-Surfside regulations aren't risks to avoid—they're necessary investments in long-term viability.
+      </p>
+      <p>
+        The choice facing HOA communities is stark: Find appropriate financing solutions or watch decades of community building disappear through forced displacement and property value destruction.
+      </p>
+      <p>
+        At TuCielo, we're building the financing infrastructure that Florida HOAs need to navigate this crisis while preserving the communities that millions call home. Because every 78-year-old facing a $47,000 assessment deserves better than displacement from the home they've loved for decades.
+      </p>
     </article>
 
-          <div className="comments-section">
-            <h3>Leave a Comment</h3>
-            <textarea placeholder="Your comment..." rows="4"></textarea>
-            <button className="cta-button">Submit</button>
-          </div>
+    {/* COMMENT SECTION */}
+    <section className="comment-section">
+      <h3>Leave a Comment</h3>
+      <textarea placeholder="Write your comment here..." className="comment-box" />
+      <button className="cta-button">Submit Comment</button>
+    </section>
 
-          <div className="pagination-controls">
-            <button onClick={handlePrev} disabled={currentIndex === 0}>&laquo; Previous</button>
-            <span>{currentIndex + 1} of {posts.length}</span>
-            <button onClick={handleNext} disabled={currentIndex === posts.length - 1}>Next &raquo;</button>
-          </div>
-        </div>
-      </main>
-
-      {/* FOOTER */}
-      <footer className="site-footer">
-        <p>© 2025 Tu Cielo. All rights reserved.</p>
-        <br />
-        <p>
-          Disclaimer: TuCielo and any affiliated entities do not provide installation services and are not government agencies. All terms, conditions,
-          and results are project-specific and may vary. Financing terms may change and are subject to TuCielo’s underwriting criteria without prior
-          notice. Payment estimates are for budgeting purposes only and are based on total financed amounts. TuCielo financing is repaid through your
-          HOA, and monthly payments may vary based on loan term, interest rate, fees, number of units, and other covenants agreed upon between the HOA
-          and the lender. This website does not constitute an offer to lend. Please consult a TuCielo representative for personalized estimates.
-        </p>
-      </footer>
+    {/* PAGINATION SECTION */}
+    <div className="pagination">
+      <button className="pagination-button" disabled>← Newer Post</button>
+      <button className="pagination-button">Older Post →</button>
     </div>
-  );
-};
+  </div>
+</main>
 
-export default BlogPosts;
 
 
