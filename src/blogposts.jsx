@@ -36,46 +36,123 @@ const BlogPosts = () => {
       {/* MAIN BLOG POST */}
       <main className="main-content">
         <div className="content-wrapper blog-section">
-          <h2 className="blog-title">The Florida HOA Financing Crisis: Why Traditional Banks Are Failing Communities</h2>
-          <article className="blog-article">
-            <p><em>As the founder of TuCielo, I've spent months analyzing the unprecedented challenges facing Florida's condominium communities...</em></p>
+           <h2 className="blog-title">
+      The Florida HOA Financing Crisis: Why Traditional Banks Are Failing Communities When They Need Capital Most
+    </h2>
+    <article className="blog-article">
+      <p>
+        <em>As the founder of TuCielo, I've spent months analyzing the unprecedented challenges facing Florida's condominium communities. What I've discovered reveals a fundamental breakdown in how traditional lenders approach HOA financing in our post-Surfside reality.</em>
+      </p>
 
-            <h3>The Numbers Tell a Devastating Story</h3>
-            <ul>
-              <li><strong>Skyrocketing Costs:</strong> HOA fees rose from $232 to $390/month in 3 years; Miami at $835/month.</li>
-              <li><strong>Assessment Shock:</strong> $500–$400,000 per unit; repairs cost $15K–$75K per unit.</li>
-              <li><strong>Market Displacement:</strong> 22% value drop for 30+ year-old buildings; 1,400+ blacklisted by Fannie Mae.</li>
-            </ul>
+      <h3>The Numbers Tell a Devastating Story</h3>
+      <p>The financial pressure on Florida HOAs has reached crisis levels, and the data is staggering:</p>
+      <p><strong>Skyrocketing Costs:</strong></p>
+      <ul>
+        <li>Median monthly HOA fees surged 68% in just three years—from $232 in 2022 to $390 in April 2025</li>
+        <li>Tampa leads with a 17.2% year-over-year increase, followed by Orlando at 16.7%</li>
+        <li>Miami commands the highest fees at $835 monthly, though growth has slowed due to already-elevated baseline costs</li>
+      </ul>
 
-            <h3>The Post-Surfside Regulatory Reality</h3>
-            <p>Milestone inspections, reserve studies, and full reserve funding have triggered an immediate financial reckoning...</p>
+      <p><strong>Assessment Shock:</strong></p>
+      <ul>
+        <li>Special assessments now range from $500 to over $400,000 per unit</li>
+        <li>Individual owners report assessment bills exceeding $10,000 in a single year</li>
+        <li>Structural repairs alone can cost $15,000 to $75,000 per unit</li>
+      </ul>
 
-            <h3>Why Traditional Banks Are Retreating</h3>
-            <ul>
-              <li><strong>Risk Model Mismatch:</strong> Banks demand personal guarantees and short terms.</li>
-              <li><strong>Compliance Cost Confusion:</strong> Banks misclassify regulations as risk.</li>
-              <li><strong>Operational Inflexibility:</strong> Long approval timelines, inflexible processes.</li>
-            </ul>
+      <p><strong>Market Displacement:</strong></p>
+      <ul>
+        <li>Buildings over 30 years old have lost 22% of their value in just two years</li>
+        <li>Over 1,400 Florida condo associations are blacklisted from Fannie Mae financing</li>
+        <li>Condo inventory has reached 9.7 months of supply, compared to 5.3 months for single-family homes</li>
+      </ul>
 
-            <h3>The Hidden Cost of Inaction</h3>
-            <p>Special assessments are forcing displacement and property value destruction...</p>
+      <p>These aren't just statistics—they represent families being displaced from their homes and communities being torn apart by financial impossibility.</p>
 
-            <h3>A Different Approach: Assessment Lien Financing</h3>
-            <ul>
-              <li><strong>Security That Makes Sense:</strong> No personal guarantees; secured by assessment liens.</li>
-              <li><strong>Crisis-Ready Underwriting:</strong> Evaluates true community viability.</li>
-              <li><strong>Realistic Terms:</strong> Turns $20K assessments into ~$208/month payments.</li>
-            </ul>
+      <h3>The Post-Surfside Regulatory Reality</h3>
+      <p>
+        The tragic Champlain Towers South collapse exposed decades of deferred maintenance and inadequate financial planning. Florida's response was swift and comprehensive:
+      </p>
 
-            <h3>What This Means for Industry Professionals</h3>
-            <p><strong>Property Managers:</strong> Provide solutions, not just problems.<br />
-              <strong>HOA Attorneys:</strong> Advise clients with confidence.<br />
-              <strong>Board Members:</strong> Fulfill fiduciary duty without harming neighbors.
-            </p>
+      <p><strong>New Mandates Include:</strong></p>
+      <ul>
+        <li>Milestone structural inspections for buildings 25-30+ years old</li>
+        <li>Structural Integrity Reserve Studies (SIRS) every 10 years</li>
+        <li>Full reserve funding with no more waivers</li>
+        <li>Compliance deadlines that initially seemed impossible to meet</li>
+      </ul>
 
-            <h3>The Path Forward</h3>
-            <p>TuCielo is creating the financing infrastructure Florida communities need. Because no senior should be displaced by a $47,000 bill.</p>
-          </article>
+      <p>
+        While these regulations are absolutely necessary for public safety, they've created an immediate financial reckoning. Associations that deferred maintenance for decades now face compressed timelines to fund millions in repairs—exactly when traditional financing has become unavailable.
+      </p>
+
+      <h3>Why Traditional Banks Are Retreating</h3>
+      <p>In my conversations with property managers across South Florida, I hear the same frustration repeatedly: "I'm tired of delivering bad news with no solutions."</p>
+
+      <p>Here's why traditional banks are failing HOA communities:</p>
+
+      <h4>Risk Model Mismatch</h4>
+      <ul>
+        <li><strong>Personal guarantees required:</strong> Banks want board members to personally guarantee million-dollar loans—an impossible ask for volunteer directors</li>
+        <li><strong>Perfect metrics demanded:</strong> Many banks cap approvals at 7% delinquency, ignoring the reality that post-crisis communities often face temporary payment challenges</li>
+        <li><strong>Short-term thinking:</strong> Banks offer 2-5 year terms, creating refinancing risk precisely when communities need stability</li>
+      </ul>
+
+      <h4>Compliance Cost Confusion</h4>
+      <p>Banks see post-Surfside compliance requirements as additional risk factors rather than necessary investments in long-term viability. They're retreating from older buildings exactly when these communities need capital most.</p>
+
+      <h4>Operational Inflexibility</h4>
+      <p>Traditional banks require extensive banking relationships, perfect documentation, and 90-120 day approval timelines. Communities facing compliance deadlines can't wait four months for a "maybe."</p>
+
+      <h3>The Hidden Cost of Inaction</h3>
+      <p>When banks retreat, communities face devastating alternatives:</p>
+
+      <p><strong>Special Assessment Shock:</strong></p>
+      <p>A $2 million repair project in a 100-unit building means $20,000 per unit immediately. For many residents—particularly seniors on fixed incomes—this represents an impossible financial demand.</p>
+
+      <p><strong>Community Displacement:</strong></p>
+      <p>Unable to pay massive assessments, long-term residents are forced to sell, often at depressed prices due to known repair issues. This destroys the social fabric that makes communities valuable.</p>
+
+      <p><strong>Property Value Destruction:</strong></p>
+      <p>Buildings with identified structural issues and pending massive assessments become unsaleable, creating a downward spiral that hurts everyone.</p>
+
+      <h3>A Different Approach: Assessment Lien Financing</h3>
+      <p>At TuCielo, we recognized that HOA financing requires a fundamentally different model. Here's what we've built:</p>
+
+      <h4>Security That Makes Sense</h4>
+      <p>Instead of personal guarantees, we secure loans with assessment lien rights—the association's legal ability to levy payments on unit owners. This creates predictable cash flow without personal risk to board members.</p>
+
+      <h4>Crisis-Ready Underwriting</h4>
+      <p>We evaluate factors that actually matter for HOA success:</p>
+      <ul>
+        <li>Community stability and engagement</li>
+        <li>Long-term viability of the property</li>
+        <li>Compliance readiness and planning</li>
+        <li>Professional management quality</li>
+      </ul>
+
+      <h4>Realistic Terms</h4>
+      <p>Our 25-year amortization schedules turn crushing special assessments into manageable monthly payments. A $20,000 per unit assessment becomes approximately $208 per month—the difference between displacement and stability.</p>
+
+      <h3>What This Means for Industry Professionals</h3>
+
+      <p><strong>Property Managers:</strong> You no longer have to choose between delivering bad news and losing management contracts. Assessment lien financing allows you to present solutions alongside problems, positioning yourself as the crisis-capable professional your communities need.</p>
+
+      <p><strong>HOA Attorneys:</strong> Your clients facing compliance deadlines now have financing options that work within Florida's legal framework. You can advise on compliance strategies knowing that capital solutions exist.</p>
+
+      <p><strong>Board Members:</strong> You can fulfill your fiduciary duty to maintain the property without personally guaranteeing loans or devastating your neighbors with impossible assessments.</p>
+
+      <h3>The Path Forward</h3>
+      <p>
+        Florida's HOA financing crisis will only deepen as compliance deadlines approach and traditional banks continue their retreat. Communities need lenders who understand that post-Surfside regulations aren't risks to avoid—they're necessary investments in long-term viability.
+      </p>
+      <p>
+        The choice facing HOA communities is stark: Find appropriate financing solutions or watch decades of community building disappear through forced displacement and property value destruction.
+      </p>
+      <p>
+        At TuCielo, we're building the financing infrastructure that Florida HOAs need to navigate this crisis while preserving the communities that millions call home. Because every 78-year-old facing a $47,000 assessment deserves better than displacement from the home they've loved for decades.
+      </p>
+    </article>
 
           {/* COMMENT SECTION */}
           <section className="comment-section">
