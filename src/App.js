@@ -522,67 +522,69 @@ function Homepage() {
 
           {/* CONTACT FORM */}
           <section id="contact-section" className="contact-form">
-            <h2>Let's Talk About Your Community's Needs</h2>
-             <div className="form-container">
-              <div className="form-image">
-                <img src="hoa1.jpg" alt="Community" />
+            <div className="section-wrapper">
+              <h2>Let's Talk About Your Community's Needs</h2>
+               <div className="form-container">
+                <div className="form-image">
+                  <img src="hoa1.jpg" alt="Community" />
+                </div>
+                 <form onSubmit={handleContactFormSubmit}>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    value={contactFormData.name}
+                    onChange={handleContactFormChange}
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="community"
+                    placeholder="HOA or Community Name"
+                    value={contactFormData.community}
+                    onChange={handleContactFormChange}
+                  />
+                  <input
+                    type="text"
+                    name="city"
+                    placeholder="City"
+                    value={contactFormData.city}
+                    onChange={handleContactFormChange}
+                  />
+                  <input
+                    type="text"
+                    name="role"
+                    placeholder="Title"
+                    value={contactFormData.role}
+                    onChange={handleContactFormChange}
+                  />
+                  <input
+                    type="number"
+                    name="budget"
+                    placeholder="Amount requested"
+                    value={contactFormData.budget}
+                    onChange={handleContactFormChange}
+                    min="0"
+                    step="any"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={contactFormData.email}
+                    onChange={handleContactFormChange}
+                    required
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone"
+                    value={contactFormData.phone}
+                    onChange={handleContactFormChange}
+                  />
+                  <button type="submit" className="cta-button">Submit</button>
+                </form>
               </div>
-               <form onSubmit={handleContactFormSubmit}>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={contactFormData.name}
-                  onChange={handleContactFormChange}
-                  required
-                />
-                <input
-                  type="text"
-                  name="community"
-                  placeholder="HOA or Community Name"
-                  value={contactFormData.community}
-                  onChange={handleContactFormChange}
-                />
-                <input
-                  type="text"
-                  name="city"
-                  placeholder="City"
-                  value={contactFormData.city}
-                  onChange={handleContactFormChange}
-                />
-                <input
-                  type="text"
-                  name="role"
-                  placeholder="Title"
-                  value={contactFormData.role}
-                  onChange={handleContactFormChange}
-                />
-                <input
-                  type="number"
-                  name="budget"
-                  placeholder="Amount requested"
-                  value={contactFormData.budget}
-                  onChange={handleContactFormChange}
-                  min="0"
-                  step="any"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={contactFormData.email}
-                  onChange={handleContactFormChange}
-                  required
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone"
-                  value={contactFormData.phone}
-                  onChange={handleContactFormChange}
-                />
-                <button type="submit" className="cta-button">Submit</button>
-              </form>
             </div>
           </section>
          </div>
