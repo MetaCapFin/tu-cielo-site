@@ -154,18 +154,19 @@ const BlogPosts = () => {
       </p>
     </article>
 
-           {/* COMMENT SECTION */}
-    <section className="comment-section">
-      <h3>Leave a Comment</h3>
-      <textarea placeholder="Write your comment here..." className="comment-box" />
-      <button className="cta-button">Submit Comment</button>
-    </section>
-
+    {/* COMMENTS SECTION */}
+          <section className="comments-section">
+            <h3>Leave a Comment</h3>
+            <textarea placeholder="Write your comment here..." />
+            <button className="cta-button">Submit Comment</button>
+          </section>
+          
     {/* PAGINATION SECTION */}
-    <div className="pagination">
-      <button className="pagination-button" disabled>← Newer Post</button>
-      <button className="pagination-button">Older Post →</button>
-    </div>
+          <div className="pagination-controls">
+            <button disabled>← Newer Post</button>
+            <button>Older Post →</button>
+          </div>
+
         </div>
       </main>
 
