@@ -96,19 +96,24 @@
 }
 
 .cta-button {
-  background-color: #007aff;
+ display: inline-block;
+  margin: 30px auto 0 auto;
+  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
   color: white;
-  font-weight: 600;
-  font-family: 'Mulish', sans-serif;
+  padding: 12px 24px;
   border: none;
-  border-radius: 0.5rem;
-  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-family: 'Mulish', sans-serif;
+  text-align: center;
+  text-decoration: none; /* <--- this removes the underline */
 }
 
 .cta-button:hover {
-  background-color: #005ecc;
+ background: white;
+  color: #1C7FB8;
 }
 
 /* Pagination */
@@ -122,17 +127,24 @@
 }
 
 .pagination-controls button {
-  padding: 8px 16px;
-  border: none;
-  background-color: #2184BD;
+display: inline-block;
+  margin: 30px auto 0 auto;
+  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
   color: white;
+  padding: 12px 24px;
+  border: none;
   border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-family: 'Mulish', sans-serif;
+  text-align: center;
+  text-decoration: none; /* <--- this removes the underline */
 }
 
 .pagination-controls button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+  background: white;
+  color: #1C7FB8;
 }
 
 .pagination-controls span {
