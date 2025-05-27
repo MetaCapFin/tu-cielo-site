@@ -330,6 +330,14 @@
     align-items: center;
     gap: 8px;
   }
+  
+  .header-button {
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 12px 0;
+    display: block;
+  }
 
   .header-bottom > a,
   .header-bottom > button {
@@ -343,6 +351,7 @@
     text-align: center;
   }
 }
+
 
 @media (max-width: 480px) {
   .blog-title {
