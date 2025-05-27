@@ -178,7 +178,7 @@ function Homepage() {
         <link rel="canonical" href="https://www.tucielofinancing.com/" />
       </Helmet>
 
-  
+  <div className="page-container">
       {/* HEADER */}
       <header className="site-header">
         <div className="header-top">
@@ -269,8 +269,6 @@ function Homepage() {
           </div>
         )}
       </header>
-
-<div className="page-container">
 
       {/* MAIN CONTENT */}
       <main className="main-content">
