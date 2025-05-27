@@ -274,6 +274,20 @@ function Homepage() {
       {/* MAIN CONTENT */}
       <main className="main-content">
         <div className="content-wrapper">
+        
+          {/* HERO SECTION */}
+          <section className="hero-section">
+            <div className="hero-content">
+              <h1>Florida HOA Crisis? We Have the Solution.</h1>
+              <h2>$1M – $10M+ Capital When You Need It Most</h2>
+              <ul className="hero-benefits">
+                <li>✓ 30–45 Day Approval</li>
+                <li>✓ No Personal Guarantees</li>
+                <li>✓ 25-Year Terms</li>
+              </ul>
+            </div>
+          </section>
+      
           {/* FEATURE SECTION */}
           <section className="header-features">
             <div className="header">
