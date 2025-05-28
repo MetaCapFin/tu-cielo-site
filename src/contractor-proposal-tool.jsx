@@ -22,7 +22,6 @@ export default function ContractorProposalTool() {
         <div className="header-bottom">
           <Link to="/faq" className="header-button-link">FAQ</Link>
           <Link to="/blogposts" className="header-button-link">Blog</Link>
-          <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
         </div>
       </header>
 
