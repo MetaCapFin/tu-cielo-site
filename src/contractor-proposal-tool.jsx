@@ -1,12 +1,36 @@
 // src/contractor-proposal-tool.jsx
 import React, { useState } from 'react';
-import './contractor-proposal-tool.css'; // ensure styles are defined if needed
+import { Link } from 'react-router-dom';
+import './contractor-proposal-tool.css';
 
 export default function ContractorProposalTool() {
   return (
-    <div style={{ padding: '2rem', maxWidth: 900, margin: '0 auto' }}>
-      <h1>Contractor Proposal Tool</h1>
-      <TuCieloCalculator />
+    <div className="page-container">
+      {/* HEADER */}
+      <header className="site-header">
+        <div className="header-top">
+          <div className="logo-title">
+            <div className="logo-placeholder">
+              <img src="/cloud_logo.jpg" alt="Logo" />
+            </div>
+            <h1 className="site-title-link" onClick={() => window.location.href = '/'}>TuCielo</h1>
+          </div>
+          <div className="beta-label">
+            <strong>Beta Program</strong>
+          </div>
+        </div>
+        <div className="header-bottom">
+          <Link to="/faq" className="header-button-link">FAQ</Link>
+          <Link to="/blogposts" className="header-button-link">Blog</Link>
+          <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
+        </div>
+      </header>
+
+      {/* Main content */}
+      <div style={{ padding: '2rem', maxWidth: 900, margin: '0 auto' }}>
+        <h1>Contractor Proposal Tool</h1>
+        <TuCieloCalculator />
+      </div>
     </div>
   );
 }
@@ -168,10 +192,10 @@ function TuCieloCalculator() {
       >
         Back to TuCielo
       </button>
-
     </div>
   );
 }
+
 
 
 
