@@ -166,7 +166,7 @@ function TuCieloCalculator() {
         className="back-to-main"
         onClick={() => window.location.href = '/'}
       >
-        Back to Main Page
+        Back to TuCielo
       </button>
 
     </div>
