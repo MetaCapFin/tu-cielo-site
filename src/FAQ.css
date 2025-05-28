@@ -56,6 +56,76 @@
   color: #1C7FB8;
 }
 
+/* Header (matching site style) */
+.site-header {
+  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
+  color: white;
+  font-family: 'Mulish', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid #eef2f7;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.logo-placeholder img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
+.site-header h1 {
+  margin: 0 0 0 40px;
+  font-size: 1.8rem;
+}
+
+.beta-label {
+  margin-left: auto;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.header-bottom {
+  display: flex;
+  gap: 15px;
+  padding: 10px 20px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.header-button-link {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Mulish', sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.header-button-link:hover,
+.header-button-link:focus,
+.header-button-link:active {
+  background-color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+
 /* ✅ Mobile Responsive Styling */
 @media (max-width: 768px) {
   .faq-container {
