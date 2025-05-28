@@ -769,7 +769,7 @@
   cursor: pointer;
 }
 
-/*Mobile Styles*/
+/*MOBLIE STYLE*/
 
 @media (max-width: 768px) {
   .main-content {
@@ -805,9 +805,10 @@
     flex-direction: column;
     gap: 30px;
     margin: 30px 0 20px;
+    align-items: center;
   }
   .step-group {
-    align-items: flex-start;
+    align-items: center;
   }
   .step-line-horizontal {
     display: none;
