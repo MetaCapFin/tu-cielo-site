@@ -341,6 +341,15 @@
     font-size: 0.85rem;
     padding: 20px 10px;
   }
+  
+  .cta-button,
+  .pagination-controls button,
+  .back-to-main-button {
+    width: 100%;
+    max-width: 300px; /* or whatever you prefer */
+    margin: 0 auto;
+    display: block;
+  }
 }
 
 @media (max-width: 480px) {
