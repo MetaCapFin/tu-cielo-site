@@ -24,7 +24,6 @@ export default function FAQ() {
         <Link to="/blogposts" className="header-button-link">Blog</Link>
         <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
       </div>
-      )}
       </header>
         
     <div className="faq-container">
