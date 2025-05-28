@@ -61,8 +61,9 @@ export default function FAQ() {
           </button>
         </div>
       </div>
+    </div>
 
-      {/* FOOTER */}
+{/* FOOTER */}
       <footer className="site-footer">
         <p>© 2025 Tu Cielo. All rights reserved.</p>
         <br />
@@ -74,7 +75,6 @@ export default function FAQ() {
           and the lender. This website does not constitute an offer to lend. Please consult a TuCielo representative for personalized estimates.
         </p>
       </footer>
-    </div>
   );
 }
 
