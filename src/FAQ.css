@@ -56,6 +56,37 @@
   color: #1C7FB8;
 }
 
+/* Ensure root containers fill the viewport */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Main layout wrapper in your FAQ component */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Content area pushes footer down */
+.faq-container {
+  flex: 1;
+}
+
+/* Footer styling */
+.site-footer {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+}
+
+.site-footer p:last-child {
+  margin-bottom: 0;
+}
+
+
 /* ✅ Mobile Responsive Styling */
 @media (max-width: 768px) {
   .faq-container {
