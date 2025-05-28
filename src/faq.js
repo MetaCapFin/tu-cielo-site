@@ -32,7 +32,7 @@ export default function FAQ() {
         </div>
       </section>
 
-      <div>
+      <div className="faq-cta">
         <button className="cta-button" onClick={handleGoHome}>
           Back to TuCielo
         </button>
