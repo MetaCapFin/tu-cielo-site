@@ -173,6 +173,7 @@
 
 .site-title-link h1:hover {
   text-decoration: none;
+  cursor: pointer
 }
 
 .header-top {
