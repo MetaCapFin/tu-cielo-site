@@ -375,7 +375,7 @@ function Homepage() {
                 <div className="payment-breakdown">
                   
                   {/* Modal Trigger */}
-                  <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+                  <div style={{ textAlign: "center" }}>
                     <button className="cta-button" onClick={() => setShowLoanCalculatorModal(true)}>
                       Get Your FREE Custom Estimate
                     </button>
