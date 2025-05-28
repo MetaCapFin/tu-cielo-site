@@ -14,7 +14,7 @@ background-color: #f9f9f9;
 flex: 1;
 display: flex;
 flex-direction: column;
-padding-top: 70px; /* match your header height */
+padding-top: 70px;
 }
 
 /* Site Header*/
@@ -57,10 +57,10 @@ margin: 0 0 0 40px;
 font-size: 1.8rem;
 }
 
-/* Beta label /
+/* Beta label*/
 .beta-label {
 margin-left: auto;
-font-size: 30px; / smaller than before */
+font-size: 30px; 
 font-weight: bold;
 line-height: 1;
 }
@@ -70,7 +70,7 @@ line-height: 1;
 display: flex;
 gap: 15px;
 padding: 10px 20px;
-margin: 10px 0 0; / merged margin-top:10px from duplicate */
+margin: 10px 0 0;
 box-sizing: border-box;
 }
 
