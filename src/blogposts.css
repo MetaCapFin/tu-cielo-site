@@ -165,6 +165,16 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+.site-title-link h1 {
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+}
+
+.site-title-link h1:hover {
+  text-decoration: none;
+}
+
 .header-top {
   display: flex;
   align-items: center;
