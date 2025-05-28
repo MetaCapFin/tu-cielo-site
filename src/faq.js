@@ -16,10 +16,8 @@ export default function FAQ() {
             <div className="logo-placeholder">
               <img src="/cloud_logo.jpg" alt="Logo" />
             </div>
-            <Link to="/" className="site-title-link">
-              <h1>TuCielo</h1>
-            </Link>
-          </div>
+              <h1 className="site-title-link" onClick={() => window.location.href = "/"}>TuCielo</h1>
+            </div>
           <div className="beta-label">
             <strong>Beta Program</strong>
           </div>
