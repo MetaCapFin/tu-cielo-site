@@ -299,7 +299,7 @@
   }
 
   /* Fixed mobile button styles */
-  .header-button {
+  .header-button-link {
     width: 200px;
     margin: 0 auto;
     text-align: center;
