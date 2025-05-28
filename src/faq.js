@@ -16,14 +16,15 @@ export default function FAQ() {
             <div className="logo-placeholder">
               <img src="/cloud_logo.jpg" alt="Logo" />
             </div>
-            <h1>TuCielo</h1>
+            <Link to="/" className="site-title-link">
+              <h1>TuCielo</h1>
+            </Link>
           </div>
           <div className="beta-label">
             <strong>Beta Program</strong>
           </div>
         </div>
         <div className="header-bottom">
-          <Link to="/faq" className="header-button-link">FAQ</Link>
           <Link to="/blogposts" className="header-button-link">Blog</Link>
           <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
         </div>
