@@ -34,7 +34,7 @@ export default function FAQ() {
 
       <div>
         <button className="cta-button" onClick={handleGoHome}>
-          Back to Home
+          Back to TuCielo
         </button>
       </div>
     </div>
