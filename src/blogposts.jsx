@@ -60,15 +60,9 @@ const BlogPosts = () => {
           </div>
         </div>
         <div className="header-bottom">
-          <Link to="/faq">
-            <button className="header-button">FAQ</button>
-          </Link>
-          <Link to="/blogposts">
-            <button className="header-button">Blog</button>
-          </Link>
-          <Link to="/contractor-proposal-tool">
-            <button className="header-button">TuCielo Calculator</button>
-          </Link>
+          <Link to="/faq" className="header-button-link">FAQ</Link>
+          <Link to="/blogposts" className="header-button-link">Blog</Link>
+          <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
         </div>
   </header>
 
