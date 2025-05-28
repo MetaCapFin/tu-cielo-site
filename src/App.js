@@ -201,13 +201,13 @@ function Homepage() {
         >
           Contact Us
         </button>
-        <button className="header-button-link"onClick={() => setShowPrivacyModal(true)}> Privacy Policy</button>
-        <Link to="/faq" className="header-button-link">FAQ</Link>
-        <Link to="/blogposts" className="header-button-link">Blog</Link>
         <button className="header-button-link"onClick={() => {document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });}}>
           Apply
         </button>
+        <Link to="/faq" className="header-button-link">FAQ</Link>
+        <Link to="/blogposts" className="header-button-link">Blog</Link>
         <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
+        <button className="header-button-link"onClick={() => setShowPrivacyModal(true)}> Privacy Policy</button>
       </div>
       {showPrivacyModal && (
           <div className="modal-overlay" onClick={() => setShowPrivacyModal(false)}>
