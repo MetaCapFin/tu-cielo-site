@@ -213,7 +213,7 @@
 }
 
 .cta-button {
-  display: block;
+  display: inline-block;
   margin: 0 auto;
   background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
   color: white;
