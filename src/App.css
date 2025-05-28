@@ -601,6 +601,28 @@
     width: 100%;
     max-width: 300px; /* optional */
   }
+  .steps-visual {
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.step-group {
+  align-items: center;
+  text-align: center;
+}
+
+.step-line-horizontal {
+  display: none;
+}
+
+.step-group:not(:last-child)::after {
+    content: '';
+    width: 2px;
+    height: 40px;
+    background-color: white;
+    margin-top: 8px;
+  }
 }
 
   .header-features .header,
