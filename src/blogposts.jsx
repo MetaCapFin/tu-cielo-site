@@ -47,23 +47,29 @@ const BlogPosts = () => {
   return (
     <div className="page-container">
       {/* HEADER */}
-       <header className="site-header">
-    <div className="header-top">
-      <div className="logo-title">
-        <div className="logo-placeholder">
-          <img src="/cloud_logo.jpg" alt="Logo" />
+      <header className="site-header">
+        <div className="header-top">
+          <div className="logo-title">
+            <div className="logo-placeholder">
+              <img src="/cloud_logo.jpg" alt="Logo" />
+            </div>
+            <h1>TuCielo</h1>
+          </div>
+          <div className="beta-label">
+            <strong>Beta Program</strong>
+          </div>
         </div>
-        <h1>TuCielo</h1>
-      </div>
-      <div className="beta-label">
-        <strong>Beta Program</strong>
-      </div>
-    </div>
-    <div className="header-bottom">
-      <Link to="/faq" className="header-button-link">FAQ</Link>
-      <Link to="/blogposts" className="header-button-link">Blog</Link>
-      <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
-    </div>
+        <div className="header-bottom">
+          <Link to="/faq">
+            <button className="header-button">FAQ</button>
+          </Link>
+          <Link to="/blogposts">
+            <button className="header-button">Blog</button>
+          </Link>
+          <Link to="/contractor-proposal-tool">
+            <button className="header-button">TuCielo Calculator</button>
+          </Link>
+        </div>
   </header>
 
       {/* MAIN BLOG POST */}
