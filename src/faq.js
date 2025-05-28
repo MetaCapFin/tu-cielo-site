@@ -7,25 +7,7 @@ export default function FAQ() {
   };
 
   return (
-    {/* HEADER */}
-      <header className="site-header">
-        <div className="header-top">
-        <div className="logo-title">
-          <div className="logo-placeholder">
-            <img src="/cloud_logo.jpg" alt="Logo" />
-          </div>
-          <h1>TuCielo</h1>
-        </div>
-        <div className="beta-label">
-          <strong>Beta Program</strong>
-        </div>
-      </div>
-      <div className="header-bottom">
-        <Link to="/blogposts" className="header-button-link">Blog</Link>
-        <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
-      </div>
-      </header>
-        
+    
     <div className="faq-container">
       <section className="faq-questions">
         <h2>Frequently Asked Questions</h2>
