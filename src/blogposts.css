@@ -165,13 +165,13 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.site-title-link h1 {
+.site-title-link {
   cursor: pointer;
   color: white;
   text-decoration: none;
 }
 
-.site-title-link h1:hover {
+.site-title-link:hover {
   text-decoration: none;
   cursor: pointer;
 }
