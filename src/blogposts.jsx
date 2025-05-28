@@ -255,7 +255,7 @@ const BlogPosts = () => {
 
           {/* BACK TO MAIN PAGE BUTTON */}
           <div className="back-to-main-container">
-            <Link to="/" className="back-to-main-button">← Back to Main Page</Link>
+            <Link to="/" className="back-to-main-button">← Back to TuCielo</Link>
           </div>
         </div>
       </main>
