@@ -375,9 +375,11 @@ function Homepage() {
                 <div className="payment-breakdown">
                   
                   {/* Modal Trigger */}
-                  <button className="cta-button" onClick={() => setShowLoanCalculatorModal(true)}>
-                    Get Your FREE Custom Estimate
-                  </button>
+                  <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+                    <button className="cta-button" onClick={() => setShowLoanCalculatorModal(true)}>
+                      Get Your FREE Custom Estimate
+                    </button>
+                  </div>
 
                   <p className="payment-note">
                     No hammer clause | DSCR included | Fixed-rate periods up to 12.5 years
