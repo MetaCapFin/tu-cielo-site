@@ -59,7 +59,7 @@ export default function FAQ() {
           </button>
         </div>
       </div>
-
+    </div>
    {/* FOOTER */}
       <footer className="site-footer">
         <p>© 2025 Tu Cielo. All rights reserved.</p>
@@ -71,8 +71,7 @@ export default function FAQ() {
           HOA, and monthly payments may vary based on loan term, interest rate, fees, number of units, and other covenants agreed upon between the HOA
           and the lender. This website does not constitute an offer to lend. Please consult a TuCielo representative for personalized estimates.
         </p>
-      </footer>
-    </div>
+      </footer>    
   );
 }
 
