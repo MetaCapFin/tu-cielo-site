@@ -97,7 +97,7 @@
 
 .cta-button {
   display: inline-block;
-  margin: 30px auto 0 auto;
+  margin: 30px;
   background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
   color: white;
   padding: 12px 24px;
