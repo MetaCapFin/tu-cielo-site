@@ -589,7 +589,6 @@
   color: #333;
 }
 
-/* Mobile Styles */
 @media (max-width: 768px) {
   .header-bottom {
     flex-direction: column;
@@ -597,63 +596,83 @@
     gap: 10px;
   }
 
-  .header-button {
+  .header-button,
+  .cta-button {
     width: 100%;
-    max-width: 300px; /* optional */
+    max-width: 300px;
+    font-size: 1.1rem;
+    padding: 14px 0;
   }
+
   .steps-visual {
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-}
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin: 30px 0 20px;
+  }
 
-.step-group {
-  align-items: center;
-  text-align: center;
-}
+  .step-group {
+    align-items: center;
+    text-align: center;
+  }
 
-.step-line-horizontal {
-  display: none;
-}
+  .step-line-horizontal {
+    display: none;
+  }
 
-.step-group:not(:last-child)::after {
+  .step-group:not(:last-child)::after {
     content: '';
     width: 2px;
     height: 40px;
     background-color: white;
     margin-top: 8px;
   }
-}
+
+  .header-features,
+  .form-container,
+  .contact-form form,
+  .form-image,
+  .pain-points-list,
+  .payment-breakdown,
+  .faq-section {
+    max-width: 100%;
+  }
+
+  .header-features {
+    flex-direction: column;
+  }
 
   .header-features .header,
   .header-features .features {
-    max-width: 100%;
-    padding: 20px 10px;
+    padding: 20px 0;
   }
 
   .form-container {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
   }
 
-  .form-image {
-    max-width: 100%;
-  }
-
-  .contact-form form {
+  .features table {
+    display: block;
     width: 100%;
-    max-width: 100%;
-  }
-
-  .steps {
-    padding: 0 10px;
-  }
-
-  .features table,
-  .features th,
-  .features td {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     font-size: 0.9rem;
+  }
+
+  .main-content {
+    padding-top: 80px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .faq-section {
+    padding: 30px 15px;
+  }
+
+  .faq-section h2 {
+    font-size: 1.6rem;
   }
 
   .site-header h1 {
@@ -666,238 +685,5 @@
 
   .header-features .header h3 {
     font-size: 1rem;
-  }
-
-  .cta-button {
-    width: 100%;
-  }
-
-.content-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.logo-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo-placeholder {
-  width: 40px;
-  height: 40px;
-  background-color: #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  border-radius: 4px;
-  font-weight: bold;
-}
-
-.header-bottom {
-  display: flex;
-  gap: 15px;
-  margin-top: 10px;
-}
-
-.header-button {
-  background: transparent;
-  border: none;
-  color: white;
-  cursor: pointer;
-  padding: 6px 12px;
-  font-size: 0.95rem;
-  transition: background-color 0.3s ease;
-  border-radius: 4px;
-}
-
-.header-button:hover {
-  background-color: #eef2f7;
-}
-
-.how-it-works {
-  padding: 60px 20px;
-  background-color: #eef2f7;
-  text-align: center;
-  font-family: 'Mulish', sans-serif;
-}
-
-.steps-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin: 40px 0 20px;
-}
-
-.step-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 180px;
-  text-align: center;
-}
-
-.step-circle {
-  width: 60px;
-  height: 60px;
-  background-color: #bfd400;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.step-line {
-  width: 40px;
-  height: 2px;
-  background-color: #303c42;
-}
-
-.how-it-works-note {
-  font-size: 1rem;
-  color: #303c42;
-  margin-top: 20px;
-}
-
-/* Modal Overlay Popup */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.modal-content {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 400px;
-  width: 90%;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  position: relative;
-  text-align: center;
-  max-height: 80vh;    /* added for vertical scrolling */
-  overflow-y: auto;    /* added for vertical scrolling */
-}
-
-.modal-body {
-  color: #303C42;
-}
-
-.modal-content h3 {
-  margin-bottom: 1rem;
-}
-
-.modal-content input {
-  display: block;
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-}
-
-.close-button {
-  position: absolute;
-  top: 0.5rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .main-content {
-    padding-top: 80px; /* less top padding on smaller screens */
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  /* Make header-features stack vertically and full width */
-  .header-features {
-    flex-direction: column;
-  }
-  .header-features .header,
-  .header-features .features {
-    max-width: 100%;
-    padding: 20px 0;
-  }
-
-  /* Pain points list full width */
-  .pain-points-list {
-    max-width: 100%;
-    padding-left: 15px;
-  }
-
-  /* Payment breakdown area full width with padding */
-  .payment-breakdown {
-    max-width: 100%;
-    padding: 20px 15px;
-  }
-
-  /* How it works steps stack vertically */
-  .steps-visual {
-    flex-direction: column;
-    gap: 30px;
-    margin: 30px 0 20px;
-  }
-  .step-group {
-    align-items: flex-start;
-  }
-  .step-line-horizontal {
-    display: none;
-  }
-
-  /* Form container stacks vertically and centers */
-  .form-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    max-width: 100%;
-  }
-  .contact-form form {
-    max-width: 100%;
-    width: 100%;
-  }
-  .form-image {
-    max-width: 100%;
-  }
-
-  /* Features table scroll horizontally */
-  .features table {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* FAQ section full width and text adjustments */
-  .faq-section {
-    padding: 30px 15px;
-    max-width: 100%;
-  }
-  .faq-section h2 {
-    font-size: 1.6rem;
-  }
-
-  /* Adjust CTA buttons to full width */
-  .cta-button {
-    width: 100%;
-    font-size: 1.1rem;
-    padding: 14px 0;
   }
 }
