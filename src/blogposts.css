@@ -202,7 +202,7 @@
   box-sizing: border-box;
 }
 
-.header-button {
+.header-button-link {
   background-color: transparent;
   color: white;
   border: 1px solid white;
@@ -213,7 +213,7 @@
   font-weight: 500;
 }
 
-.header-button:hover {
+.header-button-link:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
