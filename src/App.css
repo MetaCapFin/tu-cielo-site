@@ -17,7 +17,7 @@ flex-direction: column;
 padding-top: 70px; /* match your header height */
 }
 
-/* Site Header /
+/* Site Header*/
 .site-header {
 background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
 color: white;
@@ -29,7 +29,7 @@ width: 100%;
 z-index: 1000;
 box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 margin-bottom: 0;
-font-family: inherit; / inherits from .page-container */
+font-family: inherit;
 }
 
 /* Header Top */
