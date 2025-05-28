@@ -64,7 +64,7 @@ const BlogPosts = () => {
           <Link to="/blogposts" className="header-button-link">Blog</Link>
           <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
         </div>
-  </header>
+      </header>
 
       {/* MAIN BLOG POST */}
       <main className="main-content">
