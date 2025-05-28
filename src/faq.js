@@ -60,19 +60,7 @@ export default function FAQ() {
         </div>
       </div>
     </div>
-   {/* FOOTER */}
-      <footer className="site-footer">
-        <p>© 2025 Tu Cielo. All rights reserved.</p>
-        <br />
-        <p>
-          Disclaimer: TuCielo and any affiliated entities do not provide installation services and are not government agencies. All terms, conditions,
-          and results are project-specific and may vary. Financing terms may change and are subject to TuCielo’s underwriting criteria without prior
-          notice. Payment estimates are for budgeting purposes only and are based on total financed amounts. TuCielo financing is repaid through your
-          HOA, and monthly payments may vary based on loan term, interest rate, fees, number of units, and other covenants agreed upon between the HOA
-          and the lender. This website does not constitute an offer to lend. Please consult a TuCielo representative for personalized estimates.
-        </p>
-      </footer>    
-  );
+   );
 }
 
 
