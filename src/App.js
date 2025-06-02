@@ -576,7 +576,25 @@ function Homepage() {
                     value={contactFormData.phone}
                     onChange={handleContactFormChange}
                   />
-                  <button type="submit" className="cta-button">Submit</button>
+                  <div className="checkbox-container">
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="privacyAgreement"
+                        checked={contactFormData.privacyAgreement}
+                        onChange={handleContactFormChange}
+                        required
+                      />
+                      By submitting this form, I agree to TuCielo’s{" "}
+                      <button
+                        type="button"
+                        className="privacy-link"
+                        onClick={() => setShowPrivacyModal(true)} // <-- triggers modal>
+                        Privacy & Data Management Policy
+                      </button>.
+                    </label>
+                  </div>
+                 <button type="submit" className="cta-button">Submit</button>
                 </form>
               </div>
             </div>
