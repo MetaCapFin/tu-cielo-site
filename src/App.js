@@ -495,6 +495,7 @@ function Homepage() {
                                 !calculatorLeadForm.name.trim() ||
                                 !calculatorLeadForm.company.trim() ||
                                 !calculatorLeadForm.email.trim()
+                                !agreedToPrivacy
                               }
                             >
                               Submit
