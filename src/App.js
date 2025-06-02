@@ -459,6 +459,24 @@ function Homepage() {
                                 setCalculatorLeadForm({ ...calculatorLeadForm, email: e.target.value })
                               }
                             />
+                              <label className="checkbox-container">
+                                <input
+                                  type="checkbox"
+                                  checked={agreedToPrivacy}
+                                  onChange={(e) => setAgreedToPrivacy(e.target.checked)}
+                                />
+                                <span>
+                                  I agree to the{' '}
+                                  <button
+                                    type="button"
+                                    className="privacy-link"
+                                    onClick={() => setShowPrivacyModal(true)}
+                                  >
+                                    Privacy & Data Management Policy
+                                  </button>
+                                </span>
+                              </label>
+                                
                             <button
                               className="cta-button"
                               onClick={() => {
