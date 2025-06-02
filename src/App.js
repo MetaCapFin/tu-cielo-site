@@ -19,6 +19,8 @@ function Homepage() {
 
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
+  const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
+  
   const [calculatorLeadForm, setCalculatorLeadForm] = useState({
     name: '',
     company: '',
