@@ -496,7 +496,8 @@ function Homepage() {
                                 !calculatorLeadForm.company.trim() ||
                                 !calculatorLeadForm.email.trim() ||
                                 !calculatorLeadForm.agreedToPrivacy
-                              }
+                                }
+                                style={{ opacity: agreedToPrivacy ? 1 : 0.6, cursor: agreedToPrivacy ? 'pointer' : 'not-allowed' }}
                             >
                               Submit
                             </button>
