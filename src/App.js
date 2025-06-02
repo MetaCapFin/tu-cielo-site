@@ -494,8 +494,8 @@ function Homepage() {
                               disabled={
                                 !calculatorLeadForm.name.trim() ||
                                 !calculatorLeadForm.company.trim() ||
-                                !calculatorLeadForm.email.trim()
-                                !agreedToPrivacy
+                                !calculatorLeadForm.email.trim() ||
+                                !calculatorLeadForm.agreedToPrivacy
                               }
                             >
                               Submit
