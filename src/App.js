@@ -589,9 +589,10 @@ function Homepage() {
                       <button
                         type="button"
                         className="privacy-link"
-                        onClick={() => setShowPrivacyModal(true)} // <-- triggers modal>
+                        onClick={() => setShowPrivacyModal(true)}
+                      >
                         Privacy & Data Management Policy
-                      </button>.
+                      </button>
                     </label>
                   </div>
                  <button type="submit" className="cta-button">Submit</button>
