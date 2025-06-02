@@ -576,23 +576,26 @@ function Homepage() {
                     value={contactFormData.phone}
                     onChange={handleContactFormChange}
                   />
-                  <div className="checkbox-container">
+                  <div className="privacy-agreement">
                     <label>
                       <input
                         type="checkbox"
-                        name="privacyAgreement"
-                        checked={contactFormData.privacyAgreement}
-                        onChange={handleContactFormChange}
+                        name="agree"
+                        checked={agreedToPrivacy}
+                        onChange={() => setAgreedToPrivacy(!agreedToPrivacy)}
                         required
                       />
-                      By submitting this form, I agree to TuCielo’s{" "}
-                      <button
-                        type="button"
+                      &nbsp;By submitting this form I agree to TuCielo's{' '}
+                      <a
+                        href="#"
                         className="privacy-link"
-                        onClick={() => setShowPrivacyModal(true)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setShowPrivacyModal(true);
+                        }}
                       >
                         Privacy & Data Management Policy
-                      </button>
+                      </a>
                     </label>
                   </div>
                  <button type="submit" className="cta-button">Submit</button>
