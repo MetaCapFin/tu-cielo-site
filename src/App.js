@@ -301,9 +301,47 @@ function Homepage() {
                   <div className="modal-content">
                     <button className="close-button" onClick={() => setShowModal(false)}>×</button>
                     <h3>Get Your 10 Insights</h3>
-                    <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleInputChange} />
-                    <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleInputChange} />
-                    <button className="cta-button" onClick={handleInsightsSubmit}>Get Insights</button>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Your Email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                    />
+              
+                    <label className="checkbox-container">
+                      <input
+                        type="checkbox"
+                        checked={agreedToPrivacy}
+                        onChange={(e) => setAgreedToPrivacy(e.target.checked)}
+                      />
+                      <span>
+                        I agree to the{' '}
+                        <button
+                          type="button"
+                          className="privacy-link"
+                          onClick={() => setShowPrivacyModal(true)}
+                        >
+                          Privacy & Data Management Policy
+                        </button>
+                      </span>
+                    </label>
+              
+                    <button
+                      className="cta-button"
+                      onClick={handleInsightsSubmit}
+                      disabled={!agreedToPrivacy}
+                      style={{ opacity: agreedToPrivacy ? 1 : 0.6, cursor: agreedToPrivacy ? 'pointer' : 'not-allowed' }}
+                    >
+                      Get Insights
+                    </button>
                   </div>
                 </div>
               )}
