@@ -186,32 +186,33 @@ function Homepage() {
       {/* HEADER */}
       
 <header className="site-header">
-      <div className="header-top">
-        <div className="logo-title">
-          <div className="logo-placeholder">
-            <img src="/cloud_logo.jpg" alt="Logo" />
-          </div>
-          <h1>TuCielo</h1>
-        </div>
-        <div className="beta-label">
-          <strong>Beta Program</strong>
-        </div>
-        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-          ☰
-        </button>
-      </div>
-
-      <div className={`header-bottom ${menuOpen ? "open" : ""}`}>
-        <button className="header-button-link" onClick={() => document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" })}>
-          Contact Us
-        </button>
-        <button className="header-button-link" onClick={() => document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" })}>
-          Apply
-        </button>
-        <Link to="/faq" className="header-button-link">FAQ</Link>
-        <Link to="/blogposts" className="header-button-link">Blog</Link>
-        <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
-        <button className="header-button-link" onClick={() => setShowPrivacyModal(true)}>Privacy Policy</button>
+        <div className="header-top">
+        <div className="logo-title">
+          <div className="logo-placeholder">
+            <img src="/cloud_logo.jpg" alt="Logo" />
+          </div>
+          <h1>TuCielo</h1>
+        </div>
+        <div className="beta-label">
+          <strong>Beta Program</strong>
+        </div>
+      </div>
+      <div className="header-bottom">
+        <button
+          className="header-button-link"
+          onClick={() =>
+            document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          Contact Us
+        </button>
+        <button className="header-button-link"onClick={() => {document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });}}>
+          Apply
+        </button>
+        <Link to="/faq" className="header-button-link">FAQ</Link>
+        <Link to="/blogposts" className="header-button-link">Blog</Link>
+        <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
+        <button className="header-button-link"onClick={() => setShowPrivacyModal(true)}> Privacy Policy</button>
       </div>
 
       {showPrivacyModal && (
