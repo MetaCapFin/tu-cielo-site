@@ -17,9 +17,8 @@ function Homepage() {
   const [formData, setFormData] = useState({ name: '', email: '' });
   const [formValid, setFormValid] = useState(false);
   
-const [menuOpen, setMenuOpen] = useState(false);
-  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
-  
+  const [menuOpen, setMenuOpen] = useState(false);
+    
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
   const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
