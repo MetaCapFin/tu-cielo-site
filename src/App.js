@@ -198,6 +198,7 @@ function Homepage() {
         </div>
       </div>
       <div className="header-bottom">
+        <div class="header-scroll-container">
         <button
           className="header-button-link"
           onClick={() =>
@@ -214,7 +215,7 @@ function Homepage() {
         <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
         <button className="header-button-link"onClick={() => setShowPrivacyModal(true)}> Privacy Policy</button>
       </div>
-
+    </div>
       {showPrivacyModal && (
           <div className="modal-overlay" onClick={() => setShowPrivacyModal(false)}>
             <div className="modal-content" onClick={e => e.stopPropagation()}>
