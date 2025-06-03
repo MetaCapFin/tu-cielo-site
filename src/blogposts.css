@@ -271,6 +271,15 @@
   color: #1C7FB8;
 }
 
+  /* Hide hamburger on desktop */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .blog-content-wrapper {
     padding: 30px 15px;
@@ -365,22 +374,6 @@
     margin: 0 auto;
     display: block;
   }
-/* Hide hamburger on desktop */
-.hamburger {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-  /* Hide hamburger on desktop */
-.hamburger {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
 }
 
 /* Mobile styles */
