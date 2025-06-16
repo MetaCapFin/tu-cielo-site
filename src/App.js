@@ -160,29 +160,11 @@ function Homepage() {
 
    return (
     
-     <>
-      <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Get low-interest HOA financing with TuCielo." />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tu-cielo-site.vercel.app/meta.html" />
-    <meta property="og:title" content="TuCielo HOA Lending" />
-    <meta property="og:description" content="Flexible funding for your HOA or community project. Apply online now." />
-    <meta property="og:image" content="https://tu-cielo-site.vercel.app/cloud_logo.jpg" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="TuCielo HOA Lending" />
-    <meta name="twitter:description" content="Flexible funding for your HOA or community project. Apply online now." />
-    <meta name="twitter:image" content="https://tu-cielo-site.vercel.app/cloud_logo.jpg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TuCielo Preview</title>
-  </head>
-
-  <div className="page-container">
+    <>
+      <div className="page-container">
       {/* HEADER */}
       
-<header className="site-header">
+     <header className="site-header">
         <div className="header-top">
         <div className="logo-title">
           <div className="logo-placeholder">
