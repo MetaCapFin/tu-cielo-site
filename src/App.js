@@ -170,7 +170,7 @@ function Homepage() {
         <meta property="og:url" content="https://www.tucielofinancing.com/" />
         <meta property="og:title" content="TuCielo HOA Lending" />
         <meta property="og:description" content="Flexible funding for your HOA or community project. Apply online now." />
-        <meta property="og:image" content="https://www.tucielofinancing.com/share-preview.jpg" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/MetaCapFin/tu-cielo-site/main/public/cloud_logo.jpg" />
 
         {/* Twitter Cards */}
         <meta name="twitter:card" content="summary_large_image" />
