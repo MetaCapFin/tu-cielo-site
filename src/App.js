@@ -162,25 +162,28 @@ function Homepage() {
     
      <>
       <Helmet>
-        <title>TuCielo HOA Loans | Fast Community Project Funding</title>
-        <meta name="description" content="Get low-interest HOA financing with TuCielo. Fast approvals, expert support, and no hidden fees." />
+  <title>TuCielo HOA Loans | Fast Community Project Funding</title>
+  <meta name="description" content="Get low-interest HOA financing with TuCielo. Fast approvals, expert support, and no hidden fees." />
 
-        {/* Open Graph (Facebook) */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://tu-cielo-site.vercel.app/" />
-        <meta property="og:title" content="TuCielo HOA Lending" />
-        <meta property="og:description" content="Flexible funding for your HOA or community project. Apply online now." />
-        <meta property="og:image" content="https://tu-cielo-site.vercel.app/cloud_logo.jpg" />
+  {/* Open Graph (Facebook) */}
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tu-cielo-site.vercel.app/" />
+  <meta property="og:title" content="TuCielo HOA Lending" />
+  <meta property="og:description" content="Flexible funding for your HOA or community project. Apply online now." />
+  <meta property="og:image" content="https://tu-cielo-site.vercel.app/cloud_logo.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
-        {/* Twitter Cards */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content="https://www.tucielofinancing.com/" />
-        <meta name="twitter:title" content="TuCielo HOA Lending" />
-        <meta name="twitter:description" content="Flexible funding for your HOA or community project. Apply online now." />
-        <meta name="twitter:image" content="https://www.tucielofinancing.com/share-preview.jpg" />
+  {/* Twitter Cards */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://tu-cielo-site.vercel.app/" />
+  <meta name="twitter:title" content="TuCielo HOA Lending" />
+  <meta name="twitter:description" content="Flexible funding for your HOA or community project. Apply online now." />
+  <meta name="twitter:image" content="https://tu-cielo-site.vercel.app/cloud_logo.jpg" />
 
-        <link rel="canonical" href="https://www.tucielofinancing.com/" />
-      </Helmet>
+  <link rel="canonical" href="https://tu-cielo-site.vercel.app/" />
+</Helmet>
+
 
   <div className="page-container">
       {/* HEADER */}
