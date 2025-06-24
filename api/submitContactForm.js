@@ -37,7 +37,7 @@ export default async function handler(req, res) {
       create_item (
         board_id: ${boardId},
         group_id: "${groupId}",
-        item_name: "${name} Contact",
+        item_name: "${name}",
         column_values: "${columnValuesString}"
       ) {
         id
