@@ -8,8 +8,11 @@ const path = require("path");
  * @param {string} options.filePath - Local path to the file (e.g. /tmp/abc.txt)
  * @param {string} options.originalFilename - Original file name (e.g. user-upload.txt)
  * @param {string} options.folderId - Google Drive folder ID
+ * @param {string} [options.hoaName] - HOA Legal Name (for formatting)
+ * @param {string} [options.communityName] - Community Name (for formatting)
+ * @param {string} [options.label] - Either "Reserve Study" or "Annual Budget"
  */
-async function uploadToDrive({ filePath, originalFilename, folderId }) {
+async function uploadToDrive({ filePath, originalFilename, folderId, hoaName, communityName, label }) {
   try {
     const auth = new google.auth.GoogleAuth({
       credentials: {
@@ -21,8 +24,14 @@ async function uploadToDrive({ filePath, originalFilename, folderId }) {
 
     const drive = google.drive({ version: "v3", auth });
 
+    const ext = path.extname(originalFilename) || ".pdf";
+    const formattedName =
+      hoaName && communityName && label
+        ? `${sanitize(hoaName)}_${sanitize(communityName)}_${label}${ext}`
+        : originalFilename;
+
     const fileMetadata = {
-      name: originalFilename,
+      name: formattedName,
       parents: [folderId],
     };
 
@@ -48,6 +57,10 @@ async function uploadToDrive({ filePath, originalFilename, folderId }) {
   }
 }
 
+function sanitize(str) {
+  return str.replace(/[^\w\s-]/g, "").replace(/\s+/g, "_").trim();
+}
+
 function getMimeType(filename) {
   const ext = path.extname(filename).toLowerCase();
   const map = {
@@ -62,3 +75,4 @@ function getMimeType(filename) {
 }
 
 module.exports = uploadToDrive;
+
