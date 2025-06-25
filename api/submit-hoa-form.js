@@ -100,47 +100,46 @@ module.exports = async function handler(req, res) {
 
       // === Upload helper ===
       const uploadFileToMonday = async (file, columnId) => {
-        if (!file?.filepath) {
-          console.error(`Missing filepath for file "${columnId}":`, file);
-          return;
+  if (!file?.filepath) {
+    console.error(`Missing filepath for column "${columnId}"`, file);
+    return;
+  }
+
+  const operations = {
+    query: `
+      mutation ($file: File!) {
+        add_file_to_column(item_id: ${itemId}, column_id: "${columnId}", file: $file) {
+          id
         }
-      
-        const operations = {
-          query: `mutation ($file: File!) {
-            add_file_to_column(item_id: ${itemId}, column_id: "${columnId}", file: $file) {
-              id
-            }
-          }`,
-          variables: { file: null }
-        };
-      
-        const map = { "0": ["variables.file"] };
-      
-        const form = new FormData();
-        form.append("operations", JSON.stringify(operations));
-        form.append("map", JSON.stringify(map));
-        form.append("0", fs.createReadStream(file.filepath), file.originalFilename);
-      
-        try {
-          const uploadRes = await fetch("https://api.monday.com/v2/file", {
-            method: "POST",
-            headers: {
-              Authorization: apiKey,
-              ...form.getHeaders(),
-            },
-            body: form,
-          });
-      
-          const uploadData = await uploadRes.json();
-          if (uploadData.errors) {
-            console.error(`Error uploading to column "${columnId}":`, uploadData.errors);
-          } else {
-            console.log(`File uploaded to column "${columnId}" successfully.`);
-          }
-        } catch (uploadErr) {
-          console.error(`Upload error for "${columnId}":`, uploadErr);
-        }
-      };
+      }
+    `,
+    variables: { file: null }
+  };
+
+  const map = { "0": ["variables.file"] };
+
+  const form = new FormData();
+  form.append("operations", JSON.stringify(operations));
+  form.append("map", JSON.stringify(map));
+  form.append("0", fs.createReadStream(file.filepath), file.originalFilename);
+
+  try {
+    const uploadRes = await fetch("https://api.monday.com/v2/file", {
+      method: "POST",
+      headers: { Authorization: apiKey, ...form.getHeaders() },
+      body: form,
+    });
+    const uploadData = await uploadRes.json();
+    if (uploadData.errors) {
+      console.error(`Error uploading to ${columnId}:`, uploadData.errors);
+    } else {
+      console.log(`✅ Successfully uploaded to ${columnId}`);
+    }
+  } catch (uploadErr) {
+    console.error(`Upload error for ${columnId}:`, uploadErr);
+  }
+};
+
 
       // === Upload files ===
       if (files.reserveStudy) {
