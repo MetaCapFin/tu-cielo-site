@@ -8,7 +8,15 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const form = new formidable.IncomingForm({ keepExtensions: true });
+    const form = new formidable.IncomingForm({   
+      keepExtensions: true,   
+      uploadDir: "/tmp",
+    });
+  
+    if (!file?.filepath) {
+      console.error("Missing filepath for file:", file);
+      return;
+    }
 
   form.parse(req, async (err, fields, files) => {
     if (err) {
