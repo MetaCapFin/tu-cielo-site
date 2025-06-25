@@ -105,6 +105,9 @@ module.exports = async function handler(req, res) {
           filePath: file.filepath,
           originalFilename: file.originalFilename,
           folderId,
+          hoaName,
+          communityName,
+          label: "Reserve Study",
         });
       }
 
@@ -114,6 +117,9 @@ module.exports = async function handler(req, res) {
           filePath: file.filepath,
           originalFilename: file.originalFilename,
           folderId,
+          hoaName,
+          communityName,
+          label: "Annual Budget",
         });
       }
 
@@ -131,6 +137,7 @@ module.exports.config = {
     bodyParser: false,
   },
 };
+
 
 
 
