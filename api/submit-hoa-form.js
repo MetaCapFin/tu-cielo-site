@@ -1,6 +1,6 @@
 const formidable = require("formidable");
 const fs = require("fs");
-const uploadToDrive = require("../../utils/uploadToDrive");
+const uploadToDrive = require("../src/utils/uploadToDrive");
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
