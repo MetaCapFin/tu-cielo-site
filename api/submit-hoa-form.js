@@ -2,7 +2,6 @@ const formidable = require("formidable");
 const fs = require("fs");
 const path = require("path");
 const FormData = require("form-data");
-const fetch = require("node-fetch");
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
