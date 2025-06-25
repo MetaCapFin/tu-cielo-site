@@ -1,6 +1,5 @@
 const formidable = require("formidable");
 const fs = require("fs");
-const path = require("path");
 const FormData = require("form-data");
 
 module.exports = async function handler(req, res) {
@@ -8,15 +7,10 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-    const form = new formidable.IncomingForm({   
-      keepExtensions: true,   
-      uploadDir: "/tmp",
-    });
-  
-    if (!file?.filepath) {
-      console.error("Missing filepath for file:", file);
-      return;
-    }
+  const form = new formidable.IncomingForm({
+    keepExtensions: true,
+    uploadDir: "/tmp", // Vercel-compatible temp folder
+  });
 
   form.parse(req, async (err, fields, files) => {
     if (err) {
@@ -47,17 +41,17 @@ module.exports = async function handler(req, res) {
     );
 
     const boardId = 9191966932;
-    const groupId = "group_title"; // Make sure this is your actual group ID
+    const groupId = "group_title"; // Replace with your group ID
     const apiKey = process.env.MONDAY_API_KEY;
 
     const columnValues = {
-      text_mkr4yxmr: communityName,     // Community Name
+      text_mkr4yxmr: communityName,
       numeric_mkr4ttda: Number(units) || 0,
       numeric_mkr4jp33: Number(yearBuilt) || 0,
-      text_mkr42072: contactName,       // Contact Name
+      text_mkr42072: contactName,
       text_mkr49z65: position,
-      email_mkr4smcy: { email: email, text: email },
-      phone_mkr46tp1: { phone: phone, countryShortName: "US" },
+      email_mkr4smcy: { email, text: email },
+      phone_mkr46tp1: { phone, countryShortName: "US" },
       text_mkr4c2tj: projectType,
       numeric_mkr4am8g: Number(projectCost?.replace(/[^0-9.-]+/g, "")) || 0,
       numeric_mkr4mpnr: Number(loanAmount?.replace(/[^0-9.-]+/g, "")) || 0,
@@ -104,9 +98,13 @@ module.exports = async function handler(req, res) {
 
       const itemId = data.data.create_item.id;
 
-      // ==== Upload file(s) to Monday.com file columns ====
-
+      // === Helper function: Upload file to a file column ===
       const uploadFileToMonday = async (file, columnId) => {
+        if (!file?.filepath) {
+          console.error(`Missing filepath for file "${columnId}":`, file);
+          return;
+        }
+
         const form = new FormData();
         form.append(
           "query",
@@ -116,11 +114,10 @@ module.exports = async function handler(req, res) {
             }
           }`
         );
-
         form.append("variables[file]", fs.createReadStream(file.filepath), file.originalFilename);
 
         try {
-          const uploadResponse = await fetch("https://api.monday.com/v2/file", {
+          const uploadRes = await fetch("https://api.monday.com/v2/file", {
             method: "POST",
             headers: {
               Authorization: apiKey,
@@ -129,26 +126,25 @@ module.exports = async function handler(req, res) {
             body: form,
           });
 
-          const uploadData = await uploadResponse.json();
+          const uploadData = await uploadRes.json();
 
           if (uploadData.errors) {
             console.error(`Error uploading to column "${columnId}":`, uploadData.errors);
           } else {
-            console.log(`File uploaded successfully to column "${columnId}"`);
+            console.log(`File uploaded to column "${columnId}" successfully.`);
           }
-
         } catch (uploadErr) {
-          console.error(`File upload error for column "${columnId}":`, uploadErr);
+          console.error(`Upload error for "${columnId}":`, uploadErr);
         }
       };
 
-      // Upload both files (if they exist)
+      // === Upload reserveStudy and annualBudgetFile if they exist ===
       if (files.reserveStudy) {
-        await uploadFileToMonday(files.reserveStudy, "file_mkr4m54b"); // <-- replace with actual column ID
+        await uploadFileToMonday(files.reserveStudy, "file_mkr4m54b"); // Reserve Study
       }
 
       if (files.annualBudgetFile) {
-        await uploadFileToMonday(files.annualBudgetFile, "file_mkr45fq2"); // <-- replace with actual column ID
+        await uploadFileToMonday(files.annualBudgetFile, "file_mkr45fq2"); // Budget File
       }
 
       res.status(200).json({ success: true, message: "Submitted successfully" });
@@ -165,4 +161,5 @@ module.exports.config = {
     bodyParser: false,
   },
 };
+
 
