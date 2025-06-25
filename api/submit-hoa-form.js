@@ -1,7 +1,6 @@
 const formidable = require("formidable");
 const fs = require("fs");
 const FormData = require("form-data");
-const fetch = require("node-fetch"); // Ensure it's installed: `npm install node-fetch`
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
