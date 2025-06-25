@@ -140,11 +140,13 @@ module.exports = async function handler(req, res) {
 
       // === Upload reserveStudy and annualBudgetFile if they exist ===
       if (files.reserveStudy) {
-        await uploadFileToMonday(files.reserveStudy, "file_mkr4m54b"); // Reserve Study
+        const file = Array.isArray(files.reserveStudy) ? files.reserveStudy[0] : files.reserveStudy;
+        await uploadFileToMonday(file, "file_mkr4m54b");
       }
-
+      
       if (files.annualBudgetFile) {
-        await uploadFileToMonday(files.annualBudgetFile, "file_mkr45fq2"); // Budget File
+        const file = Array.isArray(files.annualBudgetFile) ? files.annualBudgetFile[0] : files.annualBudgetFile;
+        await uploadFileToMonday(file, "file_mkr45fq2");
       }
 
       res.status(200).json({ success: true, message: "Submitted successfully" });
