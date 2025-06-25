@@ -1,6 +1,6 @@
 const formidable = require("formidable");
 const fs = require("fs");
-const FormData = require("form-data");
+const uploadToDrive = require("../../utils/uploadToDrive");
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
@@ -96,63 +96,28 @@ module.exports = async function handler(req, res) {
         return res.status(500).json({ error: "Monday.com error", details: data.errors });
       }
 
-      const itemId = data.data.create_item.id;
+      const folderId = process.env.GOOGLE_DRIVE_FOLDER_ID;
+      const uploads = {};
 
-      // === Upload helper ===
-      const uploadFileToMonday = async (file, columnId) => {
-  if (!file?.filepath) {
-    console.error(`Missing filepath for column "${columnId}"`, file);
-    return;
-  }
-
-  const operations = {
-    query: `
-      mutation ($file: File!) {
-        add_file_to_column(item_id: ${itemId}, column_id: "${columnId}", file: $file) {
-          id
-        }
-      }
-    `,
-    variables: { file: null }
-  };
-
-  const map = { "0": ["variables.file"] };
-
-  const form = new FormData();
-  form.append("operations", JSON.stringify(operations));
-  form.append("map", JSON.stringify(map));
-  form.append("0", fs.createReadStream(file.filepath), file.originalFilename);
-
-  try {
-    const uploadRes = await fetch("https://api.monday.com/v2/file", {
-      method: "POST",
-      headers: { Authorization: apiKey, ...form.getHeaders() },
-      body: form,
-    });
-    const uploadData = await uploadRes.json();
-    if (uploadData.errors) {
-      console.error(`Error uploading to ${columnId}:`, uploadData.errors);
-    } else {
-      console.log(`✅ Successfully uploaded to ${columnId}`);
-    }
-  } catch (uploadErr) {
-    console.error(`Upload error for ${columnId}:`, uploadErr);
-  }
-};
-
-
-      // === Upload files ===
       if (files.reserveStudy) {
         const file = Array.isArray(files.reserveStudy) ? files.reserveStudy[0] : files.reserveStudy;
-        await uploadFileToMonday(file, "file_mkr4m54b");
+        uploads.reserveStudy = await uploadToDrive({
+          filePath: file.filepath,
+          originalFilename: file.originalFilename,
+          folderId,
+        });
       }
 
       if (files.annualBudgetFile) {
         const file = Array.isArray(files.annualBudgetFile) ? files.annualBudgetFile[0] : files.annualBudgetFile;
-        await uploadFileToMonday(file, "file_mkr45fq2");
+        uploads.annualBudgetFile = await uploadToDrive({
+          filePath: file.filepath,
+          originalFilename: file.originalFilename,
+          folderId,
+        });
       }
 
-      res.status(200).json({ success: true, message: "Submitted successfully" });
+      res.status(200).json({ success: true, message: "Submitted successfully", uploads });
 
     } catch (err) {
       console.error("Fetch error:", err);
@@ -166,6 +131,7 @@ module.exports.config = {
     bodyParser: false,
   },
 };
+
 
 
 
