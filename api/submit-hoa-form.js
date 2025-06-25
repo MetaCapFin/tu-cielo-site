@@ -1,6 +1,7 @@
 const formidable = require("formidable");
 const fs = require("fs");
 const FormData = require("form-data");
+const fetch = require("node-fetch"); // Ensure it's installed: `npm install node-fetch`
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
@@ -9,7 +10,7 @@ module.exports = async function handler(req, res) {
 
   const form = new formidable.IncomingForm({
     keepExtensions: true,
-    uploadDir: "/tmp", // Vercel-compatible temp folder
+    uploadDir: "/tmp", // Compatible with Vercel
   });
 
   form.parse(req, async (err, fields, files) => {
@@ -41,7 +42,7 @@ module.exports = async function handler(req, res) {
     );
 
     const boardId = 9191966932;
-    const groupId = "group_title"; // Replace with your group ID
+    const groupId = "group_title"; // Replace with your actual group ID
     const apiKey = process.env.MONDAY_API_KEY;
 
     const columnValues = {
@@ -98,7 +99,7 @@ module.exports = async function handler(req, res) {
 
       const itemId = data.data.create_item.id;
 
-      // === Helper function: Upload file to a file column ===
+      // === Upload helper ===
       const uploadFileToMonday = async (file, columnId) => {
         if (!file?.filepath) {
           console.error(`Missing filepath for file "${columnId}":`, file);
@@ -108,13 +109,20 @@ module.exports = async function handler(req, res) {
         const form = new FormData();
         form.append(
           "query",
-          `mutation ($file: File!) {
-            add_file_to_column(item_id: ${itemId}, column_id: "${columnId}", file: $file) {
+          `
+          mutation {
+            add_file_to_column (
+              item_id: ${itemId},
+              column_id: "${columnId}",
+              file: "file"
+            ) {
               id
             }
-          }`
+          }
+        `
         );
-        form.append("variables[file]", fs.createReadStream(file.filepath), file.originalFilename);
+
+        form.append("file", fs.createReadStream(file.filepath), file.originalFilename);
 
         try {
           const uploadRes = await fetch("https://api.monday.com/v2/file", {
@@ -131,19 +139,19 @@ module.exports = async function handler(req, res) {
           if (uploadData.errors) {
             console.error(`Error uploading to column "${columnId}":`, uploadData.errors);
           } else {
-            console.log(`File uploaded to column "${columnId}" successfully.`);
+            console.log(`File uploaded successfully to column "${columnId}".`);
           }
         } catch (uploadErr) {
           console.error(`Upload error for "${columnId}":`, uploadErr);
         }
       };
 
-      // === Upload reserveStudy and annualBudgetFile if they exist ===
+      // === Upload files ===
       if (files.reserveStudy) {
         const file = Array.isArray(files.reserveStudy) ? files.reserveStudy[0] : files.reserveStudy;
         await uploadFileToMonday(file, "file_mkr4m54b");
       }
-      
+
       if (files.annualBudgetFile) {
         const file = Array.isArray(files.annualBudgetFile) ? files.annualBudgetFile[0] : files.annualBudgetFile;
         await uploadFileToMonday(file, "file_mkr45fq2");
@@ -163,5 +171,6 @@ module.exports.config = {
     bodyParser: false,
   },
 };
+
 
 
