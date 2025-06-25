@@ -1,4 +1,8 @@
 const formidable = require("formidable");
+const fs = require("fs");
+const path = require("path");
+const FormData = require("form-data");
+const fetch = require("node-fetch");
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
@@ -12,7 +16,7 @@ module.exports = async function handler(req, res) {
       console.error("Form parsing error:", err);
       return res.status(500).json({ error: "Form parsing failed" });
     }
-    
+
     // Normalize field values
     const {
       hoaName,
@@ -36,10 +40,9 @@ module.exports = async function handler(req, res) {
     );
 
     const boardId = 9191966932;
-    const groupId = "group_title";  // Make sure this is your actual group ID
+    const groupId = "group_title"; // Make sure this is your actual group ID
     const apiKey = process.env.MONDAY_API_KEY;
 
-    // Prepare Monday.com column values object WITHOUT hoaName (used as item_name)
     const columnValues = {
       text_mkr4yxmr: communityName,     // Community Name
       numeric_mkr4ttda: Number(units) || 0,
@@ -87,12 +90,62 @@ module.exports = async function handler(req, res) {
 
       const data = await response.json();
 
-      if (data.errors) {
+      if (data.errors || !data.data?.create_item?.id) {
         console.error("Monday API error:", data.errors);
         return res.status(500).json({ error: "Monday.com error", details: data.errors });
       }
 
+      const itemId = data.data.create_item.id;
+
+      // ==== Upload file(s) to Monday.com file columns ====
+
+      const uploadFileToMonday = async (file, columnId) => {
+        const form = new FormData();
+        form.append(
+          "query",
+          `mutation ($file: File!) {
+            add_file_to_column(item_id: ${itemId}, column_id: "${columnId}", file: $file) {
+              id
+            }
+          }`
+        );
+
+        form.append("variables[file]", fs.createReadStream(file.filepath), file.originalFilename);
+
+        try {
+          const uploadResponse = await fetch("https://api.monday.com/v2/file", {
+            method: "POST",
+            headers: {
+              Authorization: apiKey,
+              ...form.getHeaders(),
+            },
+            body: form,
+          });
+
+          const uploadData = await uploadResponse.json();
+
+          if (uploadData.errors) {
+            console.error(`Error uploading to column "${columnId}":`, uploadData.errors);
+          } else {
+            console.log(`File uploaded successfully to column "${columnId}"`);
+          }
+
+        } catch (uploadErr) {
+          console.error(`File upload error for column "${columnId}":`, uploadErr);
+        }
+      };
+
+      // Upload both files (if they exist)
+      if (files.reserveStudy) {
+        await uploadFileToMonday(files.reserveStudy, "file_mkr4m54b"); // <-- replace with actual column ID
+      }
+
+      if (files.annualBudgetFile) {
+        await uploadFileToMonday(files.annualBudgetFile, "file_mkr45fq2"); // <-- replace with actual column ID
+      }
+
       res.status(200).json({ success: true, message: "Submitted successfully" });
+
     } catch (err) {
       console.error("Fetch error:", err);
       res.status(500).json({ error: "Server error during submission" });
@@ -105,3 +158,4 @@ module.exports.config = {
     bodyParser: false,
   },
 };
+
