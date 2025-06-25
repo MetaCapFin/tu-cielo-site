@@ -105,21 +105,19 @@ module.exports = async function handler(req, res) {
           return;
         }
 
-        const form = new FormData();
-        form.append(
-          "query",
-          `
-          mutation {
-            add_file_to_column (
-              item_id: ${itemId},
-              column_id: "${columnId}",
-              file: "file"
-            ) {
-              id
-            }
+       const form = new FormData();
+
+      form.append(
+        'query',
+        `mutation {
+          add_file_to_column (item_id: ${itemId}, column_id: "${columnId}", file: $file) {
+            id
           }
-        `
-        );
+        }`
+      );
+
+      form.append('file', fs.createReadStream(file.filepath), file.originalFilename);
+
 
         form.append("file", fs.createReadStream(file.filepath), file.originalFilename);
 
