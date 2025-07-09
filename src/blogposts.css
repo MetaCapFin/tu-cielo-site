@@ -273,6 +273,10 @@
 }
 
 @media (max-width: 768px) {
+  .main-content {
+    padding: 2rem 1rem;
+  }
+  
   .blog-content-wrapper {
     padding: 30px 15px;
   }
@@ -416,7 +420,7 @@
 
 .hero-image img {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   height: auto;
   object-fit: contain;
   display: block;
@@ -425,9 +429,10 @@
 }
 
 .main-content {
-  max-width: 900px;
+  width:100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 3rem 2rem;
   box-sizing: border-box;
 }
 
