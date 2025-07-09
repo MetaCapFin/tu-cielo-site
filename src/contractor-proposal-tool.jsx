@@ -18,6 +18,7 @@ export default function ContractorProposalTool() {
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://intel-ventures.com/contractor-proposal-tool" />
     </Helmet>
+      
     <div className="page-container">
       {/* HEADER */}
       <header className="site-header">
@@ -43,10 +44,12 @@ export default function ContractorProposalTool() {
       <div className="hero-image">
           <img src="/TuCielo_ProposalCalculator.jpg" alt="Logo" />
         </div>
+      
       <div className="calculator-wrapper">
          <TuCieloCalculator />
       </div>
     </div>
+    </>
   );
 }
 
