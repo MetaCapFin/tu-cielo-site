@@ -144,8 +144,9 @@ export default function TuCieloCalculator() {
             </tbody>
           </table>
         </div>
-      )}
+           )}
     </div>
-  );
-</>
+  </>
+);
 }
+
