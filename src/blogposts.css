@@ -408,8 +408,9 @@
     display: flex;
     justify-content: center;  /* center horizontally */
     align-items: center;      /* center vertically (optional) */
+    margin-bottom: 2rem;
     width: 100%;
-    padding: 2rem 0;          /* spacing above and below */
+    padding: 1rem 0;          /* spacing above and below */
     background-color: #f9f9f9; /* optional background */
   }
   
@@ -419,6 +420,7 @@
     width: 100%;              /* You can adjust this */
     max-height: 500px;        /* Adjust as needed */
     object-fit: contain;      /* keeps image proportions */
+    border-radius: 8px;
   }
 }
 
