@@ -404,23 +404,21 @@
   }
 
   /* Loan Calculator Hero Image */
-  .hero-image {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto 2rem auto; /* center & space below */
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .hero-image img {
-    width: 100%;
-    height: auto;
-    max-height: 300px;       /* ✅ Reduce this as needed */
-    object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* optional */
-  }
+.hero-image {
+  width: 100%;
+  max-width: 600px;         /* constrain image width */
+  margin: 0 auto 1.5rem;    /* center image and add spacing below */
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  max-height: 250px;        /* ✅ reduce height */
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
 
 }
 
