@@ -402,7 +402,28 @@
   .comments-section h3 {
     font-size: 1.2rem;
   }
+
+  /* Loan Calculator Hero Image */
+  .hero-image {
+    display: flex;
+    justify-content: center;  /* center horizontally */
+    align-items: center;      /* center vertically (optional) */
+    width: 100%;
+    padding: 2rem 0;          /* spacing above and below */
+    background-color: #f9f9f9; /* optional background */
+  }
+  
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+    width: 100%;              /* You can adjust this */
+    max-height: 500px;        /* Adjust as needed */
+    object-fit: contain;      /* keeps image proportions */
+  }
 }
+
+
+
 
 
 
