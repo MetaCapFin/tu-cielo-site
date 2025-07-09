@@ -295,6 +295,28 @@
     width: 100%;
     overflow-x: hidden;
   }
+  
+  .loan-calculator {
+    padding: 20px 15px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden; /* prevents horizontal scroll */
+  }
+
+  .loan-calculator input[type="range"] {
+    max-width: 100%;
+  }
+
+  .loan-calculator .overflow-auto {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  body,
+  html {
+    overflow-x: hidden;
+  }
 }
 
 
