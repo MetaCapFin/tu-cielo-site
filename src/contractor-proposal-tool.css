@@ -203,7 +203,7 @@
   width: 100%;
   height: auto;
   display: block;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 0px auto;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
