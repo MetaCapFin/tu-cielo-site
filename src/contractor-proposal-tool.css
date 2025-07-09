@@ -93,7 +93,6 @@
   margin-top: 20px;
   background-color: #fff;
   font-size: 0.9rem;
-  min-width: 600px; /* ensure min width for table for scroll on mobile */
 }
 
 .loan-calculator th,
