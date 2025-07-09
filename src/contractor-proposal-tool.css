@@ -276,16 +276,16 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .hero-image img {
-    max-width: 100%;
-    height: auto;
+    max-width: 90vw;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     display: block;
-    margin: 0 auto;
-    box-sizing: border-box;
   }
-  
-    body {
+
+  body {
       overflow-x: hidden;
   }
   
