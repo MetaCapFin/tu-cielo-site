@@ -27,8 +27,7 @@ export default function ContractorProposalTool() {
 
       {/* Main content */}
       <div style={{ padding: '2rem', maxWidth: 900, margin: '0 auto' }}>
-        <h1>Contractor Proposal Tool</h1>
-        <TuCieloCalculator />
+         <TuCieloCalculator />
       </div>
     </div>
   );
