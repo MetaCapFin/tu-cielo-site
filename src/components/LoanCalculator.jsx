@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './LoanCalculator.css';
+import { Helmet } from 'react-helmet';
 
 export default function TuCieloCalculator() {
   const [units, setUnits] = useState(50);
@@ -47,6 +48,18 @@ export default function TuCieloCalculator() {
   const amortizationTable = generateAmortization();
 
   return (
+    <Helmet>
+      <title>HOA Loan Calculator | TuCielo Financing</title>
+      <meta
+        name="description"
+        content="Use the TuCielo HOA loan calculator to estimate project financing, monthly payments, and amortization schedule tailored to your community."
+      />
+      <meta property="og:title" content="Loan Calculator | TuCielo Financing" />
+      <meta property="og:description" content="Estimate your HOA project costs and monthly payments with our interactive loan calculator." />
+      <meta property="og:url" content="https://www.tucielofinancing.com/calculator" />
+      <meta property="og:image" content="https://www.tucielofinancing.com/cloud_logo.jpg" />
+    </Helmet>
+
     <div className="loan-calculator">
       <h2>TuCielo HOA Loan Proposal Calculator</h2>
 
