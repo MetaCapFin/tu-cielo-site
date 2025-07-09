@@ -62,7 +62,9 @@ export default function TuCieloCalculator() {
     </Helmet>
 
     <div className="loan-calculator">
-    
+    <div className="hero-image">
+              <img src="/TuCielo_ProposalCalculator.jpg" alt="Logo" />
+            </div>
       <label>Number of Units</label>
       <input
         type="number"
