@@ -84,8 +84,7 @@ function TuCieloCalculator() {
       <div className="hero-image">
               <img src="/TuCielo_ProposalCalculator.jpg" alt="Logo" />
             </div>
-      <h2>TuCielo HOA Loan Proposal Calculator</h2>
-
+     
       <label>Number of Units</label>
       <input
         type="number"
