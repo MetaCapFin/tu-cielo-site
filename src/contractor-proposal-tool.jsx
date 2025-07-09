@@ -26,13 +26,12 @@ export default function ContractorProposalTool() {
       </header>
 
       {/* Main content */}
-      {/* Main content */}
-      <div className="calculator-wrapper">
-        <div className="hero-image">
+      
+      <div className="hero-image">
           <img src="/TuCielo_ProposalCalculator.jpg" alt="Logo" />
         </div>
-      
-        <TuCieloCalculator />
+      <div className="calculator-wrapper">
+         <TuCieloCalculator />
       </div>
     </div>
   );
