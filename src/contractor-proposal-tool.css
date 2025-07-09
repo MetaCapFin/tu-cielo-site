@@ -256,5 +256,19 @@
   box-sizing: border-box;
 }
 
+.hero-image {
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  padding: 0 1rem;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+
 
 
