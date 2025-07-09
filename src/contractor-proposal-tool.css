@@ -316,6 +316,11 @@
   html {
     overflow-x: hidden;
   }
+ 
+  .loan-calculator table {
+    min-width: 600px;
+  }
+
 }
 
 
