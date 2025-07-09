@@ -3,15 +3,14 @@
   background-color: #ffffff;
   color: #303c42;
   font-family: 'Mulish', sans-serif;
-  padding: 30px 20px;
+  padding: 30px 40px;        /* More padding for large screens */
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  max-width: 100%;              /* ⬅️ Allow it to grow full width */
+  max-width: 1100px;         /* ⬅️ Wider calculator */
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
 }
-
 
 /* Headings */
 .loan-calculator h2 {
@@ -250,14 +249,15 @@
 }
 
 .calculator-wrapper {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 2rem 1rem;
   box-sizing: border-box;
 }
 
 .hero-image {
-  max-width: 700px;
+  max-width: 700px;        /* ⬅️ Smaller than calculator */
+  width: 100%;
   margin: 0 auto 2rem auto;
   padding: 0 1rem;
 }
@@ -267,6 +267,7 @@
   height: auto;
   display: block;
   border-radius: 8px;
+  object-fit: contain;
 }
 
 
