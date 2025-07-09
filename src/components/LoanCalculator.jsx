@@ -48,6 +48,7 @@ export default function TuCieloCalculator() {
   const amortizationTable = generateAmortization();
 
   return (
+    <>
     <Helmet>
       <title>HOA Loan Calculator | TuCielo Financing</title>
       <meta
@@ -146,4 +147,5 @@ export default function TuCieloCalculator() {
       )}
     </div>
   );
+</>
 }
