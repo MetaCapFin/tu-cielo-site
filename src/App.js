@@ -178,7 +178,11 @@ function Homepage() {
       </div>
       <div className="header-bottom">
         <div class="header-scroll-container">
-        <button
+       <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
+      <button className="header-button-link"onClick={() => {document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });}}>
+          Apply
+        </button>
+       <button
           className="header-button-link"
           onClick={() =>
             document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" })
@@ -186,12 +190,9 @@ function Homepage() {
         >
           Contact Us
         </button>
-        <button className="header-button-link"onClick={() => {document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });}}>
-          Apply
-        </button>
         <Link to="/faq" className="header-button-link">FAQ</Link>
         <Link to="/blogposts" className="header-button-link">Blog</Link>
-        <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
+        
         <button className="header-button-link"onClick={() => setShowPrivacyModal(true)}> Privacy Policy</button>
       </div>
     </div>
