@@ -406,20 +406,19 @@
   /* Loan Calculator Hero Image */
 .hero-image {
   width: 100%;
-  max-width: 600px;         /* constrain image width */
-  margin: 0 auto 1.5rem;    /* center image and add spacing below */
+  max-width: 600px;           /* Limit image width */
+  margin: 0 auto 2rem auto;   /* Center and add space below */
 }
 
 .hero-image img {
+  display: block;
   width: 100%;
   height: auto;
-  max-height: 250px;        /* ✅ reduce height */
+  max-height: 250px;          /* Adjust this as needed */
   object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* optional shadow */
 }
-
-
 }
 
 
