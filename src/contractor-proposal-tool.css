@@ -278,7 +278,22 @@
 
 @media (min-width: 768px) {
   .hero-image img {
-    max-width: 400px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  
+    body {
+      overflow-x: hidden;
+  }
+  
+  .hero-image {
+    padding: 0 1rem;
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: hidden;
   }
 }
 
