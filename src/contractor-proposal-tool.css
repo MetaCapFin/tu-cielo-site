@@ -123,7 +123,7 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 768px) {\
   .loan-calculator {
     padding: 20px 15px;
   }
@@ -274,6 +274,12 @@
   margin: 0 auto 30px auto;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .hero-image img {
+    max-width: 400px;
+  }
 }
 
 
