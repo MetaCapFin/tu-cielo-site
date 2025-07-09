@@ -402,24 +402,29 @@
   .comments-section h3 {
     font-size: 1.2rem;
   }
+}
 
   /* Loan Calculator Hero Image */
 .hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
   width: 100%;
-  max-width: 600px;           /* Limit image width */
-  margin: 0 auto 2rem auto;   /* Center and add space below */
+  max-width: 100%;
 }
 
 .hero-image img {
-  display: block;
   width: 100%;
+  max-width: 400px;
   height: auto;
-  max-height: 250px;          /* Adjust this as needed */
   object-fit: contain;
+  display: block;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* optional shadow */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-}
+
+
 
 
 
