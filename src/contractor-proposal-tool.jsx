@@ -26,12 +26,20 @@ export default function ContractorProposalTool() {
       </header>
 
       {/* Main content */}
-      <div style={{ padding: '2rem', maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-        <div className="hero-image">
-         <img src="/TuCielo_ProposalCalculator.jpg" alt="Logo" />
-        </div>
-         <TuCieloCalculator />
-      </div>
+      <div
+  style={{
+    padding: '2rem',
+    maxWidth: '900px',
+    margin: '0 auto'
+  }}
+>
+  <div className="hero-image">
+    <img src="/TuCielo_ProposalCalculator.jpg" alt="Logo" />
+  </div>
+
+  <TuCieloCalculator />
+</div>
+
     </div>
   );
 }
