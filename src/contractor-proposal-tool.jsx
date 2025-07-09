@@ -81,10 +81,7 @@ function TuCieloCalculator() {
 
   return (
     <div className="loan-calculator" style={{ marginTop: 30 }}>
-      <div className="hero-image">
-              <img src="/TuCielo_ProposalCalculator.jpg" alt="Logo" />
-            </div>
-     
+          
       <label>Number of Units</label>
       <input
         type="number"
