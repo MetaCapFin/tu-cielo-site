@@ -47,14 +47,14 @@
 
 /* Logo image */
 .logo-title img {
-  height: 100px;  /* Adjust independently */
+  height: 120px;  /* Adjust independently */
   width: auto;
   display: block;
 }
 
 /* Beta Program Sticker */
 .beta-label img {
-  height: 70px;  /* Also independently adjustable */
+  height: 150px;  /* Also independently adjustable */
   width: auto;
   display: block;
 }
@@ -801,6 +801,20 @@
     padding-right: 15px;
   }
 
+ .header-top {
+    flex-direction: column;
+    align-items: center; /* optional: centers the stacked items */
+    gap: 10px; /* space between logo and sticker */
+  }
+
+  .logo-title img {
+    height: 70px; /* optional: resize for mobile */
+  }
+
+  .beta-label img {
+    height: 60px; /* optional: resize sticker slightly smaller */
+  }
+  
   /* Make header-features stack vertically and full width */
   .header-features {
     flex-direction: column;
