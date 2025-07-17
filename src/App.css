@@ -46,7 +46,6 @@
 }
 
 /* Logo image */
-/* Bigger logo */
 .logo-title img {
   height: 80px;  /* Increased from 60px */
   width: auto;
@@ -58,14 +57,6 @@
   height: 80px; /* Match logo size */
   width: auto;
   display: block;
-}
-
-/* Reorder Beta label to the left */
-.logo-title {
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse; /* This moves .beta-label to the LEFT */
-  gap: 20px; /* space between sticker and logo */
 }
 
 /* Optional: remove margin-left from beta if it causes alignment issues */
