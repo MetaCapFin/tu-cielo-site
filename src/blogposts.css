@@ -1,10 +1,11 @@
+/* Global Styles */
 .blog-page {
   font-family: 'Mulish', sans-serif;
   background-color: #f9f9f9;
   color: #333;
 }
 
-/* Main blog layout */
+/* Layout & Typography */
 .blog-content-wrapper {
   max-width: 800px;
   margin: 0 auto;
@@ -19,8 +20,8 @@
 }
 
 .blog-date {
-  text-align: center;
   font-size: 0.9rem;
+  text-align: center;
   color: #888;
   margin-bottom: 1.5rem;
 }
@@ -32,26 +33,20 @@
   margin-bottom: 1.5rem;
 }
 
-.blog-body {
+.blog-body,
+.blog-article p {
   font-size: 1.1rem;
   line-height: 1.6;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
 }
 
-/* Blog article content styles */
 .blog-article h2,
 .blog-article h3,
 .blog-article h4 {
   color: #2184BD;
-  margin-top: 1.8rem;
-  margin-bottom: 0.8rem;
   font-weight: 700;
-}
-
-.blog-article p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
-  color: #333;
+  margin: 1.8rem 0 0.8rem;
 }
 
 .blog-article strong {
@@ -65,7 +60,6 @@
 
 .blog-article ul {
   margin-left: 1.2rem;
-  margin-bottom: 1rem;
   list-style-type: disc;
   color: #444;
 }
@@ -74,7 +68,7 @@
   margin-bottom: 0.4rem;
 }
 
-/* Comments section */
+/* Comments Section */
 .comments-section {
   margin-top: 40px;
   border-top: 1px solid #ddd;
@@ -89,29 +83,33 @@
 .comments-section textarea {
   width: 100%;
   padding: 12px;
+  font-family: 'Mulish', sans-serif;
   border-radius: 6px;
   border: 1px solid #ccc;
   margin-bottom: 10px;
-  font-family: 'Mulish', sans-serif;
 }
 
-.cta-button {
+/* Buttons */
+.cta-button,
+.pagination-controls button,
+.back-to-main-button {
   display: inline-block;
-  margin: 30px;
   background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
   color: white;
   padding: 12px 24px;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
+  font-family: 'Mulish', sans-serif;
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease;
-  font-family: 'Mulish', sans-serif;
+  text-decoration: none;
   text-align: center;
-  text-decoration: none; /* <--- this removes the underline */
 }
 
-.cta-button:hover {
+.cta-button:hover,
+.pagination-controls button:hover,
+.back-to-main-button:hover {
   background: white;
   color: #1C7FB8;
 }
@@ -124,22 +122,8 @@
   margin-top: 40px;
   border-top: 1px solid #ccc;
   padding-top: 20px;
-}
-
-.pagination-controls button {
-  display: inline-block;
-  margin: 30px auto 0 auto;
-  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-  font-family: 'Mulish', sans-serif;
-  text-align: center;
-  text-decoration: none; /* <--- this removes the underline */
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .pagination-controls button:disabled {
@@ -151,7 +135,7 @@
   font-weight: bold;
 }
 
-/* Header (matching site style) */
+/* Header */
 .site-header {
   background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
   color: white;
@@ -159,21 +143,19 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 0;
   width: 100%;
-  z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
 }
 
 .site-title-link {
-  cursor: pointer;
   color: white;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .site-title-link:hover {
   text-decoration: none;
-  cursor: pointer;
 }
 
 .header-top {
@@ -181,21 +163,16 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  border-bottom: 1px solid #eef2f7;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
+  border-bottom: 1px solid #eef2f7;
 }
 
 .logo-placeholder img {
   height: 50px;
   width: auto;
   display: block;
-}
-
-.site-header h1 {
-  margin: 0 0 0 40px;
-  font-size: 1.8rem;
 }
 
 .beta-label {
@@ -205,12 +182,15 @@
   line-height: 1;
 }
 
+.site-header h1 {
+  margin: 0 0 0 40px;
+  font-size: 1.8rem;
+}
+
 .header-bottom {
   display: flex;
   gap: 15px;
   padding: 10px 20px;
-  margin: 0;
-  box-sizing: border-box;
 }
 
 .header-button-link {
@@ -219,21 +199,18 @@
   border: 1px solid white;
   padding: 8px 16px;
   border-radius: 6px;
-  cursor: pointer;
   font-family: 'Mulish', sans-serif;
   font-weight: 500;
   text-decoration: none;
-  margin-right:10px;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
-.header-button-link:hover,
-.header-button-link:focus,
-.header-button-link:active {
+.header-button-link:hover {
   background-color: rgba(255, 255, 255, 0.2);
-  text-decoration: none;
 }
 
-/* Footer (matching site style) */
+/* Footer */
 .site-footer {
   background-color: #303C42;
   color: white;
@@ -241,42 +218,48 @@
   padding: 15px 20px;
   font-size: 0.9rem;
   margin-top: 40px;
-  font-family: 'Mulish', sans-serif;
 }
 
-/*Back to main page button*/
-
+/* Back Button */
 .back-to-main-container {
   margin-top: 20px;
   text-align: center;
 }
 
-.back-to-main-button {
-  display: inline-block;
-  margin: 30px auto 0 auto;
-  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-  font-family: 'Mulish', sans-serif;
-  text-align: center;
-  text-decoration: none; /* <--- this removes the underline */
+/* Hero Image */
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 100%;
 }
 
-.back-to-main-button:hover {
-  background: white;
-  color: #1C7FB8;
+.hero-image img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.main-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
   .main-content {
     padding: 2rem 1rem;
   }
-  
+
   .blog-content-wrapper {
     padding: 30px 15px;
   }
@@ -307,7 +290,6 @@
     height: 40px;
   }
 
-  /* Fixed mobile button styles */
   .header-button-link {
     width: 200px;
     margin: 0 auto;
@@ -318,27 +300,25 @@
 
   .header-bottom > a,
   .header-bottom > button {
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
   }
 
   .header-bottom > a > .header-button,
   .header-bottom > button.header-button {
     width: 100%;
-    text-align: center;
-    display: flex;
     justify-content: center;
-    align-items: center;
   }
 
   .cta-button,
   .pagination-controls button,
   .back-to-main-button {
     width: 100%;
-    padding: 12px;
-    font-size: 1rem;
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
   }
 
   .comments-section textarea {
@@ -347,32 +327,23 @@
 
   .pagination-controls {
     flex-direction: column;
-    gap: 15px;
   }
 
   .site-footer {
     font-size: 0.85rem;
     padding: 20px 10px;
   }
-  
-  .cta-button,
-  .pagination-controls button,
-  .back-to-main-button {
-    width: 100%;
-    max-width: 300px; /* or whatever you prefer */
-    margin: 0 auto;
-    display: block;
-  }
-    .header-scroll-container {
+
+  .header-scroll-container {
     display: flex;
     overflow-x: auto;
     gap: 10px;
     padding: 10px 0;
-    width: 100%;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    width: 100%;
   }
-  
+
   .header-scroll-container > a,
   .header-scroll-container > button {
     flex: 0 0 auto;
@@ -401,33 +372,6 @@
   }
 }
 
-  /* Loan Calculator Hero Image */
-.hero-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem auto;
-  width: 100%;
-  max-width: 100%;
-}
-
-.hero-image img {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.main-content {
-  width:100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-  box-sizing: border-box;
-}
 
 
 
