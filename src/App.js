@@ -165,7 +165,7 @@ function Homepage() {
       {/* HEADER */}
       
      <header className="site-header">
-     <div className="header-top">
+     <div className="tucielo-header-top">
         <div className="logo-title">
           <img src="/TuCielo-Header-Logo2.png" alt="Logo" />
         </div>
