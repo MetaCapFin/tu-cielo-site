@@ -121,7 +121,7 @@
 
 /* HERO SECTION */
 .hero-section {
-  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
+  background: transparent;
   color: white;
   padding: 20px 20px 40px;
   text-align: center;
@@ -154,10 +154,10 @@
 }
 
 .hero-content {
-  background-color: #1C7FB8;
+  background-color: linear-gradient(to bottom left, #2184BD, #1C7FB8);
   color: white;
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
   max-width: 700px;
   margin: 0 auto;
   padding: 30px 20px;
