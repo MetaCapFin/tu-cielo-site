@@ -389,7 +389,9 @@ function Homepage() {
              <h2>What Could Your Association Payment Look Like?</h2>
               <div className="payment-breakdown-wrapper">
                 <div className="payment-breakdown">
-                 
+
+                <img src="/Free_Custom_Estimate_no_background.png" alt="Free Custom Estimate" className="estimate-image"/>
+                              
                   {/* Modal Trigger */}
                   <div style={{ textAlign: "center" }}>
                     <button className="cta-button" onClick={() => setShowLoanCalculatorModal(true)}>
