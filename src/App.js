@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import ContractorProposalTool from './contractor-proposal-tool';
 import FAQ from './faq'; // from src/faq.js
-import Blog from './blogposts';
+
 
 function Homepage() {
   const [activeIndex, setActiveIndex] = useState(null);
