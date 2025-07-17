@@ -358,26 +358,30 @@
 }
 
 /* Payment Look Like */
+/* Outer section - transparent */
 .payment-estimate-section {
   padding: 40px 20px;
-  background-color: #eef2f7;
+  background-color: transparent; /* <-- Changed */
   text-align: center;
   font-family: 'Mulish', sans-serif;
   color: #303c42;
 }
 
+/* Title */
 .payment-estimate-section h2 {
   font-size: 1.8rem;
   margin-bottom: 20px;
 }
 
+/* Inner box with soft background and shadow */
 .payment-breakdown {
   margin: 0 auto;
-  background-color: #eef2f7;
+  background-color: #eef2f7; /* <-- Your original blue-gray */
   padding: 30px 20px;
-  border-radius: 0px;
-  max-width: 600px; /* Optional: limits width for better readability */
-  text-align: left;  /* Aligns text inside to the left */
+  border-radius: 12px; /* Add some roundness for modern feel */
+  max-width: 600px;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* <-- Adds depth */
 }
 
 .payment-breakdown ul {
