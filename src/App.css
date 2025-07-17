@@ -52,6 +52,12 @@
   display: block;
 }
 
+.beta-label img {
+  height: 60px; /* or whatever fits */
+  width: auto;
+  display: block;
+}
+
 /* Site title */
 .site-header h1 {
   margin: 0 0 0 40px;
