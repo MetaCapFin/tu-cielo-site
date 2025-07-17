@@ -373,6 +373,13 @@
   margin-bottom: 20px;
 }
 
+.estimate-image {
+  display: block;
+  margin: 0 auto 20px;
+  max-width: 250px;
+  height: auto;
+}
+
 /* Inner box with soft background and shadow */
 .payment-breakdown {
   margin: 0 auto;
