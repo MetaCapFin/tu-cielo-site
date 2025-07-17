@@ -386,11 +386,9 @@ function Homepage() {
           {/* ESTIMATE SECTION */}
           <section>
             <div className="payment-estimate-section">
-              <h2>What Could Your Association Payment Look Like?</h2>
               <div className="payment-breakdown-wrapper">
-            <h2>What Could Your Association Payment Look Like?</h2>
                 <div className="payment-breakdown">
-                  
+                  <h2>What Could Your Association Payment Look Like?</h2>
                   {/* Modal Trigger */}
                   <div style={{ textAlign: "center" }}>
                     <button className="cta-button" onClick={() => setShowLoanCalculatorModal(true)}>
