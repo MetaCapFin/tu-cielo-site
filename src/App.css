@@ -802,27 +802,35 @@
   }
 
   /* Stack the header-top content vertically */
-    .tucielo-header-top {
+   .tucielo-header-top {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: flex-start !important; /* 💥 Change this */
     gap: 10px;
+    width: 100%;
   }
+
   .logo-title {
-    order: 1; /* Logo stays on top */
+    order: 1;
+    width: 100%; /* helps center content within flex column */
+    display: flex;
+    justify-content: center;
   }
 
   .beta-label {
-    order: 2; /* Sticker goes below */
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .logo-title img {
-    height: 70px; /* Adjust logo size for mobile */
+    height: 70px;
   }
 
   .beta-label img {
-    height: 60px; /* Adjust sticker size independently */
+    height: 60px;
   }
 
   /* Rest of your responsive styles remain untouched */
