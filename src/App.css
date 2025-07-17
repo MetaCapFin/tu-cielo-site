@@ -796,26 +796,36 @@
 
 @media (max-width: 768px) {
   .main-content {
-    padding-top: 80px; /* less top padding on smaller screens */
+    padding-top: 80px;
     padding-left: 15px;
     padding-right: 15px;
   }
 
- .header-top {
+  /* Stack the header-top content vertically */
+  .header-top {
+    display: flex;
     flex-direction: column;
-    align-items: center; /* optional: centers the stacked items */
-    gap: 10px; /* space between logo and sticker */
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-title {
+    order: 1; /* Logo stays on top */
+  }
+
+  .beta-label {
+    order: 2; /* Sticker goes below */
   }
 
   .logo-title img {
-    height: 70px; /* optional: resize for mobile */
+    height: 70px; /* Adjust logo size for mobile */
   }
 
   .beta-label img {
-    height: 60px; /* optional: resize sticker slightly smaller */
+    height: 60px; /* Adjust sticker size independently */
   }
-  
-  /* Make header-features stack vertically and full width */
+
+  /* Rest of your responsive styles remain untouched */
   .header-features {
     flex-direction: column;
   }
@@ -825,19 +835,16 @@
     padding: 20px 0;
   }
 
-  /* Pain points list full width */
   .pain-points-list {
     max-width: 100%;
     padding-left: 15px;
   }
 
-  /* Payment breakdown area full width with padding */
   .payment-breakdown {
     max-width: 100%;
     padding: 20px 15px;
   }
 
-  /* How it works steps stack vertically */
   .steps-visual {
     flex-direction: column;
     gap: 30px;
@@ -851,7 +858,6 @@
     display: none;
   }
 
-  /* Form container stacks vertically and centers */
   .form-container {
     flex-direction: column;
     align-items: center;
@@ -866,7 +872,6 @@
     max-width: 100%;
   }
 
-  /* Features table scroll horizontally */
   .features table {
     display: block;
     width: 100%;
@@ -874,7 +879,6 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  /* FAQ section full width and text adjustments */
   .faq-section {
     padding: 30px 15px;
     max-width: 100%;
@@ -883,14 +887,12 @@
     font-size: 1.6rem;
   }
 
-  /* Adjust CTA buttons to full width */
   .cta-button {
     width: 100%;
     font-size: 1.1rem;
     padding: 14px 0;
   }
 
-  /* Hero content font size adjustments */
   .hero-content h1 {
     font-size: 1.8rem;
   }
@@ -902,15 +904,16 @@
     font-size: 1rem;
   }
 
-  /* Header bottom layout */
   .header-bottom {
     flex-direction: column;
     align-items: center;
     gap: 10px;
   }
+
   .header-button {
     width: 100%;
-    max-width: 300px; /* optional */
+    max-width: 300px;
   }
 }
+
 
