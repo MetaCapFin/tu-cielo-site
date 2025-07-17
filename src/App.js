@@ -390,7 +390,7 @@ function Homepage() {
               <div className="payment-breakdown-wrapper">
                 <div className="payment-breakdown">
 
-                <img src="/Free_Custom_Estimate_no_background.png" alt="Free Custom Estimate" className="estimate-image"/>
+                <img src="Free_Custom_Estimate_no_background.png" alt="Free Custom Estimate" className="estimate-image"/>
                               
                   {/* Modal Trigger */}
                   <div style={{ textAlign: "center" }}>
