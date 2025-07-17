@@ -388,6 +388,7 @@ function Homepage() {
             <div className="payment-estimate-section">
               <h2>What Could Your Association Payment Look Like?</h2>
               <div className="payment-breakdown-wrapper">
+            <h2>What Could Your Association Payment Look Like?</h2>
                 <div className="payment-breakdown">
                   
                   {/* Modal Trigger */}
