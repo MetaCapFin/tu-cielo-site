@@ -168,11 +168,8 @@ function Homepage() {
         <div className="header-top">
         <div className="logo-title">
           <div className="logo-placeholder">
-            <img src="/cloud_logo.jpg" alt="Logo" />
-          </div>
-          <h1>TuCielo</h1>
-        </div>
-        <div className="beta-label">
+            <img src="/TuCielo-Header-Logo.png" alt="Logo" />
+          <div className="beta-label">
           <strong>Beta Program</strong>
         </div>
       </div>
