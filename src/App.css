@@ -33,11 +33,11 @@
 
 /* Top part of header */
 .header-top {
-  background: 'linear-gradient(to bottom left,#2184bd,#1c7fb8)';
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* subtle drop shadow */
+  background: linear-gradient(to bottom left, #2184bd, #1c7fb8);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* THIS handles left/right layout */
   gap: 10px;
   border-bottom: 1px solid #eef2f7;
   width: 100%;
@@ -47,38 +47,26 @@
 
 /* Logo image */
 .logo-title img {
-  height: 80px;  /* Increased from 60px */
+  height: 100px;  /* Adjust independently */
   width: auto;
   display: block;
 }
 
-/* Bigger sticker */
+/* Beta Program Sticker */
 .beta-label img {
-  height: 80px; /* Match logo size */
+  height: 70px;  /* Also independently adjustable */
   width: auto;
   display: block;
 }
 
-/* Optional: remove margin-left from beta if it causes alignment issues */
+/* Optional: Text styling if ever needed again */
 .beta-label {
-  margin-left: 0;
-}
-
-
-/* Site title */
-.site-header h1 {
-  margin: 0 0 0 40px;
-  font-size: 1.8rem;
-}
-
-/* Beta label styling */
-.beta-label {
-  margin-left: auto;
   font-family: 'Mulish', sans-serif;
-  font-size: 30px; /* smaller than before */
+  font-size: 30px;
   font-weight: bold;
   line-height: 1;
 }
+
 
 /* Bottom part of header */
 .header-bottom {
