@@ -18,7 +18,7 @@
 
 /* Site Header */
 .site-header {
-  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
+  background: #2383BC;
   color: white;
   font-family: 'Mulish', sans-serif;
   display: flex;
@@ -33,7 +33,7 @@
 
 /* Top part of header */
 .header-top {
-  background-color: #1DA1F2;
+  background-color: #2383BC;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* subtle drop shadow */
   display: flex;
   align-items: center;
@@ -69,7 +69,7 @@
 
 /* Bottom part of header */
 .header-bottom {
-  background-color: #1DA1F2;
+  background-color: #2383BC;
   display: flex;
   gap: 15px;
   padding: 10px 20px;
