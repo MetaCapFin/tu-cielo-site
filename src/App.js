@@ -167,7 +167,7 @@ function Homepage() {
      <header className="site-header">
        <div className="header-top">
         <div className="logo-title">
-          <img src="/TuCielo-Header-Logo.png" alt="Logo" />
+          <img src="/TuCielo-Header-Logo2.png" alt="Logo" />
             <div className="beta-label">
               <strong>Beta Program</strong>
             </div>
