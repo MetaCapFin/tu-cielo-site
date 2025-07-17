@@ -33,6 +33,7 @@
 
 /* Top part of header */
 .header-top {
+  background: 'linear-gradient(to bottom left,#2184bd,#1c7fb8)';
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* subtle drop shadow */
   display: flex;
   align-items: center;
@@ -68,6 +69,7 @@
 
 /* Bottom part of header */
 .header-bottom {
+  background: 'linear-gradient(to bottom left,#2184bd,#1c7fb8)';
   display: flex;
   gap: 15px;
   padding: 10px 20px;
