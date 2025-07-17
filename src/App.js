@@ -165,12 +165,14 @@ function Homepage() {
       {/* HEADER */}
       
      <header className="site-header">
-        <div className="header-top">
+       <div className="header-top">
         <div className="logo-title">
           <div className="logo-placeholder">
             <img src="/TuCielo-Header-Logo.png" alt="Logo" />
-          <div className="beta-label">
-          <strong>Beta Program</strong>
+            <div className="beta-label">
+              <strong>Beta Program</strong>
+            </div>
+          </div>
         </div>
       </div>
       <div className="header-bottom">
