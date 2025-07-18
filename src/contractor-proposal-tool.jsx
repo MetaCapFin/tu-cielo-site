@@ -24,7 +24,6 @@ export default function ContractorProposalTool() {
     };
   }, []);
   return (
-    <>
       <Helmet>
       <title>TuCielo Contractor Proposal Tool</title>
       <meta name="description" content="Estimate your HOA project financing with TuCielo’s Contractor Proposal Tool. See per-unit payments, amortization, and fee breakdown instantly." />
@@ -224,9 +223,8 @@ function TuCieloCalculator() {
         Back to TuCielo
       </button>     
     </div>
-  </div>
-
-    {/* FOOTER */}
+       
+      {/* FOOTER */}
       <footer className="site-footer">
         <p>© 2025 Tu Cielo. All rights reserved.</p>
         <br></br>
@@ -238,7 +236,7 @@ function TuCieloCalculator() {
           and the lender. This website does not constitute an offer to lend. Please consult a TuCielo representative for personalized estimates.
         </p>
       </footer>
-    </>
+  </div>
   );
 }
 
