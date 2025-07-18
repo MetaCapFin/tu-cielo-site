@@ -28,19 +28,21 @@ export default function FAQ() {
   return (
   <>
     <header className="site-header">
-      <div className="logo-title" onClick={handleGoHome} style={{ cursor: 'pointer' }}>
-        <img src="/TuCielo-Header-Logo2.png" alt="Logo" />
-      </div>
-
-      <div className="beta-label">
-        <img src="BetaProgram_Sticker.png" alt="Beta Program" />
-      </div>
-
-      <div className="header-bottom">
-        <Link to="/blogposts" className="header-button-link">Blog</Link>
-        <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
-      </div>
-    </header>
+     <div className="header-top">
+       <div className="logo-title" onClick={handleGoHome} style={{ cursor: 'pointer' }}>
+         <img src="/TuCielo-Header-Logo2.png" alt="Logo" />
+       </div>
+   
+       <div className="beta-label">
+         <img src="BetaProgram_Sticker.png" alt="Beta Program" />
+       </div>
+     </div>
+   
+     <div className="header-bottom">
+       <Link to="/blogposts" className="header-button-link">Blog</Link>
+       <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
+     </div>
+   </header>
 
     <div className="faq-container">
       <section className="faq-questions">
