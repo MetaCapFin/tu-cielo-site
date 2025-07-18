@@ -1,4 +1,4 @@
-/* Fullscreen modal background */
+/* Modal container */
 .hoa-modal {
   position: fixed;
   inset: 0;
@@ -9,7 +9,7 @@
   justify-content: center;
 }
 
-/* Scrollable modal content */
+/* Modal content wrapper */
 .hoa-modal-content {
   background-color: #fff;
   border-radius: 12px;
@@ -34,7 +34,7 @@
   z-index: 10;
 }
 
-/* Form wrapper */
+/* Main form wrapper */
 .hoa-form-wrapper {
   padding: 24px;
   font-family: 'Mulish', sans-serif;
@@ -82,11 +82,11 @@
   font-family: 'Mulish', sans-serif;
 }
 
-/* Button */
+/* Submit button */
 .hoa-submit-btn {
-  background-color: linear-gradient(to bottom left, #2184bd, #1c7fb8);
+  background: linear-gradient(to bottom left, #2184bd, #1c7fb8);
   color: #303c42;
-  padding: 12px 24px;
+  padding: 0.8rem 1.5rem;
   border: none;
   border-radius: 8px;
   font-size: 1rem;
@@ -94,7 +94,7 @@
   transition: background-color 0.3s ease;
   font-family: 'Mulish', sans-serif;
   width: 50%;
-  margin-top: 16px;
+  font-weight: bold;
 }
 
 .hoa-submit-btn:hover {
@@ -102,16 +102,11 @@
   color: #ffffff;
 }
 
-.step-controls {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 24px;
-}
-
+/* Navigation button styles */
 .hoa-nav-btn {
   background-color: #d1d5db;
   color: #303c42;
-  padding: 10px 20px;
+  padding: 0.6rem 1.2rem;
   border-radius: 6px;
   font-size: 1rem;
   border: none;
@@ -124,6 +119,7 @@
   cursor: not-allowed;
 }
 
+/* Controls wrapper */
 .step-controls {
   display: flex;
   flex-direction: column;
@@ -131,11 +127,22 @@
   margin-top: 2rem;
 }
 
-.hoa-nav-btn {
-  padding: 0.6rem 1.2rem;
+/* Confirmation message (if needed later) */
+.hoa-confirmation {
+  text-align: center;
+  padding: 40px 24px;
+  font-family: 'Mulish', sans-serif;
 }
 
-.hoa-submit-btn {
-  padding: 0.8rem 1.5rem;
-  font-weight: bold;
+.hoa-confirmation h2 {
+  color: #1c7fb8;
+  font-size: 2rem;
+  margin-bottom: 12px;
 }
+
+.hoa-confirmation p {
+  color: #303c42;
+  font-size: 1.125rem;
+  margin-bottom: 12px;
+}
+
