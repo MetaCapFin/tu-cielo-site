@@ -519,20 +519,39 @@ function Homepage() {
 
 
           {/* HOW IT WORKS */}
-          <section className="how-it-works">
+          <section className="how-it-works-section">
             <h2>How It Works</h2>
-
-            <img src="HowItWorks_Gears-removebg.png" alt="How it works" className="estimate-image"/>
-            
-            <div className="steps-visual">
-              <div className="step-group"><div className="step-circle">1</div><div className="step-line-horizontal" /><p>Consultation & Pre-Qualification</p></div>
-              <div className="step-group"><div className="step-circle">2</div><div className="step-line-horizontal" /><p>Customized Financing Proposal</p></div>
-              <div className="step-group"><div className="step-circle">3</div><p>Board Approval & Funding</p></div>
+          
+            <div className="how-it-works-container">
+              <div className="how-it-works-content">
+                <img src="HowItWorks_Gears-removebg.png" alt="How it works" className="estimate-image" />
+          
+                <div className="steps-visual">
+                  <div className="step-group">
+                    <div className="step-circle">1</div>
+                    <div className="step-line-horizontal" />
+                    <p>Consultation & Pre-Qualification</p>
+                  </div>
+                  <div className="step-group">
+                    <div className="step-circle">2</div>
+                    <div className="step-line-horizontal" />
+                    <p>Customized Financing Proposal</p>
+                  </div>
+                  <div className="step-group">
+                    <div className="step-circle">3</div>
+                    <p>Board Approval & Funding</p>
+                  </div>
+                </div>
+          
+                <p className="how-it-works-note">
+                  No appraisals. No unit-level credit checks. Fast approvals.
+                </p>
+              </div>
             </div>
-            <p className="how-it-works-note">No appraisals. No unit-level credit checks. Fast approvals.</p>
           </section>
 
-          {/* ESTIMATE SECTION */}
+
+          {/* APPLICATION SECTION */}
           <section id="application-section">
           <div className="payment-estimate-section">
             <h2>Click Below to Submit Your Application</h2>
