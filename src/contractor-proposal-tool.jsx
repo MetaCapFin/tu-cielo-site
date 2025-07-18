@@ -43,9 +43,8 @@ export default function ContractorProposalTool() {
         <div className="header-top">
           <div className="logo-title">
             <div className="logo-placeholder">
-              <img src="/cloud_logo.jpg" alt="Logo" />
+              <img src="/TuCielo_ProposalCalculator-removebg.png" alt="Logo" />
             </div>
-            <h1 className="site-title-link" onClick={() => window.location.href = '/'}>TuCielo</h1>
           </div>
           <div className="beta-label">
             <strong>Beta Program</strong>
@@ -58,11 +57,6 @@ export default function ContractorProposalTool() {
       </header>
 
       {/* Main content */}
-      
-      <div className="hero-image">
-          <img src="/TuCielo_ProposalCalculator.jpg" alt="Logo" />
-        </div>
-      
       <div className="calculator-wrapper">
          <TuCieloCalculator />
       </div>
