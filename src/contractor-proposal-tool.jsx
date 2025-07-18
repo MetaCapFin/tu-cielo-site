@@ -42,13 +42,13 @@ export default function ContractorProposalTool() {
       <header className="site-header">
         <div className="header-top">
           <div className="logo-title">
-            <div className="logo-placeholder">
-              <img src="/TuCielo_ProposalCalculator-removebg.png" alt="Logo" />
-            </div>
+             <img src="/TuCielo_ProposalCalculator-removebg.png" alt="Logo" />
           </div>
-          <div className="beta-label">
-            <strong>Beta Program</strong>
-          </div>
+
+        <div className="beta-label">
+          <img src="BetaProgram_Sticker.png" alt="Beta Program" />
+        </div>
+          
         </div>
         <div className="header-bottom">
           <Link to="/faq" className="header-button-link">FAQ</Link>
