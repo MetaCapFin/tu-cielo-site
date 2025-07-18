@@ -25,19 +25,6 @@ export default function ContractorProposalTool() {
   }, []);
   
   return (
-    <>
-      <Helmet>
-      <title>TuCielo Contractor Proposal Tool</title>
-      <meta name="description" content="Estimate your HOA project financing with TuCielo’s Contractor Proposal Tool. See per-unit payments, amortization, and fee breakdown instantly." />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta charSet="utf-8" />
-      <meta property="og:title" content="TuCielo Contractor Proposal Tool" />
-      <meta property="og:description" content="Estimate your HOA project financing with TuCielo’s Contractor Proposal Tool. Includes per-unit calculations, amortization table, and fee insights." />
-      <meta property="og:image" content="/TuCielo_ProposalCalculator.jpg" />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://intel-ventures.com/contractor-proposal-tool" />
-    </Helmet>
-      
     <div className="page-container">
       {/* HEADER */}
       <header className="site-header">
@@ -62,7 +49,6 @@ export default function ContractorProposalTool() {
          <TuCieloCalculator/>
       </div>
     </div>
-    </>
   );
 }
 
