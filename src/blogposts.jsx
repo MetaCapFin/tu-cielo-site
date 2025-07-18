@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './blogposts.css';
 import { Link } from 'react-router-dom';
 
+const handleGoHome = () => {
+  window.location.href = window.location.origin;
+};
+
 const BlogPosts = () => {
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
