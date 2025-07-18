@@ -96,34 +96,51 @@ module.exports = async function handler(req, res) {
         return res.status(500).json({ error: "Monday.com error", details: data.errors });
       }
 
-      const folderId = process.env.GOOGLE_DRIVE_FOLDER_ID;
+            const folderId = process.env.GOOGLE_DRIVE_FOLDER_ID;
       const uploads = {};
+      let uploadErrors = [];
 
-      if (files.reserveStudy) {
-        const file = Array.isArray(files.reserveStudy) ? files.reserveStudy[0] : files.reserveStudy;
-        uploads.reserveStudy = await uploadToDrive({
-          filePath: file.filepath,
-          originalFilename: file.originalFilename,
-          folderId,
-          hoaName,
-          communityName,
-          label: "Reserve Study",
-        });
+      try {
+        if (files.reserveStudy) {
+          const file = Array.isArray(files.reserveStudy) ? files.reserveStudy[0] : files.reserveStudy;
+          uploads.reserveStudy = await uploadToDrive({
+            filePath: file.filepath,
+            originalFilename: file.originalFilename,
+            folderId,
+            hoaName,
+            communityName,
+            label: "Reserve Study",
+          });
+        }
+
+        if (files.annualBudgetFile) {
+          const file = Array.isArray(files.annualBudgetFile) ? files.annualBudgetFile[0] : files.annualBudgetFile;
+          uploads.annualBudgetFile = await uploadToDrive({
+            filePath: file.filepath,
+            originalFilename: file.originalFilename,
+            folderId,
+            hoaName,
+            communityName,
+            label: "Annual Budget",
+          });
+        }
+
+      } catch (uploadError) {
+        console.error("File upload failed:", uploadError);
+        uploadErrors.push("Reserve Study and/or Annual Budget file upload failed.");
       }
 
-      if (files.annualBudgetFile) {
-        const file = Array.isArray(files.annualBudgetFile) ? files.annualBudgetFile[0] : files.annualBudgetFile;
-        uploads.annualBudgetFile = await uploadToDrive({
-          filePath: file.filepath,
-          originalFilename: file.originalFilename,
-          folderId,
-          hoaName,
-          communityName,
-          label: "Annual Budget",
-        });
-      }
+      const userMessage = uploadErrors.length === 0
+        ? "Your request has been submitted successfully."
+        : "Your request has been submitted, but we were not able to receive your Reserve Study & Annual Budget documents. A member of our team will be in touch shortly.";
 
-      res.status(200).json({ success: true, message: "Submitted successfully", uploads });
+      res.status(200).json({
+        success: true,
+        message: userMessage,
+        uploads,
+        uploadErrors,
+      });
+
 
     } catch (err) {
       console.error("Fetch error:", err);
