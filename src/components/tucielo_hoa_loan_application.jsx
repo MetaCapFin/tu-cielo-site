@@ -5,6 +5,8 @@ export default function HOAApplicationForm({ onClose }) {
   const [formData, setFormData] = useState({});
   const [files, setFiles] = useState({});
   const [step, setStep] = useState(0);
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
+
 
   const steps = [
     {
@@ -120,8 +122,7 @@ export default function HOAApplicationForm({ onClose }) {
       const result = await response.json();
 
       if (result.success) {
-        alert("Thank you for your submission! We will be in contact with you as soon as possible.");
-        onClose();  // Close the modal here
+        setSubmissionSuccess(true);
       } else {
         alert("Submission failed. Please try again.");
       }
@@ -137,7 +138,16 @@ export default function HOAApplicationForm({ onClose }) {
         <button className="hoa-close-button" onClick={onClose}>×</button>
         <div className="hoa-form-wrapper">
           <h2>First, some preliminary information</h2>
-          <form onSubmit={handleSubmit}>
+          {submissionSuccess ? (
+            <div className="hoa-confirmation">
+              <h2>🎉 Application Submitted!</h2>
+              <p>Thank you for your submission. We’ll be in touch shortly.</p>
+              <button className="hoa-nav-btn" onClick={onClose} style={{ marginTop: '1rem' }}>
+                Close
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit}encType="multipart/form-data">
             {step === 0 && (
               <div>
                 <h3>Association Information</h3>
