@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import TuCieloHOALoanApplication from './components/tucielo_hoa_loan_application';
@@ -18,7 +18,7 @@ function Homepage() {
   const [formValid, setFormValid] = useState(false);
   
   const [menuOpen, setMenuOpen] = useState(false);
-    
+   
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
   const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
@@ -29,6 +29,25 @@ function Homepage() {
     email: '',
   });
   const [showCalculator, setShowCalculator] = useState(false);
+
+  // ✅ Inject background effect after last useState
+  useEffect(() => {
+    document.body.style.backgroundImage = "url('/Fluffy_Clouds_Background.png')";
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.minHeight = '100vh';
+
+    return () => {
+      document.body.style.backgroundImage = '';
+      document.body.style.backgroundRepeat = '';
+      document.body.style.backgroundSize = '';
+      document.body.style.backgroundPosition = '';
+      document.body.style.backgroundAttachment = '';
+      document.body.style.minHeight = '';
+    };
+  }, []);
 
   // Contact form state
   const [contactFormData, setContactFormData] = useState({
@@ -71,42 +90,42 @@ function Homepage() {
   };
 
   // Contact form input change handler
-    const handleContactFormChange = (e) => {
-      const { name, value } = e.target;
-      setContactFormData((prev) => ({ ...prev, [name]: value }));
-    };
-  
-    // Contact form submit handler
-    const handleContactFormSubmit = async (e) => {
+  const handleContactFormChange = (e) => {
+    const { name, value } = e.target;
+    setContactFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Contact form submit handler
+  const handleContactFormSubmit = async (e) => {
     e.preventDefault();
-  
+
     // Basic validation
     if (!contactFormData.name.trim() || !contactFormData.email.trim()) {
       alert('Please enter both Name and Email.');
       return;
     }
-  
+
     // Prepare payload with budget as number
     const payload = {
       ...contactFormData,
       budget: Number(contactFormData.budget) || 0,
     };
-  
+
     try {
       const response = await fetch('/api/submitContactForm', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-  
+
       const data = await response.json();
-  
+
       if (!response.ok) {
         throw new Error(data.error || 'Network response was not ok');
       }
-  
+
       alert('Thank you! Your information has been submitted.');
-  
+
       // Reset form fields
       setContactFormData({
         name: '',
@@ -124,41 +143,41 @@ function Homepage() {
   };
 
   const handleInsightsSubmit = async () => {
-  if (!formValid) {
-    alert('Please enter both name and email.');
-    return;
-  }
-
-  try {
-    const response = await fetch('/api/submit-form', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: formData.name, email: formData.email }),
-    });
-
-    const result = await response.json();
-
-    if (response.ok && result.success) {
-      // Trigger PDF download after successful Monday.com submission
-      const link = document.createElement('a');
-      link.href = '/TuCielo_HOA_Lending_Guide.pdf'; 
-      link.download = 'TuCielo_HOA_Lending_Guide.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      setShowModal(false);
-      setFormData({ name: '', email: '' });
-      alert('Thanks! Your insights will be sent shortly.');
-    } else {
-      alert('Error submitting your info: ' + (result.error || 'Unknown error'));
+    if (!formValid) {
+      alert('Please enter both name and email.');
+      return;
     }
-  } catch (error) {
-    alert('Network error: ' + error.message);
-  }
-};
 
-   return (
+    try {
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: formData.name, email: formData.email }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        // Trigger PDF download after successful Monday.com submission
+        const link = document.createElement('a');
+        link.href = '/TuCielo_HOA_Lending_Guide.pdf'; 
+        link.download = 'TuCielo_HOA_Lending_Guide.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        setShowModal(false);
+        setFormData({ name: '', email: '' });
+        alert('Thanks! Your insights will be sent shortly.');
+      } else {
+        alert('Error submitting your info: ' + (result.error || 'Unknown error'));
+      }
+    } catch (error) {
+      alert('Network error: ' + error.message);
+    }
+  };
+
+  return (
     
     <>
       <div className="page-container">
