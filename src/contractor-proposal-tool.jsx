@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './contractor-proposal-tool.css';
 import { Helmet } from 'react-helmet'; // ✅ import Helmet
+import React, { useState, useEffect } from 'react'; // ✅ Make sure useEffect is imported
 
 export default function ContractorProposalTool() {
   return (
