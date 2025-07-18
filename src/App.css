@@ -836,6 +836,13 @@
     padding-right: 15px;
   }
 
+   .site-header {
+    background-color: transparent;        /* removes white background */
+    box-shadow: none;                     /* removes shadow */
+    backdrop-filter: none;                /* removes frosted glass effect */
+  }
+
+  
   /* Stack the header-top content vertically */
    .tucielo-header-top {
     display: flex !important;
