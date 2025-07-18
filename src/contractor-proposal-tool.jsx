@@ -59,7 +59,7 @@ export default function ContractorProposalTool() {
 
       {/* Main content */}
       <div className="calculator-wrapper">
-         <TuCieloCalculator />
+         <TuCieloCalculator/>
       </div>
     </div>
     </>
@@ -237,13 +237,5 @@ function TuCieloCalculator() {
         </p>
       </footer>
   </div>
-</>
   );
 }
-
-
-
-
-
-
-
