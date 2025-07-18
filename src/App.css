@@ -851,6 +851,9 @@
     justify-content: flex-start !important; /* 💥 Change this */
     gap: 10px;
     width: 100%;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
   }
 
   .logo-title {
