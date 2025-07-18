@@ -233,7 +233,7 @@
 .pain-points-section {
   background-color: #eef2f7;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   padding: 2rem;
   text-align: left;
   font-family: 'Mulish', sans-serif;
@@ -281,7 +281,7 @@
   margin-bottom: 20px;
   background-color: rgba(255, 255, 255, 0.95); /* soft white with slight transparency */
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* subtle elevation */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4); /* subtle elevation */
   overflow: hidden; /* so the border-radius applies to contents */
 }
 
@@ -397,7 +397,7 @@
   border-radius: 12px; /* Add some roundness for modern feel */
   max-width: 600px;
   text-align: left;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* <-- Adds depth */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
 .payment-breakdown ul {
@@ -426,7 +426,7 @@
   text-align: center;
   font-family: 'Mulish', sans-serif;
   border-radius: 12px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   max-width: 900px;
   margin: 40px auto;
 }
@@ -961,7 +961,7 @@
   .hero-content {
     padding: 20px 15px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   }
 }
 
