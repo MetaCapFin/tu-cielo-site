@@ -332,7 +332,7 @@
   .pagination-controls button,
   .back-to-main-button {
     width: 100%;
-    max-width: 300px;
+    max-width: 150px;
     margin: 0 auto;
     display: block;
   }
