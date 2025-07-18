@@ -28,15 +28,16 @@ export default function FAQ() {
   return (
     <div className="page-container">
       {/* HEADER */}
-      <header className="site-header">
-        <div className="header-top">
-          <div className="logo-title">
-            <img src="/TuCielo-Header-Logo2.png" alt="Logo" />
-           </div>
-          <div className="beta-label">
-            <strong>Beta Program</strong>
-          </div>
+       <header className="site-header">
+     <div className="tucielo-header-top">
+        <div className="logo-title">
+          <img src="/TuCielo-Header-Logo2.png" alt="Logo" />
         </div>
+      
+        <div className="beta-label">
+          <img src="BetaProgram_Sticker.png" alt="Beta Program" />
+        </div>
+      </div>
         <div className="header-bottom">
           <Link to="/blogposts" className="header-button-link">Blog</Link>
           <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
