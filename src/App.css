@@ -279,7 +279,12 @@
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.95); /* soft white with slight transparency */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* subtle elevation */
+  overflow: hidden; /* so the border-radius applies to contents */
 }
+
 
 .features th,
 .features td {
