@@ -49,7 +49,6 @@ export default function ContractorProposalTool() {
          <TuCieloCalculator/>
       </div>
     </div>
-    </>
   );
 }
 
