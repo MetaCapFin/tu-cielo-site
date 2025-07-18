@@ -231,7 +231,7 @@
 }
 
 .pain-points-section {
-  background-color: rgba(255, 255, 255, 0.95); /* card-style with transparency */
+  background-color: #eef2f7;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 2rem;
