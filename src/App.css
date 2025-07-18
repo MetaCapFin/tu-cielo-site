@@ -1,10 +1,10 @@
 /* General Layout */
 body {
-  background-image: url('Fluffy_Clouds_Background.png');
+  background-image: url('%PUBLIC_URL%/Fluffy_Clouds_Background.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* Optional: makes it "stick" while scrolling */
+  background-attachment: fixed;
   font-family: 'Mulish', sans-serif;
   margin: 0;
   padding: 0;
