@@ -1,6 +1,6 @@
 const formidable = require("formidable");
 const fs = require("fs");
-const uploadToDrive = require("../src/utils/uploadToDrive");
+const { Dropbox } = require("dropbox");
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
@@ -18,7 +18,7 @@ module.exports = async function handler(req, res) {
       return res.status(500).json({ error: "Form parsing failed" });
     }
 
-    // Normalize field values
+    // Normalize fields
     const {
       hoaName,
       communityName,
@@ -41,7 +41,7 @@ module.exports = async function handler(req, res) {
     );
 
     const boardId = 9191966932;
-    const groupId = "group_title"; // Replace with your actual group ID
+    const groupId = "group_title";
     const apiKey = process.env.MONDAY_API_KEY;
 
     const columnValues = {
@@ -96,37 +96,37 @@ module.exports = async function handler(req, res) {
         return res.status(500).json({ error: "Monday.com error", details: data.errors });
       }
 
-            const folderId = process.env.GOOGLE_DRIVE_FOLDER_ID;
+      // 🔽 DROPBOX UPLOAD INSTEAD OF GOOGLE DRIVE
+      const dbx = new Dropbox({ accessToken: process.env.DROPBOX_ACCESS_TOKEN });
       const uploads = {};
       let uploadErrors = [];
+
+      const uploadToDropbox = async (file, label) => {
+        try {
+          const fileData = fs.readFileSync(file.filepath);
+          const dropboxPath = `/${hoaName}_${communityName}_${label}_${Date.now()}_${file.originalFilename}`;
+          const result = await dbx.filesUpload({
+            path: dropboxPath,
+            contents: fileData,
+          });
+          return result;
+        } catch (err) {
+          console.error(`Dropbox upload failed for ${label}:`, err);
+          throw err;
+        }
+      };
 
       try {
         if (files.reserveStudy) {
           const file = Array.isArray(files.reserveStudy) ? files.reserveStudy[0] : files.reserveStudy;
-          uploads.reserveStudy = await uploadToDrive({
-            filePath: file.filepath,
-            originalFilename: file.originalFilename,
-            folderId,
-            hoaName,
-            communityName,
-            label: "Reserve Study",
-          });
+          uploads.reserveStudy = await uploadToDropbox(file, "Reserve_Study");
         }
 
         if (files.annualBudgetFile) {
           const file = Array.isArray(files.annualBudgetFile) ? files.annualBudgetFile[0] : files.annualBudgetFile;
-          uploads.annualBudgetFile = await uploadToDrive({
-            filePath: file.filepath,
-            originalFilename: file.originalFilename,
-            folderId,
-            hoaName,
-            communityName,
-            label: "Annual Budget",
-          });
+          uploads.annualBudgetFile = await uploadToDropbox(file, "Annual_Budget");
         }
-
       } catch (uploadError) {
-        console.error("File upload failed:", uploadError);
         uploadErrors.push("Reserve Study and/or Annual Budget file upload failed.");
       }
 
@@ -141,7 +141,6 @@ module.exports = async function handler(req, res) {
         uploadErrors,
       });
 
-
     } catch (err) {
       console.error("Fetch error:", err);
       res.status(500).json({ error: "Server error during submission" });
@@ -154,6 +153,7 @@ module.exports.config = {
     bodyParser: false,
   },
 };
+
 
 
 
