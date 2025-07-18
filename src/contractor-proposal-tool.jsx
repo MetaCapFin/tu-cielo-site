@@ -111,6 +111,7 @@ function TuCieloCalculator() {
   const amortizationTable = generateAmortization();
  
   return (
+  <>
     <div className="page-container">
     <div className="loan-calculator" style={{ marginTop: 30 }}>
           
@@ -237,6 +238,7 @@ function TuCieloCalculator() {
           and the lender. This website does not constitute an offer to lend. Please consult a TuCielo representative for personalized estimates.
         </p>
       </footer>
+    </>
   );
 }
 
