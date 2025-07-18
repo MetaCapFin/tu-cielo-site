@@ -147,7 +147,7 @@ export default function HOAApplicationForm({ onClose }) {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit}encType="multipart/form-data">
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
             {step === 0 && (
               <div>
                 <h3>Association Information</h3>
@@ -262,12 +262,11 @@ export default function HOAApplicationForm({ onClose }) {
                     disabled={!isStepValid()}
                   >
                     Next
-                  </button>
+                   </button>
                 )}
               </div>
-            </div>
-
-          </form>
+            </form>
+          )}
         </div>
       </div>
     </div>
