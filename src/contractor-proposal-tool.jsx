@@ -23,7 +23,9 @@ export default function ContractorProposalTool() {
       document.body.style.minHeight = '';
     };
   }, []);
+  
   return (
+    </>
       <Helmet>
       <title>TuCielo Contractor Proposal Tool</title>
       <meta name="description" content="Estimate your HOA project financing with TuCielo’s Contractor Proposal Tool. See per-unit payments, amortization, and fee breakdown instantly." />
@@ -110,7 +112,6 @@ function TuCieloCalculator() {
   const amortizationTable = generateAmortization();
  
   return (
-  <>
     <div className="page-container">
     <div className="loan-calculator" style={{ marginTop: 30 }}>
           
