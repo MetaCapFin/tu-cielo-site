@@ -521,6 +521,9 @@ function Homepage() {
           {/* HOW IT WORKS */}
           <section className="how-it-works">
             <h2>How It Works</h2>
+
+            <img src="HowItWorks_Gears-removebg.png" alt="How it works" className="estimate-image"/>
+            
             <div className="steps-visual">
               <div className="step-group"><div className="step-circle">1</div><div className="step-line-horizontal" /><p>Consultation & Pre-Qualification</p></div>
               <div className="step-group"><div className="step-circle">2</div><div className="step-line-horizontal" /><p>Customized Financing Proposal</p></div>
