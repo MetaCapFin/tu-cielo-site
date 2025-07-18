@@ -12,7 +12,7 @@
   padding: 40px 20px;
 }
 
-.content-wrapper blog-section {
+.content-wrapper-blog-section {
   background-color: rgba(255, 255, 255, 0.85); /* soft white with 85% opacity */
   backdrop-filter: blur(8px); /* frosted glass effect for readability */
   padding: 24px;
