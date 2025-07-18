@@ -84,7 +84,7 @@
 
 /* Button */
 .hoa-submit-btn {
-  background-color: #bfd400;
+  background-color: linear-gradient(to bottom left, #2184bd, #1c7fb8);
   color: #303c42;
   padding: 12px 24px;
   border: none;
