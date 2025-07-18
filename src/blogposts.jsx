@@ -82,7 +82,7 @@ const BlogPosts = () => {
 
       {/* MAIN BLOG POST */}
       <main className="main-content">
-        <div className="content-wrapper blog-section">
+        <div className="content-wrapper-blog-section">
           <h2 className="blog-title">
             The Florida HOA Financing Crisis: Why Traditional Banks Are Failing Communities When They Need Capital Most
           </h2>
