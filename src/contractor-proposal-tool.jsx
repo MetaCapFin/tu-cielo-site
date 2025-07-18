@@ -25,7 +25,7 @@ export default function ContractorProposalTool() {
   }, []);
   
   return (
-    </>
+    <>
       <Helmet>
       <title>TuCielo Contractor Proposal Tool</title>
       <meta name="description" content="Estimate your HOA project financing with TuCielo’s Contractor Proposal Tool. See per-unit payments, amortization, and fee breakdown instantly." />
