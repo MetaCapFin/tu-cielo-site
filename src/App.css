@@ -18,7 +18,7 @@
 
 /* Site Header */
 .site-header {
-  background: 'linear-gradient(to bottom left,#2184bd,#1c7fb8)';
+  background: transparent;
   color: white;
   font-family: 'Mulish', sans-serif;
   display: flex;
@@ -33,7 +33,7 @@
 
 /* Top part of header */
 .tucielo-header-top {
-  background: linear-gradient(to bottom left, #2184bd, #1c7fb8);
+  background: transparent;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
@@ -70,7 +70,7 @@
 
 /* Bottom part of header */
 .header-bottom {
-  background: 'linear-gradient(to bottom left,#2184bd,#1c7fb8)';
+  background: transparent;
   display: flex;
   gap: 15px;
   padding: 10px 20px;
