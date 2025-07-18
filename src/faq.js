@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from 'react'; // ✅ Make sure useEffect is imported
 import { Link } from "react-router-dom"; // Make sure react-router-dom is installed and set up
 import "./FAQ.css";
 
 export default function FAQ() {
+   // ✅ Inject background effect after last useState
+  useEffect(() => {
+    document.body.style.backgroundImage = "url('/Fluffy_Clouds_Background.png')";
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.minHeight = '100vh';
+
+    return () => {
+      document.body.style.backgroundImage = '';
+      document.body.style.backgroundRepeat = '';
+      document.body.style.backgroundSize = '';
+      document.body.style.backgroundPosition = '';
+      document.body.style.backgroundAttachment = '';
+      document.body.style.minHeight = '';
+    };
+  }, []);
   const handleGoHome = () => {
     window.location.href = window.location.origin;
   };
@@ -13,13 +31,8 @@ export default function FAQ() {
       <header className="site-header">
         <div className="header-top">
           <div className="logo-title">
-            <div className="logo-placeholder">
-              <img src="/cloud_logo.jpg" alt="Logo" />
-            </div>
-            <h1 className="site-title-link" onClick={() => window.location.href = "/"}>
-              TuCielo
-            </h1>
-          </div>
+            <img src="/TuCielo-Header-Logo2.png" alt="Logo" />
+           </div>
           <div className="beta-label">
             <strong>Beta Program</strong>
           </div>
