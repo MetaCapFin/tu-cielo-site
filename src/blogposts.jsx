@@ -65,9 +65,9 @@ const BlogPosts = () => {
       {/* HEADER */}
      <header className="site-header">
      <div className="tucielo-header-top">
-        <div className="logo-title">
-          <img src="/TuCielo-Header-Logo2.png" alt="Logo" />
-        </div>
+        <div className="logo-title" onClick={handleGoHome} style={{ cursor: 'pointer' }}>
+         <img src="/TuCielo-Header-Logo2.png" alt="Logo" />
+       </div>
       
         <div className="beta-label">
           <img src="BetaProgram_Sticker.png" alt="Beta Program" />
