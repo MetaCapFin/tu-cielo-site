@@ -16,6 +16,22 @@ const BlogPosts = () => {
 
   // On mount, initialize or get userId from localStorage
   useEffect(() => {
+    document.body.style.backgroundImage = "url('/Fluffy_Clouds_Background.png')";
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.minHeight = '100vh';
+
+    return () => {
+      document.body.style.backgroundImage = '';
+      document.body.style.backgroundRepeat = '';
+      document.body.style.backgroundSize = '';
+      document.body.style.backgroundPosition = '';
+      document.body.style.backgroundAttachment = '';
+      document.body.style.minHeight = '';
+    };
+  }, []);
     let storedUserId = localStorage.getItem('userId');
     if (!storedUserId) {
       storedUserId = Math.random().toString(36).substring(2, 9);
@@ -47,18 +63,16 @@ const BlogPosts = () => {
   return (
     <div className="page-container">
       {/* HEADER */}
-      <header className="site-header">
-        <div className="header-top">
-          <div className="logo-title">
-            <div className="logo-placeholder">
-              <img src="/cloud_logo.jpg" alt="Logo" />
-            </div>
-              <h1 className="site-title-link" onClick={() => window.location.href = "/"}>TuCielo</h1>
-            </div>
-          <div className="beta-label">
-            <strong>Beta Program</strong>
-          </div>
+     <header className="site-header">
+     <div className="tucielo-header-top">
+        <div className="logo-title">
+          <img src="/TuCielo-Header-Logo2.png" alt="Logo" />
         </div>
+      
+        <div className="beta-label">
+          <img src="BetaProgram_Sticker.png" alt="Beta Program" />
+        </div>
+      </div>
         <div className="header-bottom">
           <Link to="/faq" className="header-button-link">FAQ</Link>
           <Link to="/blogposts" className="header-button-link">Blog</Link>
