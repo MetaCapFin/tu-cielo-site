@@ -16,29 +16,29 @@ const BlogPosts = () => {
 
   // On mount, initialize or get userId from localStorage
   useEffect(() => {
-    document.body.style.backgroundImage = "url('/Fluffy_Clouds_Background.png')";
-    document.body.style.backgroundRepeat = 'no-repeat';
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundPosition = 'center';
-    document.body.style.backgroundAttachment = 'fixed';
-    document.body.style.minHeight = '100vh';
+  document.body.style.backgroundImage = "url('/Fluffy_Clouds_Background.png')";
+  document.body.style.backgroundRepeat = 'no-repeat';
+  document.body.style.backgroundSize = 'cover';
+  document.body.style.backgroundPosition = 'center';
+  document.body.style.backgroundAttachment = 'fixed';
+  document.body.style.minHeight = '100vh';
 
-    return () => {
-      document.body.style.backgroundImage = '';
-      document.body.style.backgroundRepeat = '';
-      document.body.style.backgroundSize = '';
-      document.body.style.backgroundPosition = '';
-      document.body.style.backgroundAttachment = '';
-      document.body.style.minHeight = '';
-    };
-  }, []);
-    let storedUserId = localStorage.getItem('userId');
-    if (!storedUserId) {
-      storedUserId = Math.random().toString(36).substring(2, 9);
-      localStorage.setItem('userId', storedUserId);
-    }
-    setUserId(storedUserId);
-  }, []);
+  let storedUserId = localStorage.getItem('userId');
+  if (!storedUserId) {
+    storedUserId = Math.random().toString(36).substring(2, 9);
+    localStorage.setItem('userId', storedUserId);
+  }
+  setUserId(storedUserId);
+
+  return () => {
+    document.body.style.backgroundImage = '';
+    document.body.style.backgroundRepeat = '';
+    document.body.style.backgroundSize = '';
+    document.body.style.backgroundPosition = '';
+    document.body.style.backgroundAttachment = '';
+    document.body.style.minHeight = '';
+  };
+}, []);
 
   // Handler to add comment
   const handleSubmitComment = () => {
