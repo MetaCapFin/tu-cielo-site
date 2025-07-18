@@ -6,6 +6,16 @@
   color: #333;
 }
 
+.faq-questions {
+  background-color: rgba(255, 255, 255, 0.85); /* soft white with 85% opacity */
+  backdrop-filter: blur(8px); /* frosted glass effect for readability */
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* subtle shadow for depth */
+  max-width: 900px;
+  margin: 40px auto;
+}
+
 .faq-questions h2 {
   text-align: center;
   margin-bottom: 2rem;
