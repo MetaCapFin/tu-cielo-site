@@ -222,8 +222,7 @@ function TuCieloCalculator() {
       >
         Back to TuCielo
       </button>     
-    </div>
-       
+          
       {/* FOOTER */}
       <footer className="site-footer">
         <p>© 2025 Tu Cielo. All rights reserved.</p>
