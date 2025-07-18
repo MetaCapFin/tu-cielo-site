@@ -137,7 +137,7 @@
 
 /* Header */
 .site-header {
-  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
+  background: transparent;
   color: white;
   font-family: 'Mulish', sans-serif;
   display: flex;
