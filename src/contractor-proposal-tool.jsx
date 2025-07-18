@@ -109,8 +109,7 @@ function TuCieloCalculator() {
   const amortizationTable = generateAmortization();
  
   return (
-    <div className="page-container">
-    <div className="loan-calculator" style={{ marginTop: 30 }}>
+     <div className="loan-calculator" style={{ marginTop: 30 }}>
           
       <label>Number of Units</label>
       <input
@@ -221,6 +220,5 @@ function TuCieloCalculator() {
         Back to TuCielo
       </button>     
     </div>
-</div>
   );
 }
