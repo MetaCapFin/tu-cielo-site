@@ -24,32 +24,43 @@ export default function ContractorProposalTool() {
     };
   }, []);
   
-  return (
-    <div className="page-container">
-      {/* HEADER */}
-      <header className="site-header">
-        <div className="header-top">
-          <div className="logo-title">
-             <img src="/TuCielo_ProposalCalculator-removebg.png" alt="Logo" />
-          </div>
-
+ return (
+  <div className="page-container">
+    {/* HEADER */}
+    <header className="site-header">
+      <div className="header-top">
+        <div className="logo-title">
+          <img src="/TuCielo_ProposalCalculator-removebg.png" alt="Logo" />
+        </div>
         <div className="beta-label">
           <img src="BetaProgram_Sticker.png" alt="Beta Program" />
         </div>
-          
-        </div>
-        <div className="header-bottom">
-          <Link to="/faq" className="header-button-link">FAQ</Link>
-          <Link to="/blogposts" className="header-button-link">Blog</Link>
-        </div>
-      </header>
-
-      {/* Main content */}
-      <div className="calculator-wrapper">
-         <TuCieloCalculator/>
       </div>
+      <div className="header-bottom">
+        <Link to="/faq" className="header-button-link">FAQ</Link>
+        <Link to="/blogposts" className="header-button-link">Blog</Link>
+      </div>
+    </header>
+
+    {/* Main content */}
+    <div className="calculator-wrapper">
+      <TuCieloCalculator />
     </div>
-  );
+
+   {/* FOOTER */}
+      <footer className="site-footer">
+        <p>© 2025 Tu Cielo. All rights reserved.</p>
+        <br></br>
+        <p>
+          Disclaimer: TuCielo and any affiliated entities do not provide installation services and are not government agencies. All terms, conditions,
+          and results are project-specific and may vary. Financing terms may change and are subject to TuCielo’s underwriting criteria without prior
+          notice. Payment estimates are for budgeting purposes only and are based on total financed amounts. TuCielo financing is repaid through your
+          HOA, and monthly payments may vary based on loan term, interest rate, fees, number of units, and other covenants agreed upon between the HOA
+          and the lender. This website does not constitute an offer to lend. Please consult a TuCielo representative for personalized estimates.
+        </p>
+      </footer>
+  </div>
+);
 }
 
 function TuCieloCalculator() {
@@ -209,20 +220,7 @@ function TuCieloCalculator() {
       >
         Back to TuCielo
       </button>     
-          
-      {/* FOOTER */}
-      <footer className="site-footer">
-        <p>© 2025 Tu Cielo. All rights reserved.</p>
-        <br></br>
-        <p>
-          Disclaimer: TuCielo and any affiliated entities do not provide installation services and are not government agencies. All terms, conditions,
-          and results are project-specific and may vary. Financing terms may change and are subject to TuCielo’s underwriting criteria without prior
-          notice. Payment estimates are for budgeting purposes only and are based on total financed amounts. TuCielo financing is repaid through your
-          HOA, and monthly payments may vary based on loan term, interest rate, fees, number of units, and other covenants agreed upon between the HOA
-          and the lender. This website does not constitute an offer to lend. Please consult a TuCielo representative for personalized estimates.
-        </p>
-      </footer>
-  </div>
+    </div>
 </div>
   );
 }
