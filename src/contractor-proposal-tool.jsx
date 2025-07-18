@@ -237,6 +237,7 @@ function TuCieloCalculator() {
         </p>
       </footer>
   </div>
+</>
   );
 }
 
