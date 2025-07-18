@@ -232,38 +232,39 @@ export default function HOAApplicationForm({ onClose }) {
               </div>
             )}
 
-            <div className="step-controls">
-              {step === steps.length - 1 && (
-                <button
-                  type="submit"
-                  className="hoa-submit-btn"
-                  disabled={!isStepValid()}
-                  style={{ marginBottom: '1rem' }}
-                >
-                  Submit Application
-                </button>
-              )}
-
-              <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
-                {step > 0 && (
+           <div className="step-controls">
+                {step === steps.length - 1 && (
                   <button
-                    type="button"
-                    className="hoa-nav-btn"
-                    onClick={() => setStep(step - 1)}
+                    type="submit"
+                    className="hoa-submit-btn"
+                    disabled={!isStepValid()}
+                    style={{ marginBottom: '1rem' }}
                   >
-                    Back
+                    Submit Application
                   </button>
                 )}
-                {step < steps.length - 1 && (
-                  <button
-                    type="button"
-                    className="hoa-nav-btn"
-                    onClick={() => isStepValid() && setStep(step + 1)}
-                    disabled={!isStepValid()}
-                  >
-                    Next
-                   </button>
-                )}
+              
+                <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
+                  {step > 0 && (
+                    <button
+                      type="button"
+                      className="hoa-nav-btn"
+                      onClick={() => setStep(step - 1)}
+                    >
+                      Back
+                    </button>
+                  )}
+                  {step < steps.length - 1 && (
+                    <button
+                      type="button"
+                      className="hoa-nav-btn"
+                      onClick={() => isStepValid() && setStep(step + 1)}
+                      disabled={!isStepValid()}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
               </div>
             </form>
           )}
