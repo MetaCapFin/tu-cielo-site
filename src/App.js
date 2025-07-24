@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import TuCieloHOALoanApplication from './components/tucielo_hoa_loan_application';
 import LoanCalculator from './components/LoanCalculator'; // Adjust path if needed
-import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import ContractorProposalTool from './contractor-proposal-tool';
 import FAQ from './faq'; // from src/faq.js
@@ -17,8 +16,12 @@ function Homepage() {
   const [formData, setFormData] = useState({ name: '', email: '' });
   const [formValid, setFormValid] = useState(false);
   
-  const [menuOpen, setMenuOpen] = useState(false);
-   
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
+
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
   const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
@@ -28,6 +31,7 @@ function Homepage() {
     company: '',
     email: '',
   });
+
   const [showCalculator, setShowCalculator] = useState(false);
 
   // ✅ Inject background effect after last useState
@@ -39,6 +43,7 @@ function Homepage() {
     document.body.style.backgroundAttachment = 'fixed';
     document.body.style.minHeight = '100vh';
 
+    
     return () => {
       document.body.style.backgroundImage = '';
       document.body.style.backgroundRepeat = '';
@@ -48,6 +53,24 @@ function Homepage() {
       document.body.style.minHeight = '';
     };
   }, []);
+
+  useEffect(() => {
+  const handleResize = () => {
+    if (window.innerWidth > 768) {
+      setIsMobileMenuOpen(false); // Close mobile menu on desktop
+    }
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  // Run it once in case page loads already at desktop size
+  handleResize();
+
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+}, []);
+
 
   // Contact form state
   const [contactFormData, setContactFormData] = useState({
@@ -181,43 +204,101 @@ function Homepage() {
     
     <>
       <div className="page-container">
-      {/* HEADER */}
-      
-     <header className="site-header">
-     <div className="tucielo-header-top">
-        <div className="logo-title">
-          <img src="/TuCielo-Header-Logo2.png" alt="Logo" />
+    {/* HEADER */}
+    <header className="siteHeader">
+        <div className="tucieloHeaderTop">
+          
+          <Link to="/" className="logoTitle img" onClick={() => setIsMobileMenuOpen(false)}>
+            <img src="/TuCielo-Header-Logo2.png" alt="Logo" />
+          </Link>
+
+
+          <div className="betaLabel img">
+            <img src="BetaProgram_Sticker.png" alt="Beta Program" />
+          </div>
+
+          <div className="hamburger" onClick={() => setIsMobileMenuOpen(prev => !prev)}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+          </div>
         </div>
-      
-        <div className="beta-label">
-          <img src="BetaProgram_Sticker.png" alt="Beta Program" />
+
+        <div className={`headerBottom ${isMobileMenuOpen ? 'menuOpen' : ''}`}>
+          <div className="headerScrollContainer">
+            <Link to="/contractor-proposal-tool" className="headerButtonLink">TuCielo Calculator</Link>
+            <button
+              className="headerButtonLink"
+              onClick={() => {
+                document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Apply
+            </button>
+            <button
+              className="headerButtonLink"
+              onClick={() => {
+                document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" });
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Contact Us
+            </button>
+            <Link to="/faq" className="headerButtonLink">FAQ</Link>
+            <Link to="/blogposts" className="headerButtonLink">Blog</Link>
+            <button
+              className="headerButtonLink"
+              onClick={() => {
+                setShowPrivacyModal(true);
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Privacy Policy
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="header-bottom">
-        <div class="header-scroll-container">
-       <Link to="/contractor-proposal-tool" className="header-button-link">TuCielo Calculator</Link>
-      <button className="header-button-link"onClick={() => {document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });}}>
-          Apply
-        </button>
-       <button
-          className="header-button-link"
-          onClick={() =>
-            document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" })
-          }
-        >
-          Contact Us
-        </button>
-        <Link to="/faq" className="header-button-link">FAQ</Link>
-        <Link to="/blogposts" className="header-button-link">Blog</Link>
-        
-        <button className="header-button-link"onClick={() => setShowPrivacyModal(true)}> Privacy Policy</button>
-      </div>
-    </div>
-      {showPrivacyModal && (
-          <div className="modal-overlay" onClick={() => setShowPrivacyModal(false)}>
-            <div className="modal-content" onClick={e => e.stopPropagation()}>
+
+        {isMobileMenuOpen && (
+          <div className="mobile-menu show">
+            <Link to="/contractor-proposal-tool" className="headerButtonLink">TuCielo Calculator</Link>
+            <button
+              className="headerButtonLink"
+              onClick={() => {
+                document.getElementById("application-section")?.scrollIntoView({ behavior: "smooth" });
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Apply
+            </button>
+            <button
+              className="headerButtonLink"
+              onClick={() => {
+                document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" });
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Contact Us
+            </button>
+            <Link to="/faq" className="headerButtonLink">FAQ</Link>
+            <Link to="/blogposts" className="headerButtonLink">Blog</Link>
+            <button
+              className="headerButtonLink"
+              onClick={() => {
+                setShowPrivacyModal(true);
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Privacy Policy
+            </button>
+          </div>
+        )}
+
+        {showPrivacyModal && (
+          <div className="privacypolicy-modal-overlay" onClick={() => setShowPrivacyModal(false)}>
+            <div className="privacypolicy-modal-content" onClick={e => e.stopPropagation()}>
               <button className="modal-close" onClick={() => setShowPrivacyModal(false)}>X</button>
-              <div className="modal-body">
+              <div className="privacypolicy-modal-body">
                 <h2>Privacy Policy</h2>
                 <p>
                   At TuCielo, we are committed to protecting the privacy of our users and the confidentiality of the data we collect.
@@ -268,25 +349,28 @@ function Homepage() {
       </header>
 
       {/* MAIN CONTENT */}
-      <main className="main-content">
+      
         <div className="content-wrapper">
         
           {/* HERO SECTION */}
-          <section className="hero-section">
-            <div className="hero-content">
-              <h1>Florida HOA Crisis? We Have the Solution.</h1>
-              <h2>$1M – $10M+ Capital When You Need It Most</h2>
-              <ul className="hero-benefits">
-                <li>✓ 30–45 Day Approval</li>
-                <li>✓ No Personal Guarantees</li>
-                <li>✓ 25-Year Terms</li>
-              </ul>
+          <section className="page-container hero-wrapper">
+            <div className="hero-section">
+              <div className="hero-content">
+                <h1>Florida HOA Crisis? We Have the Solution.</h1>
+                <h2>$1M – $10M+ Capital When You Need It Most</h2>
+                <ul className="hero-benefits">
+                  <li>✓ 30–45 Day Approval</li>
+                  <li>✓ No Personal Guarantees</li>
+                  <li>✓ 25-Year Terms</li>
+                </ul>
+              </div>
             </div>
           </section>
       
           {/* FEATURE SECTION */}
           <section className="header-features">
             <div className="header">
+              <div className="leftcolumn">
               <h2><strong>HOA Improvements Without Special Assessments? Yes, It’s Possible.</strong></h2>
               <h3>Flexible, long-term financing for Florida communities — without the red tape of traditional banks.</h3>
               <img src="before-after-building.jpg" alt="HOA financing illustration placeholder" />
@@ -301,7 +385,7 @@ function Homepage() {
               {showModal && (
                 <div className="modal-overlay">
                   <div className="modal-content">
-                    <button className="close-button" onClick={() => setShowModal(false)}>×</button>
+                    <button className="modal-close" onClick={() => setShowModal(false)}>×</button>
                     <h3>Get Your 10 Insights</h3>
                     <input
                       type="text"
@@ -337,7 +421,7 @@ function Homepage() {
                     </label>
               
                     <button
-                      className="cta-button"
+                      className="ctabutton"
                       onClick={handleInsightsSubmit}
                       disabled={!agreedToPrivacy}
                       style={{ opacity: agreedToPrivacy ? 1 : 0.6, cursor: agreedToPrivacy ? 'pointer' : 'not-allowed' }}
@@ -350,34 +434,54 @@ function Homepage() {
             </div>
 
             {/* FEATURES */}
-            <div className="features">
+            <div className="rightcolumn">
               <div className="pain-points-section">
+                <div className="pain-points-container">
                 <h2>Why Most Florida HOAs Struggle to Fund Capital Projects</h2>
-                <ul className="pain-points-list">
+                <ul>
                   <li>Bank loans require large reserves and perfect financials</li>
                   <li>Special assessments are unpopular with residents</li>
                   <li>Reserve studies reveal millions in needed repairs</li>
                 </ul>
-                <h3 className="subheadline">TuCielo is here to help.</h3>
-                <p className="supporting-text">
+                </div>
+                
+                <h2 className="subheadline">TuCielo is here to help.</h2>
+                <p>
                   We provide long-term, fixed-rate financing options for HOAs needing to fund major improvements — without burdening homeowners or sacrificing reserve funds.
                 </p>
               </div>
 
               <h2>Designed for HOAs, Not Just for Banks</h2>
+            <div className="table">
               <table>
-                <thead>
+                <thead className="thead">
                   <tr>
                     <th>Feature</th>
                     <th>TuCielo</th>
                     <th>Traditional Bank</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr><td>Loan Terms</td><td>Up to 25 years</td><td>Typically 5-10 years</td></tr>
-                  <tr><td>Minimum Loan</td><td>$1,000,000+</td><td>Varies</td></tr>
-                  <tr><td>Underwriting</td><td>Flexible, Holistic</td><td>Strict financial criteria</td></tr>
-                  <tr><td>Prepayment</td><td>Flexible options</td><td>Often penalties apply</td></tr>
+                <tbody className="tbody">
+                  <tr>
+                    <td>Loan Terms</td>
+                    <td>Up to 25 years</td>
+                    <td>Typically 5-10 years</td>
+                  </tr>
+                  <tr>
+                    <td>Minimum Loan</td>
+                    <td>$1,000,000+</td>
+                    <td>Varies</td>
+                  </tr>
+                  <tr>
+                    <td>Underwriting</td>
+                    <td>Flexible, Holistic</td>
+                    <td>Strict financial criteria</td>
+                  </tr>
+                  <tr>
+                    <td>Prepayment</td>
+                    <td>Flexible options</td>
+                    <td>Often penalties apply</td>
+                  </tr>
                   <tr>
                     <td>No hammer clause</td>
                     <td>
@@ -398,18 +502,21 @@ function Homepage() {
                   </tr>
                 </tbody>
               </table>
+            </div>
+ 
               <p><strong>*Get your full program guideline by requesting a free estimate below</strong></p>
-              </div>
+            </div>
+            </div>
           </section>
 
           {/* ESTIMATE SECTION */}
-          <section>
+          <section className="estimate-wrapper">
             <div className="payment-estimate-section">
              <h2>What Could Your Association Payment Look Like?</h2>
               <div className="payment-breakdown-wrapper">
                 <div className="payment-breakdown">
 
-                <img src="Free _Custom_Estimate_no_background.png" alt="Free Custom Estimate" className="estimate-image"/>
+                <img src="/Free_Custom_Estimate_no_background.png" alt="Free Custom Estimate" className="estimate-image"/>
                               
                   {/* Modal Trigger */}
                   <div style={{ textAlign: "center" }}>
@@ -426,7 +533,7 @@ function Homepage() {
                   {showLoanCalculatorModal && (
                     <div className="modal-overlay">
                       <div className="modal-content">
-                        <button className="close-button" onClick={() => {
+                        <button className="modal-close" onClick={() => {
                           setShowLoanCalculatorModal(false);
                           setShowCalculator(false);
                           setCalculatorLeadForm({ name: '', company: '', email: '' });
@@ -519,12 +626,11 @@ function Homepage() {
 
 
           {/* HOW IT WORKS */}
-          <section className="how-it-works-section">
+          <section className="how-it-works-wrapper">
+            <div className="how-it-works-section">
             <h2>How It Works</h2>
-          
-            <div className="how-it-works-container">
-              <div className="how-it-works-content">
-                <img src="HowItWorks_Gears-removebg.png" alt="How it works" className="estimate-image" />
+             <div className="how-it-works-container">
+              <img src="HowItWorks_Gears-removebg.png" alt="How it works" className="estimate-image" />
           
                 <div className="steps-visual">
                   <div className="step-group">
@@ -553,58 +659,52 @@ function Homepage() {
 
           {/* APPLICATION SECTION */}
           <section id="application-section">
-          <div className="payment-estimate-section">
-            <h2>Click Below to Submit Your Application</h2>
-            <div className="payment-breakdown-wrapper">
-              <div className="payment-breakdown">
-                
-                {/* Button with Tooltip */}
-                <div style={{ textAlign: 'center' }}>
-                  <div className="tooltip-container">
-                    <button className="cta-button" onClick={() => setShowApplicationFormModal(true)}>
-                      <strong>Start Application</strong>
-                    </button>
-                    <div className="tooltip-text">
-                      Before starting please gather the following information:
-                      <ul>
-                        <li>1. HOA legal entity name</li>
-                        <li>2. Number of units</li>
-                        <li>3. Year built of condominium</li>
-                        <li>4. Contact Info</li>
-                        <li>5. Type of project</li>
-                        <li>6. Cost of improvement/Reserves</li>
-                        <li>7. Loan amount needed</li>
-                        <li>8. Average monthly dues per Unit</li>
-                        <li>9. Current reserve fund balance</li>
-                        <li>10. Annual Operating Budget</li>
-                        <li>11. Delinquency Rate Percentage</li>
-                        <li>12. Reserves studies PDF (500MB max)</li>
-                        <li>13. Annual Budget PDF (500MB max)</li>
-                      </ul>
+            <div className="payment-estimate-section">
+              <h2>Click Below to Submit Your Application</h2>
+              
+              {/* Button with Tooltip */}
+                  <div style={{ textAlign: 'center' }}>
+                    <div className="tooltip-container">
+                      <button className="cta-button" onClick={() => setShowApplicationFormModal(true)}>
+                        <strong>Start Application</strong>
+                      </button>
+
+                      <div className="tooltip-text">
+                        Before starting please gather the following information:
+                        <ul>
+                          <li>1. HOA legal entity name</li>
+                          <li>2. Number of units</li>
+                          <li>3. Year built of condominium</li>
+                          <li>4. Contact Info</li>
+                          <li>5. Type of project</li>
+                          <li>6. Cost of improvement/Reserves</li>
+                          <li>7. Loan amount needed</li>
+                          <li>8. Average monthly dues per Unit</li>
+                          <li>9. Current reserve fund balance</li>
+                          <li>10. Annual Operating Budget</li>
+                          <li>11. Delinquency Rate Percentage</li>
+                          <li>12. Reserves studies PDF (500MB max)</li>
+                          <li>13. Annual Budget PDF (500MB max)</li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                </div>
-               
-                {/* Application Form Modal */}
-                {showApplicationFormModal && (
-                  <div className="modal-overlay">
-                    <div className="modal-content">
-                      <button className="close-button" onClick={() => setShowApplicationFormModal(false)}>×</button>
-                      <TuCieloHOALoanApplication onClose={() => setShowApplicationFormModal(false)} />
-                    </div>
-                  </div>
-                )}
-             </div>
             </div>
-          </div>
-        </section>
+
+                  {/* Application Form Modal */}
+                  {showApplicationFormModal && (
+                    <TuCieloHOALoanApplication onClose={() => setShowApplicationFormModal(false)} /> 
+                  )}
+
+          </section>
+
 
 
           {/* CONTACT FORM */}
           <section id="contact-section" className="contact-form">
             <div className="section-wrapper">
-              <h2>Let's Talk About Your Community's Needs</h2>
-               <div className="form-container">
+              <div className="form-container">
+                <h2>Let's Talk About Your Community's Needs</h2>
                 <div className="form-image">
                   <img src="hoa1.jpg" alt="Community" />
                 </div>
@@ -673,7 +773,7 @@ function Homepage() {
                       />
                       &nbsp;By submitting this form I agree to TuCielo's{' '}
                       <a
-                        href="#"
+                        href="showPrivacyModal"
                         className="privacy-link"
                         onClick={(e) => {
                           e.preventDefault();
@@ -690,8 +790,7 @@ function Homepage() {
             </div>
           </section>
          </div>
-      </main>
-
+      
       {/* FOOTER */}
       <footer className="site-footer">
         <p>© 2025 Tu Cielo. All rights reserved.</p>
@@ -725,4 +824,3 @@ function App() {
 }
 
 export default App; 
-

@@ -1,6 +1,9 @@
 /* Loan Calculator Container */
 .loan-calculator {
-  background-color: #ffffff;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 4);
   color: #303c42;
   font-family: 'Mulish', sans-serif;
   padding: 30px 40px;
@@ -44,7 +47,7 @@
 
 /* Range Slider */
 .loan-calculator input[type="range"] {
-  width: 100%;
+  width: 95%;
   margin-top: 10px;
   accent-color: #2184bd;
   height: 36px;
@@ -64,7 +67,7 @@
 .loan-calculator button {
   background: none;
   border: none;
-  color: #2ba6cb;
+  color: white;
   text-decoration: underline;
   cursor: pointer;
   font-size: 1rem;

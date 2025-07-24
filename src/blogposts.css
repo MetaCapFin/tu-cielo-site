@@ -13,7 +13,7 @@
 }
 
 .content-wrapper-blog-section {
-  background-color: rgba(255, 255, 255, 0.85); /* soft white with 85% opacity */
+  background-color: transparent;
   backdrop-filter: blur(8px); /* frosted glass effect for readability */
   padding: 24px;
   border-radius: 12px;
@@ -48,13 +48,13 @@
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
-  color: #333;
+  color: White;
 }
 
 .blog-article h2,
 .blog-article h3,
 .blog-article h4 {
-  color: #2184BD;
+  color: White;
   font-weight: 700;
   margin: 1.8rem 0 0.8rem;
 }
@@ -65,13 +65,13 @@
 
 .blog-article em {
   font-style: italic;
-  color: #555;
+  color: white;
 }
 
 .blog-article ul {
   margin-left: 1.2rem;
   list-style-type: disc;
-  color: #444;
+  color: white
 }
 
 .blog-article ul li {
@@ -100,24 +100,27 @@
 }
 
 /* Buttons */
-.cta-button,
 .pagination-controls button,
 .back-to-main-button {
-  display: inline-block;
-  background: linear-gradient(to bottom left, #2184BD, #1C7FB8);
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-family: 'Mulish', sans-serif;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-  text-decoration: none;
-  text-align: center;
+display: inline-flex
+;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #1976d2;
+    color: white;
+    border: 2px solid white;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 2);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 0;
 }
 
-.cta-button:hover,
 .pagination-controls button:hover,
 .back-to-main-button:hover {
   background: white;
@@ -145,90 +148,6 @@
   font-weight: bold;
 }
 
-/* Header */
-.site-header {
-  background: transparent;
-  color: white;
-  font-family: 'Mulish', sans-serif;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-}
-
-.site-title-link {
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.site-title-link:hover {
-  text-decoration: none;
-}
-
-.header-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  border-bottom: 1px solid #eef2f7;
-}
-
-.logo-placeholder img {
-  height: 50px;
-  width: auto;
-  display: block;
-}
-
-.beta-label {
-  margin-left: auto;
-  font-size: 30px;
-  font-weight: bold;
-  line-height: 1;
-}
-
-.site-header h1 {
-  margin: 0 0 0 40px;
-  font-size: 1.8rem;
-}
-
-.header-bottom {
-  display: flex;
-  gap: 15px;
-  padding: 10px 20px;
-}
-
-.header-button-link {
-  background-color: transparent;
-  color: white;
-  border: 1px solid white;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-family: 'Mulish', sans-serif;
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.header-button-link:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Footer */
-.site-footer {
-  background-color: #303C42;
-  color: white;
-  text-align: center;
-  padding: 15px 20px;
-  font-size: 0.9rem;
-  margin-top: 40px;
-}
 
 /* Back Button */
 .back-to-main-container {
@@ -254,14 +173,6 @@
   display: block;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.main-content {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-  box-sizing: border-box;
 }
 
 /* Responsive Styles */
@@ -328,13 +239,24 @@
     justify-content: center;
   }
 
-  .cta-button,
   .pagination-controls button,
   .back-to-main-button {
-    width: 100%;
-    max-width: 150px;
-    margin: 0 auto;
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #1976d2;
+    color: white;
+    border: 2px solid white;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 2);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 0;
   }
 
   .comments-section textarea {
