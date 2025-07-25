@@ -346,7 +346,7 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
               rows={4}
-              style={{ width: '100%', marginBottom: '8px', padding: '8px' }}
+              
             />
             <button className="cta-button" onClick={handleSubmitComment}>
               Submit Comment
