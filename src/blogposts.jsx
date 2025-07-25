@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './blogposts.css';
 import { Link } from 'react-router-dom';
 
-const handleGoHome = () => {
-  window.location.href = window.location.origin;
-};
+
 
 const BlogPosts = () => {
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
@@ -47,10 +45,7 @@ const BlogPosts = () => {
 
 const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
-    const toggleMobileMenu = () => {
-      setIsMobileMenuOpen((prev) => !prev);
-    };
-  
+   
     
   // Handler to add comment
   const handleSubmitComment = () => {
